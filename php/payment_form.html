@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支払い情報入力</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* わずかに青みがかった背景 */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #00bfff; /* 水色の枠線 */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .header-title {
+            color: #ff69b4; /* ピンク色 */
+            font-size: 24px;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+        }
+
+        .back-arrow {
+            position: absolute;
+            left: 0;
+            font-size: 30px;
+            color: #00bfff; /* 水色 */
+            cursor: pointer;
+            text-decoration: none;
+            line-height: 1; /* 行の高さを調整して中央に */
+            border: 2px solid #00bfff;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box; /* paddingをwidthに含める */
+            background-color: #f5f5f5; /* 灰色がかった入力欄 */
+            font-size: 16px;
+        }
+
+        .input-inline {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-inline input {
+            flex: 1;
+        }
+
+        .example-text {
+            font-size: 12px;
+            color: #999;
+            margin-top: -10px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .submit-btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 10px 30px;
+            background-color: #ffb6c1; /* 薄いピンク色 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <a href="#" class="back-arrow">&lt;</a>
+        <div class="header-title">支払い情報入力</div>
+    </div>
+
+    <form action="process_payment.php" method="POST">
+        
+        <div class="form-group">
+            <label for="name_furigana">お名前（フリガナ）</label>
+            <span class="example-text">例：タナカタロウ</span>
+            <input type="text" id="name_furigana" name="name_furigana" required>
+        </div>
+
+        <div class="form-group input-inline">
+            <div>
+                <label for="zip_code">郵便番号（ハイフンなし）</label>
+                <input type="text" id="zip_code" name="zip_code" pattern="\d{7}" placeholder="1000000" required>
+            </div>
+            <div>
+                <label for="prefecture">都道府県</label>
+                <input type="text" id="prefecture" name="prefecture" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="address_city">住所</label>
+            <input type="text" id="address_city" name="address_city" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address_rest">以降の住所</label>
+            <input type="text" id="address_rest" name="address_rest">
+        </div>
+
+        <hr style="border: none; margin: 15px 0;"> <div class="form-group">
+            <label for="phone_number">電話番号</label>
+            <input type="tel" id="phone_number" name="phone_number" pattern="[0-9]{2,4}-?[0-9]{2,4}-?[0-9]{3,4}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="card_number">クレジットカード番号</label>
+            <input type="text" id="card_number" name="card_number" pattern="\d{13,16}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="security_code">セキュリティ番号</label>
+            <input type="password" id="security_code" name="security_code" pattern="\d{3,4}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="card_holder">名義人</label>
+            <input type="text" id="card_holder" name="card_holder" required>
+        </div>
+
+        <div class="submit-btn">
+            <button type="submit">登録</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
