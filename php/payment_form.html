@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支払情報入力</title>
+    <link rel="stylesheet" href="../css/payment.css">
+</head>
+<body>
+    <div class="container">
+
+        <a href="#" class="back-btn">←</a>
+
+        <h1 class="title">支払情報入力</h1>
+
+        <form action="login_check.php" method="post" class="login-form">
+            <label for="">お名前（フリガナ）</label>
+            <input type="email" id="email" name="email" placeholder="" required>
+
+            <label for="password">郵便番号（ハイフンなし）</label>
+            <input type="password" id="password" name="password" placeholder="" required>
+
+              <label for="password">都道府県</label>
+            <input type="password" id="password" name="password" placeholder="例：aso1234" required>
+
+              <label for="password">住所</label>
+            <input type="password" id="password" name="password" placeholder="例：aso1234" required>
+
+              <label for="password">以降の住所</label>
+            <input type="password" id="password" name="password" placeholder="例：aso1234" required>
+
+              <label for="password">電話番号</label>
+            <input type="password" id="password" name="password" placeholder="例：aso1234" required>
+
+              <label for="password">クレジットカード番号</label>
+            <input type="password" id="password" name="password" placeholder="例：aso1234" required>
+
+              <label for="password">セキュリティコード</label>
+            <input type="password" id="password" name="password" placeholder="例：aso1234" required>
+
+              <label for="password">名義人</label>
+            <input type="password" id="password" name="password" placeholder="例：aso1234" required>
+
+            <button type="submit" class="login-btn">登録</button>
+        </form>
+    </div>
+</body>
+</html>
