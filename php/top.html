@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/top.css"> 
+    <link rel="stylesheet" href="../css/top.css">
     <title>ペット検索トップ</title>
 </head>
+
 <body>
     <button id="openPopupBtn">メニューを開く</button>
 
     <div id="popup" class="popup">
         <div class="popup-content">
-            <h2>メニュー</h2>
-            <p>ここにメニューの内容が入ります。</p>
+            <form action="search.php" method="get">
+                <input type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" required>
+                <button type="submit" class="search">検索</button>
+            </form>
+            <p><a href="favorite.php">お気に入り</a></p>
+            <p><a href="cart.php">カートを見る</a></p>
+            <p><a href="inquiry.php">お問い合わせ</a></p>
             <button id="closePopupBtn" class="close-button">閉じる</button>
         </div>
     </div>
-    
+
     <button><a href="login.html" class="clickLogin">ログイン</a></button>
     <button><a href="registration.html" class="clickRegistration">会員登録</a></button>
 
     <h1>全国のペットを検索</h1>
     <form action="search.php" method="get">
         <input type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" required>
-        <button type="submit" class="search">検索</button> 
+        <button type="submit" class="search">検索</button>
     </form>
 
     <script src="../script/topScript.js"></script>
 </body>
+
 </html>
