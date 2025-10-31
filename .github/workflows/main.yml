@@ -1,35 +1,38 @@
-name: Build and Deploy
-
-# on: の後のコロンとインデントを修正
 on:
-  push:
-    # branches: の後のハイフンとスペースを修正
-    branches:
+
+  push:                 
+
+    branches:           
+
       - main
 
-# jobs: のインデントを修正
-jobs:
-  # ジョブ名とコロン、インデントを修正
-  ftp_deploy_job:
-    name: FTP Deploy Action
-    # runs-on: のインデントを修正
-    runs-on: ubuntu-latest
-    
-    # steps: のインデントを修正
+name: Build and Deploy  
+
+jobs: 
+
+  FTP-Deploy-Action:
+
+    name: FTP-Deploy-Action     # JOBの名前
+
+    runs-on: ubuntu-latest      # 仮想環境の種類を指定
+
     steps:
-      # uses: のインデントを修正
-      - uses: actions/checkout@v4 # 最新の v4 を推奨
-      
-      # name: のインデントを修正
-      - name: FTP Deploy
-        # uses: のインデントを修正
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.0 # 最新の v4.3.0 を推奨
-        
-        # with: ブロックを使用して環境変数やパラメータを設定
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          # local-dir: や remote-dir: の記述を修正
-          local-dir: ./
-          remote-dir: /2025/develop
+
+      - uses: actions/checkout@main                 
+
+      - name: FTP-Deploy-Action
+
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0   
+
+        env:                                        
+
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}     
+
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }} 
+
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }} 
+
+          LOCAL_DIR: ./                           
+
+          REMOTE_DIR: "/2025/test"
+ 
