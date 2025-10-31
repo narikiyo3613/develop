@@ -34,5 +34,5 @@ jobs:
 
           LOCAL_DIR: ./                           
 
-          REMOTE_DIR: "/2025/test"
+          REMOTE_DIR: "/2025/develop"
  
