@@ -50,19 +50,14 @@
         </div>
     </div>
 
-    <section class="section has-text-centered">
-        <h1>全国のペットを検索</h1>
-        <form action="searchresults.php" method="get">
-            <div class="field has-addons is-justify-content-center">
-                <div class="control">
-                    <input class="input is-large" type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" required style="min-width: 300px;">
-                </div>
-                <div class="control">
-                    <button type="submit" class="button is-primary is-large">検索</button>
-                </div>
-            </div>
-        </form>
-    </section>
+    <button><a href="login.html" class="clickLogin">ログイン</a></button>
+    <button><a href="../registration/register-input.php" class="clickRegistration">会員登録</a></button>
+
+    <h1>全国のペットを検索</h1>
+    <form action="search.php" method="get">
+        <input type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" required>
+        <button type="submit" class="search">検索</button>
+    </form>
 
     <script src="../script/topScript.js"></script>
 </body>
