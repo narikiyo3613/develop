@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>お問い合わせ</h1>
 </body>
 </html>
