@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'db_connect.php';
+require_once 'db-connect.php';
 
 // ログイン中のユーザーIDを仮定（セッションから取得するのが通常）
 $user_id = $_SESSION['user_id'] ?? 1;
