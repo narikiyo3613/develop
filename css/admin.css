@@ -1,0 +1,100 @@
+body {
+    font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem; /* ベースサイズ少し小さく */
+}
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+}
+
+.back-btn {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    text-decoration: none;
+    background-color: #6ec6a3;
+    color: white;
+    font-size: 2rem; /* 少し小さく調整 */
+    font-weight: bold;
+    padding: 15px 22px;
+    border-radius: 50%;
+    line-height: 1;
+}
+
+.admin-title {
+    font-size: 3.2rem; /* タイトルやや小さめで上品に */
+    font-weight: bold;
+    margin-bottom: 60px;
+    color: #333;
+}
+
+.admin-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 65%;
+    max-width: 700px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.8rem; /* メニュー文字も控えめに */
+    font-weight: bold;
+    color: #222;
+    padding: 20px 25px;
+    border-radius: 12px;
+    background-color: #f6f6f6;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.menu-item:hover {
+    background-color: #ffe1e3;
+    transform: scale(1.02);
+}
+
+.link-icon {
+    text-decoration: none;
+    font-size: 2rem;
+    color: #6ec6a3;
+    transition: transform 0.2s;
+}
+
+.link-icon:hover {
+    transform: scale(1.25);
+}
+
+/* スマホなど小さい画面対応 */
+@media (max-width: 768px) {
+    body {
+        font-size: 0.9rem;
+    }
+
+    .admin-title {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    .menu-item {
+        font-size: 1.4rem;
+        padding: 15px 20px;
+    }
+
+    .back-btn {
+        font-size: 1.6rem;
+        padding: 10px 15px;
+        top: 20px;
+        left: 20px;
+    }
+}
