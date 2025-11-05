@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>登録完了</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="complete-container">
+        <div class="image-area">
+            <img src="images/success.png" alt="登録完了" class="success-img">
+        </div>
+
+        <div class="text-area">
+            <h1 class="complete-title">登録完了</h1>
+            <a href="top.html" class="top-btn">トップページに戻る</a>
+        </div>
+    </div>
+</body>
+</html>
