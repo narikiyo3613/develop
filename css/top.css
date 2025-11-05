@@ -185,3 +185,36 @@ h1 {
         display: block;
     }
 }
+/* メイン検索セクション全体にポップな装飾を施す */
+.section {
+    /* 背景色を明るくフレッシュに */
+    background-color: #ffe6f0; /* 薄いピンク */
+    padding: 60px 20px;
+    margin-top: 30px;
+}
+
+/* タイトルをよりポップに強調 */
+h1 {
+    /* 既存の色を維持しつつ、影を追加 */
+    text-shadow: 2px 2px 0 #fff; /* 白い影で浮き立たせる */
+    margin-bottom: 30px;
+    /* h1 { color: #ff9ca0; } は既存のトップにあるためそのまま */
+}
+
+/* 検索フォームのコンテナ（div.field has-addons）にポップな外観を適用 */
+.section .field.has-addons {
+    background-color: #ffffff; /* 白い背景 */
+    padding: 10px;
+    border-radius: 50px; /* 角を大きく丸める */
+    box-shadow: 0 8px 0 #ff9ca0, 0 10px 15px rgba(0, 0, 0, 0.2); /* 3D風の影と浮き上がる影 */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.2s;
+}
+
+/* ホバー時の浮き上がりアニメーション */
+.section .field.has-addons:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 0 #ff9ca0, 0 12px 20px rgba(0, 0, 0, 0.3);
+}
