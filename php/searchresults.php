@@ -48,6 +48,34 @@ $filtered = array_filter($products, function ($item) use ($keyword, $genre) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+
+        <a href="top.html" class="back-btn">←</a>
+
+        <form class="search-form" method="get">
+            <input type="text" name="keyword" placeholder="🔍 ペットフード" value="<?= htmlspecialchars($keyword) ?>">
+            <select name="genre">
+                <option value="">ジャンルを選択</option>
+                <option value="犬" <?= $genre === '犬' ? 'selected' : '' ?>>犬</option>
+                <option value="猫" <?= $genre === '猫' ? 'selected' : '' ?>>猫</option>
+                <option value="小動物" <?= $genre === '小動物' ? 'selected' : '' ?>>小動物</option>
+            </select>
+            <button type="submit">検索</button>
+        </form>
+
+        <h2 class="count">全 <?= count($filtered) ?> 件</h2>
+
+        <div class="grid">
+            <?php foreach ($filtered as $item): ?>
+                <div class="card">
+                    <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                    <h3><?= htmlspecialchars($item['name']) ?></h3>
+                    <p class="price"><?= htmlspecialchars($item['price']) ?>円</p>
+                    <p class="date"><?= htmlspecialchars($item['date']) ?>に注文</p>
+                    <div class="star">★</div>
+                </div>
+            <?php endforeach; ?>
+        </div>
 <div class="container">
 
     <a href="login.php" class="back-btn">←</a>
