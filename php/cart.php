@@ -2,10 +2,10 @@
 session_start();
 require_once 'db-connect.php';
 
-// ログイン中のユーザーIDを仮定（セッションから取得するのが通常）
+// ログイン中のユーザーIDをセッションから取得（仮に1）
 $user_id = $_SESSION['user_id'] ?? 1;
 
-// carts と products を結合して取得
+// carts と products を結合して取得する
 $sql = "
     SELECT 
         c.cart_id,
@@ -14,7 +14,8 @@ $sql = "
         p.name,
         p.price,
         p.image_url,
-        p.category
+        p.shop,
+        p.birthday
     FROM carts AS c
     JOIN products AS p ON c.product_id = p.product_id
     WHERE c.user_id = ?
@@ -36,9 +37,12 @@ $cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   <div class="cart-container">
 
-    <a href="top.html" class="back-btn"></a>
+    <!-- ホーム画面に戻るボタン -->
+    <a href="top.html" class="back-btn">←</a>
+
     <h1 class="title">カート</h1>
 
+    <!-- カート内商品を表示する -->
     <div class="product-grid">
       <?php if (empty($cart_items)): ?>
         <p class="empty">カートに商品はありません。</p>
@@ -47,9 +51,9 @@ $cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <div class="product-card">
             <img src="<?= htmlspecialchars($item['image_url'], ENT_QUOTES) ?>" alt="<?= htmlspecialchars($item['name'], ENT_QUOTES) ?>">
             <h3><?= htmlspecialchars($item['name'], ENT_QUOTES) ?></h3>
+            <p><?= htmlspecialchars($item['shop'], ENT_QUOTES) ?></p>
             <p class="price"><?= number_format($item['price']) ?>円</p>
-            <p class="category">カテゴリ：<?= htmlspecialchars($item['category'], ENT_QUOTES) ?></p>
-            <p>数量：<?= htmlspecialchars($item['quantity']) ?></p>
+            <p><?= date('Y年n月j日', strtotime($item['birthday'])) ?>生まれ</p>
           </div>
         <?php endforeach; ?>
       <?php endif; ?>
