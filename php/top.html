@@ -12,9 +12,6 @@
 <body>
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="#">
-                ロゴ
-            </a>
             <a role="button" id="navbarBurgerBtn" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -23,11 +20,6 @@
         </div>
 
         <div id="navbarMenu" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="favorite.php">お気に入り</a>
-                <a class="navbar-item" href="cart.php">カートを見る</a>
-                <a class="navbar-item" href="inquiry.php">お問い合わせ</a>
-            </div>
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
@@ -60,7 +52,7 @@
 
     <section class="section has-text-centered">
         <h1>全国のペットを検索</h1>
-        <form action="search.php" method="get">
+        <form action="searchresults.php" method="get">
             <div class="field has-addons is-justify-content-center">
                 <div class="control">
                     <input class="input is-large" type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" required style="min-width: 300px;">
