@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+    background-color: #ffffff; /* 全体を白に */
+    color: #333;
+}
+
+/* コンテナ全体 */
+.about-container {
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* 波っぽい青背景を上だけに */
+.top-illustration {
+    width: 100%;
+    height: 200px;
+    background: radial-gradient(circle at bottom, #d8f5f0 70%, transparent 71%);
+    overflow: hidden;
+}
+
+/* 犬と猫の小さいイラストを中央に */
+.small-animals {
+    width: 120px;
+    display: block;
+    margin: 30px auto 0;
+}
+
+.logo-area {
+    margin-top: -40px; /* 青の背景とかぶせる感じ */
+}
+
+.main-logo {
+    width: 120px;
+    display: block;
+    margin: 0 auto;
+}
+
+.site-title {
+    font-size: 2rem;
+    color: #6a564c;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 2;
+}

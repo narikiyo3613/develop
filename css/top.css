@@ -1,6 +1,6 @@
-/*==================================
-  基本設定
-==================================*/
+/* ==================================
+   基本設定
+   ================================== */
 body {
     font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
     background-color: #fff;
@@ -15,58 +15,146 @@ h1 {
     margin-bottom: 40px;
 }
 
-/* フォーム内の入力フィールド */
-input {
+/* フォーム内の入力フィールド (Bulmaのinputクラスとの競合を避けるため、調整が必要な場合のみ使用) */
+/* input {
     font-size: 1rem;
     padding: 15px;
     border: none;
     border-radius: 8px;
     background-color: #e6e6e6;
     margin-bottom: 25px;
-}
+} */
 
 /* 検索ボタン（Enterキーでの送信のために存在させ、非表示にする）*/
-.search{
+.search-hidden {
     display: none;
 }
 
 /* ログイン/会員登録ボタン内のリンクの装飾を解除 */
-/* 必要に応じてbuttonタグ自体にスタイルを適用してください */
-.clickLogin, .clickRegistration {
+.clickLogin, 
+.clickRegistration {
     text-decoration: none;
     color: inherit; /* 親のbutton要素の色を引き継ぐ */
 }
 
+/* ==================================
+   ポップアップ関連
+   ================================== */
 
-/*==================================
-  ポップアップ関連
-==================================*/
+/* ポップアップオープンボタン (ハンバーガーアイコン) のスタイル */
+#openPopupBtn {
+    position: fixed;
+    top: 10px;
+    left: 10px; 
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    padding: 0;
+}
+#openPopupBtn span {
+    display: block;
+    height: 3px;
+    background: #333; /* 線の色 */
+    border-radius: 1px;
+}
+
+/* ==================================
+   ポップアップ関連 (スライドインアニメーション用に修正)
+   ================================== */
 
 /* ポップアップ全体（オーバーレイ）のスタイル */
 .popup {
-    display: none; /* 初期状態では非表示 */
-    position: fixed; /* 画面に固定 */
-    z-index: 1000; /* 他の要素より手前に表示 */
+    /* 画面全体を覆う設定は維持 */
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒い背景 */
-    /* .showが適用された時に、中央寄せのためにflexが適用される */
-    justify-content: center; 
-    align-items: center; 
+    background-color: rgb(0, 0, 0); /* 半透明の背景 */
+    
+    /* 初期状態は非表示 (透明) */
+    opacity: 0; 
+    visibility: hidden; /* クリック不可にする */
+    
+    /* アニメーション設定 */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    
+    /* 内容を左上に寄せるためにflexを適用 */
+    display: flex;
+    justify-content: flex-start; /* 左寄せ */
+    align-items: flex-start; /* 上寄せ */
 }
 
-/* ポップアップの内容部分 */
+/* ポップアップの内容部分 (左側からスライドインするメニュー本体) */
+/* ==================================
+   ポップアップ関連 (スライドインアニメーション用に修正)
+   ================================== */
+/* ... (中略：.popupのスタイルはそのまま) ... */
+
+
+/* ポップアップの内容部分 (左側からスライドインするメニュー本体) */
 .popup-content {
-    background-color: #fefefe;
+    background-color: #facafa;
     padding: 20px;
-    border: 1px solid #888;
+    height: 100%; 
     width: 80%;
-    max-width: 500px; 
-    border-radius: 5px;
+    max-width: 300px;
     position: relative;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+
+    /* 初期状態: 画面の左外側に隠す */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    
+    /* --- ★ここから修正・追加★ --- */
+    /* Flexboxを適用して、子要素を縦方向に配置し、スペースを均等に割り当てる */
+    display: flex; 
+    flex-direction: column;
+    /* メニュー項目を上から下に均等に配置 */
+    /* space-around: 上下にもスペースができる */
+    /* justify-content: space-around; */ 
+    /* space-between: 上下の端に寄せ、間隔だけを均等にする */
+    justify-content: space-between; 
+    
+    /* フォームや閉じるボタンも含む全コンテンツを均等配置したくない場合は、
+       メニュー項目をまとめた<div>を作り、それに対してflexを適用します。
+       今回は、提供されたHTMLの構造に合わせて全体に適用します。 */
+    /* フォームの下の余白をリセット (必要に応じて) */
+    /* form { margin-bottom: 0; } */
+    /* --- ★ここまで修正・追加★ --- */
 }
+
+/* ポップアップ内のメニュー項目 (pタグ) の調整 */
+.popup-content p {
+    /* pタグのデフォルトのマージンをリセット/調整し、Flexboxに任せる */
+    margin: 10px 0; /* 上下のマージンを小さくして、flexの配置を優先 */
+    text-align: center; /* 中央揃えにしたい場合 */
+    font-size: 1.1rem; /* 少し大きくする */
+}
+/* ... (中略：閉じるボタンなどその他のスタイルはそのまま) ... */
+
+/* JavaScriptで表示・非表示を切り替えるためのクラス */
+.popup.is-active {
+    /* オーバーレイを表示 (ゆっくりと) */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ポップアップがアクティブな時の内容部分 */
+.popup.is-active .popup-content {
+    /* 左側からスライドインして表示 */
+    transform: translateX(0);
+}
+
+/* (参考: 閉じるボタンなどその他のスタイルは前回のまま維持) */
 
 /* 閉じるボタンのスタイル */
 .close-button {
@@ -74,20 +162,27 @@ input {
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-    /* 必要に応じて、ボタンの見た目を調整 */
     background: none;
     border: none;
 }
 
-/* JavaScriptで表示・非表示を切り替えるためのクラス */
-.popup.show {
+/* JavaScriptで表示・非表示を切り替えるためのクラス (is-activeを使用) */
+.popup.is-active {
     display: flex; /* ポップアップを表示し、中央寄せを有効化 */
 }
 
+/* ==================================
+   ナビゲーションメニューの開閉 (Bulma/JavaScript制御用)
+   ================================== */
 
-/*==================================
-  【参考】提供されたものの、HTMLにないセレクタ
-==================================*/
-/* .container, .back-btn, .title, .login-form, label, .login-btn 
-これらのスタイルを適用するには、対応するクラスや要素をHTMLに追加する必要があります。
-*/
+/* メニュー本体 (モバイル表示時) */
+/* Bulmaのデフォルト設定をオーバーライドして、JSで制御可能にする */
+@media screen and (max-width: 1023px) {
+    .navbar-menu {
+        display: none; /* 初期状態では非表示 */
+    }
+    /* アクティブ時にメニューを表示 */
+    .navbar-menu.is-active {
+        display: block;
+    }
+}

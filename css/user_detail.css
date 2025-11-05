@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+  background-color: #fff;
+  color: #222;
+}
+
+.user-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+/* 戻るボタン */
+.back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.back-link {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: #8fd6c6;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+}
+
+/* ユーザー情報ヘッダー */
+.user-header {
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+.user-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #f4c4c4;
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 1.5rem;
+  margin-left: 20px;
+}
+
+/* サイドメニュー */
+.side-menu {
+  position: absolute;
+  top: 180px;
+  left: 100px;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu li {
+  margin: 20px 0;
+}
+
+.side-menu a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+}
+
+/* プロフィールフォーム */
+.profile-card {
+  position: absolute;
+  top: 160px;
+  right: 120px;
+  width: 450px;
+  background-color: #ddd;
+  border-radius: 20px;
+  padding: 30px 40px;
+}
+
+.profile-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.profile-card hr {
+  border: 1px solid #444;
+  margin-bottom: 20px;
+}
+
+.profile-card label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.profile-card input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.profile-card button {
+  background-color: #ff9e9e;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 25px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
+}

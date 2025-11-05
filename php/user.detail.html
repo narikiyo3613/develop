@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ユーザー詳細</title>
+  <link rel="stylesheet" href="../css/user_detail.css">
+</head>
+<body>
+
+  <div class="user-detail-container">
+
+    <!-- 左上の戻るボタン -->
+    <div class="back-button">
+      <a href="top.html" class="back-link">←</a>
+    </div>
+
+    <!-- ユーザー情報ヘッダー -->
+    <div class="user-header">
+      <img src="images/user-icon.png" alt="ユーザーアイコン" class="user-icon">
+      <span class="user-name">ユーザー名</span>
+    </div>
+
+    <!-- サイドメニュー -->
+    <div class="side-menu">
+        <ul>
+        <li><a href="#">個人の情報</a></li>
+        <li><a href="#">お気に入り</a></li>
+        <li><a href="#">購入履歴</a></li>
+        </ul>
+    </div>
+
+    <!-- プロフィール編集フォーム -->
+    <div class="profile-card">
+        <h2>プロフィール</h2>
+        <hr>
+        <form>
+        <label for="name">名前</label>
+        <input type="text" id="name" placeholder="name">
+
+        <label for="password">パスワード</label>
+        <input type="password" id="password" placeholder="name">
+
+        <button type="submit">変更</button>
+      </form>
+    </div>
+
+  </div>
+
+</body>
+</html>
