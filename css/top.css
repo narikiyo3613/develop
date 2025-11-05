@@ -3,7 +3,7 @@
    ================================== */
 body {
     font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
-    background-color: #fff;
+    background-color: #ffe6f0; /* 薄いピンク */
     margin: 0;
     padding: 0;
 }
@@ -202,7 +202,6 @@ h1 {
    メイン検索セクション (既存のポップなスタイルを維持)
    ================================== */
 .section {
-    background-color: #ffe6f0; /* 薄いピンク */
     padding: 60px 20px;
     margin-top: 30px;
 }
