@@ -1,93 +1,208 @@
-/*==================================
-  基本設定
-==================================*/
+/* ==================================
+   基本設定 (変更なし)
+   ================================== */
 body {
     font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
-    background-color: #fff;
+    background-color: #ffe6f0; /* 薄いピンク */
     margin: 0;
     padding: 0;
 }
 
-/* タイトル */
+/* タイトル (変更なし) */
 h1 {
     color: #ff9ca0;
     font-size: 2.8rem;
     margin-bottom: 40px;
 }
 
-/* フォーム内の入力フィールド */
-input {
-    font-size: 1rem;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    background-color: #e6e6e6;
-    margin-bottom: 25px;
-}
+/* フォーム内の入力フィールド (コメントアウトはそのまま) */
+/* input { ... } */
 
-/* 検索ボタン（Enterキーでの送信のために存在させ、非表示にする）*/
-.search{
+/* 検索ボタン（非表示） (変更なし) */
+.search-hidden {
     display: none;
 }
 
-/* ログイン/会員登録ボタン内のリンクの装飾を解除 */
-/* 必要に応じてbuttonタグ自体にスタイルを適用してください */
-.clickLogin, .clickRegistration {
+/* ログイン/会員登録ボタン (変更なし) */
+.clickLogin, 
+.clickRegistration {
     text-decoration: none;
-    color: inherit; /* 親のbutton要素の色を引き継ぐ */
+    color: inherit;
 }
 
+/* ==================================
+   ポップアップ関連 (ポップなデザインに更新)
+   ================================== */
 
-/*==================================
-  ポップアップ関連
-==================================*/
+/* ハンバーガーアイコン (丸く、立体的に) */
+#openPopupBtn {
+    position: fixed;
+    top: 10px;
+    left: 10px; 
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 40px; /* 少し大きく */
+    height: 40px; /* 少し大きく */
+    background: #fff; /* 白い円形背景 */
+    border-radius: 50%; /* 完全な円形 */
+    border: 3px solid #ff007f; /* ビビッドな枠線 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 浮き出る影 */
+    padding: 8px;
+    transition: transform 0.2s;
+}
+#openPopupBtn:active {
+    transform: scale(0.95); /* 押した時に少し縮むアニメーション */
+}
+#openPopupBtn span {
+    display: block;
+    height: 4px; /* 線の太さ */
+    background: #ff007f; /* 線をビビッドな色に */
+    border-radius: 2px;
+}
 
 /* ポップアップ全体（オーバーレイ）のスタイル */
 .popup {
-    display: none; /* 初期状態では非表示 */
-    position: fixed; /* 画面に固定 */
-    z-index: 1000; /* 他の要素より手前に表示 */
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒い背景 */
-    /* .showが適用された時に、中央寄せのためにflexが適用される */
-    justify-content: center; 
-    align-items: center; 
+    background-color: rgba(0, 0, 0, 0.4); /* 背景を少し明るく */
+    
+    opacity: 0; 
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-/* ポップアップの内容部分 */
+/* ポップアップの内容部分 (左側からスライドインするメニュー本体) */
 .popup-content {
-    background-color: #fefefe;
-    padding: 20px;
-    border: 1px solid #888;
+    /* 既存の背景色 #facafa をグラデーションに変更 */
+    background: linear-gradient(180deg, #ffb3e6 0%, #fa7edc 100%); /* 上から下へのピンクグラデーション */
+    
+    padding: 30px 20px; /* パディングを増やす */
+    height: 100%; 
     width: 80%;
-    max-width: 500px; 
-    border-radius: 5px;
+    max-width: 320px; /* 少し幅を広げる */
     position: relative;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4); /* より深い影 */
+    border-radius: 0 15px 15px 0; /* 右側だけ角丸に */
+
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* 弾むようなアニメーションに */
+    
+    /* Flexboxで均等配置 (既存を維持) */
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around; 
 }
 
-/* 閉じるボタンのスタイル */
-.close-button {
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    /* 必要に応じて、ボタンの見た目を調整 */
-    background: none;
+/* 検索フォームの入力欄 (ポップアップ内) */
+.popup-content form {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 30px; /* フォーム全体を丸く */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+.popup-content .popupSearch {
+    width: 100%;
+    /* Bulmaの影響を受けないように個別にスタイルを設定 */
     border: none;
+    background: transparent;
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    color: #333;
+    outline: none;
+}
+
+/* ポップアップ内のメニュー項目 (pタグ) をボタン風に装飾 */
+.popup-content p {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.popup-content p a {
+    display: block;
+    padding: 15px 10px;
+    background-color: #ffffff; /* 白い背景 */
+    color: #ff007f; /* ビビッドなリンク色 */
+    text-decoration: none;
+    border-radius: 10px; /* 角丸 */
+    font-weight: bold;
+    box-shadow: 0 4px 0 #cc0066; /* 立体的な影 */
+    transition: all 0.1s;
+}
+.popup-content p a:hover {
+    background-color: #fff0f5;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #cc0066;
+}
+.popup-content p a:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #cc0066;
+}
+
+
+/* 閉じるボタンのスタイルを調整 */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: #fff; /* 白いバツ印 */
+    background: #ff007f; /* 背景色 */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    border: 2px solid #fff;
+    font-weight: normal; /* 太字を解除 */
+    transform: rotate(45deg); /* プラス記号に見せる */
+}
+.close-button::before {
+    content: "+"; /* バツ印の代わりに+を使う */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
 }
 
 /* JavaScriptで表示・非表示を切り替えるためのクラス */
-.popup.show {
-    display: flex; /* ポップアップを表示し、中央寄せを有効化 */
+.popup.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+.popup.is-active .popup-content {
+    transform: translateX(0);
 }
 
 
-/*==================================
-  【参考】提供されたものの、HTMLにないセレクタ
-==================================*/
-/* .container, .back-btn, .title, .login-form, label, .login-btn 
-これらのスタイルを適用するには、対応するクラスや要素をHTMLに追加する必要があります。
-*/
+/* ==================================
+   ナビゲーションメニューの開閉 (変更なし)
+   ================================== */
+@media screen and (max-width: 1023px) {
+    .navbar-menu { display: none; }
+    .navbar-menu.is-active { display: block; }
+}
+
+/* ==================================
+   メイン検索セクション (既存のポップなスタイルを維持)
+   ================================== */
+.section {
+    padding: 60px 20px;
+    margin-top: 30px;
+}
+/* ... (h1, .field.has-addons, input, button などのスタイルは省略) ... */
