@@ -12,7 +12,8 @@
 <body>
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a role="button" id="navbarBurgerBtn" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+            <a role="button" id="navbarBurgerBtn" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarMenu">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -51,11 +52,10 @@
     </div>
 
     <h1>全国のペットを検索</h1>
-    <form action="search.php" method="get">
-        <input type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" required>
-        <button type="submit" class="search">検索</button>
+    <form action="searchresults.php" method="get" class="popup-search-form">
+        <input type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
+        <button type="submit" class="search-icon-btn">🔍</button>
     </form>
-
     <script src="../script/topScript.js"></script>
 </body>
 
