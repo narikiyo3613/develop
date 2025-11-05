@@ -32,7 +32,7 @@ h1 {
 }
 /* メインフォームの .search ボタン (Bulmaクラスがない場合の表示用) */
 .search {
-    /* HTML側で Bulma構造に戻されていない場合のみ、このスタイルが有効になる */
+    /* HTML側がBulma構造ではない場合のみ有効化 */
 }
 
 /* ログイン/会員登録ボタン (変更なし) */
@@ -155,7 +155,7 @@ h1 {
     transform: translateX(0);
 }
 
-/* --- ポップアップ内の検索フォーム (修正後のスタイル) --- */
+/* --- ポップアップ内の検索フォーム --- */
 .popup-content .popup-search-form {
     display: flex;
     align-items: center;
@@ -235,21 +235,25 @@ h1 {
    メイン検索セクション (ポップなデザイン) 
    ================================== */
 .section {
-    background-color: #ffe6f0; /* 薄いピンク */
+    background-color: #ffe6f0;
     padding: 60px 20px;
     margin-top: 30px;
 }
 
-/* 検索フォームのコンテナ（div.field has-addons）にポップな外観を適用 */
+/* フォームのコンテナ（div.field has-addons）の調整 */
 .section .field.has-addons {
     background-color: #ffffff;
     padding: 10px;
     border-radius: 50px;
     box-shadow: 0 8px 0 #ff9ca0, 0 10px 15px rgba(0, 0, 0, 0.2); 
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; 
+    margin-right: auto; 
     transition: all 0.2s;
+    
+    /* ★★★ 入力欄とボタンの垂直中央寄せを保証 ★★★ */
+    display: flex;
+    align-items: center; 
 }
 
 /* ホバー時の浮き上がりアニメーション */
@@ -266,6 +270,12 @@ h1 {
     background-color: #f0f8ff;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 1.1rem;
+
+    /* ★★★ 入力欄の高さとパディングをボタンと一致させる ★★★ */
+    height: 3.25rem; 
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 3.25rem; /* テキストの垂直位置を調整 */
 }
 
 /* 検索ボタンのポップなデザイン (button.is-primary.is-largeを対象) */

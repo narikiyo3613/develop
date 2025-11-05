@@ -25,7 +25,7 @@
                 <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-light clickLogin" href="login.html">ログイン</a>
-                        <a class="button is-info clickRegistration" href="register/register-input.php">会員登録</a>
+                        <a class="button is-info clickRegistration" href="/register/registration-input.html">会員登録</a>
                     </div>
                 </div>
             </div>
@@ -40,22 +40,34 @@
 
     <div id="popup" class="popup">
         <div class="popup-content">
-            <form action="searchresults.php" method="get">
+            <form action="searchresults.php" method="get" class="popup-search-form">
                 <input type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
-                <button type="submit" class="search-hidden">検索</button>
+                <button type="submit" class="search-icon-btn">🔍</button>
             </form>
+            
             <p><a href="favorite.php">お気に入り</a></p>
             <p><a href="cart.php">カートを見る</a></p>
             <p><a href="inquiry.php">お問い合わせ</a></p>
+            
             <button id="closePopupBtn" class="close-button"></button>
         </div>
     </div>
 
-    <h1>全国のペットを検索</h1>
-    <form action="searchresults.php" method="get" class="popup-search-form">
-        <input type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
-        <button type="submit" class="search-icon-btn">🔍</button>
-    </form>
+    <section class="section has-text-centered">
+        <h1>全国のペットを検索</h1>
+        
+        <form action="searchresults.php" method="get">
+            <div class="field has-addons is-justify-content-center">
+                <div class="control is-expanded">
+                    <input class="input is-large" type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" required>
+                </div>
+                <div class="control">
+                    <button type="submit" class="button is-primary is-large">検索</button> 
+                </div>
+            </div>
+        </form>
+    </section>
+
     <script src="../script/topScript.js"></script>
 </body>
 
