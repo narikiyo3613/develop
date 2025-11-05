@@ -64,30 +64,65 @@ h1 {
     border-radius: 1px;
 }
 
+/* ==================================
+   ポップアップ関連 (スライドインアニメーション用に修正)
+   ================================== */
+
 /* ポップアップ全体（オーバーレイ）のスタイル */
 .popup {
-    display: none; /* 初期状態では非表示 */
+    /* 画面全体を覆う設定は維持 */
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center; 
-    align-items: center; 
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
+    
+    /* 初期状態は非表示 (透明) */
+    opacity: 0; 
+    visibility: hidden; /* クリック不可にする */
+    
+    /* アニメーション設定 */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    
+    /* 内容を左上に寄せるためにflexを適用 */
+    display: flex;
+    justify-content: flex-start; /* 左寄せ */
+    align-items: flex-start; /* 上寄せ */
 }
 
-/* ポップアップの内容部分 */
+/* ポップアップの内容部分 (左側からスライドインするメニュー本体) */
 .popup-content {
     background-color: #fefefe;
     padding: 20px;
-    border: 1px solid #888;
+    height: 100%; /* 縦いっぱいに広げる */
     width: 80%;
-    max-width: 500px; 
-    border-radius: 5px;
+    max-width: 300px; /* メニューの最大幅を設定 */
     position: relative;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 0; /* 角丸を削除 */
+
+    /* 初期状態: 画面の左外側に隠す */
+    transform: translateX(-100%);
+    /* アニメーション設定 */
+    transition: transform 0.3s ease-out;
 }
+
+/* JavaScriptで表示・非表示を切り替えるためのクラス */
+.popup.is-active {
+    /* オーバーレイを表示 (ゆっくりと) */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ポップアップがアクティブな時の内容部分 */
+.popup.is-active .popup-content {
+    /* 左側からスライドインして表示 */
+    transform: translateX(0);
+}
+
+/* (参考: 閉じるボタンなどその他のスタイルは前回のまま維持) */
 
 /* 閉じるボタンのスタイル */
 .close-button {
