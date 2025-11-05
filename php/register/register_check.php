@@ -34,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mb_internal_encoding("UTF-8");
 
     if (mb_send_mail($email, $subject, $message, $headers)) {
-        echo "仮登録が完了しました。メールをご確認ください。";
+        header("Location: register-done.html");
+        exit;
     } else {
         echo "メール送信に失敗しました。";
     }
