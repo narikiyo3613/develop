@@ -13,7 +13,7 @@
 
         <h1 class="title">会員登録</h1>
 
-        <form action="register_check.php" method="post" class="login-form">
+        <form action="register-check.php" method="post" class="login-form">
             <label for="email">メールアドレスを入力してください</label>
             <input type="email" id="email" name="email" placeholder="例：abc@gmail.com" required>
 
