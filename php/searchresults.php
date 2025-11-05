@@ -29,7 +29,7 @@ $filtered = array_filter($products, function($item) use ($keyword, $genre) {
 <body>
     <div class="container">
 
-        <a href="login.php" class="back-btn">←</a>
+        <a href="top.html" class="back-btn">←</a>
 
         <form class="search-form" method="get">
             <input type="text" name="keyword" placeholder="🔍 ペットフード" value="<?= htmlspecialchars($keyword) ?>">
@@ -51,7 +51,10 @@ $filtered = array_filter($products, function($item) use ($keyword, $genre) {
                     <h3><?= htmlspecialchars($item['name']) ?></h3>
                     <p class="price"><?= htmlspecialchars($item['price']) ?>円</p>
                     <p class="date"><?= htmlspecialchars($item['date']) ?>に注文</p>
-                    <div class="star">★</div>
+                     <form method="post" class="star-form" action="favorite.php">
+                        <input type="hidden" name="product_name" value="<?= htmlspecialchars($item['name']) ?>">
+                        <button type="submit" class="star">★</button>
+                    </form>
                 </div>
             <?php endforeach; ?>
         </div>
