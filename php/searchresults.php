@@ -45,7 +45,7 @@ $filtered = array_filter($products, function ($item) use ($keyword, $genre) {
 <head>
     <meta charset="UTF-8">
     <title>検索結果</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/searchresults-style.css">
 </head>
 <body>
     <div class="container">
