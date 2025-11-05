@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>お気に入り</h1>
 </body>
 </html>
