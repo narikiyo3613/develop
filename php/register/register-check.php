@@ -34,11 +34,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mb_internal_encoding("UTF-8");
 
     $result = mb_send_mail($email, $subject, $message, $headers);
-if ($result) {
-    echo "メール送信成功";
-} else {
-    echo "メール送信失敗";
-}
+
+    if ($result) {
+        echo "
+        <div style='
+            font-family: \"Hiragino Kaku Gothic ProN\", sans-serif;
+            background-color:#f8fbff;
+            text-align:center;
+            padding:80px 20px;
+        '>
+            <h1 style='color:#ff7f7f;'>仮登録が完了しました！</h1>
+            <p style='font-size:1.1rem;'>
+                ご登録いただいたメールアドレス宛に、<br>
+                本登録用のリンクをお送りしました。<br><br>
+                メールをご確認のうえ、<br>
+                24時間以内に登録を完了してください。
+            </p>
+            <a href='../html/top.html' style='
+                display:inline-block;
+                margin-top:30px;
+                background-color:#ff7f7f;
+                color:white;
+                padding:12px 30px;
+                border-radius:30px;
+                text-decoration:none;
+                font-weight:bold;
+                transition:0.3s;
+            '>トップページに戻る</a>
+        </div>
+        ";
+    } else {
+        echo "<p>メール送信に失敗しました。時間をおいて再度お試しください。</p>";
+    }
+
 
 }
 ?>
