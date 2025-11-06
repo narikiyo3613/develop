@@ -13,7 +13,7 @@
 
         <div class="text-area">
             <h1 class="complete-title">登録完了</h1>
-            <a href="top.html" class="top-btn">トップページに戻る</a>
+            <a href="top.php" class="top-btn">トップページに戻る</a>
         </div>
     </div>
 </body>

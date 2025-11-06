@@ -9,7 +9,7 @@
 <body>
     <div class="container">
 
-        <a href="top.html" class="back-btn">←</a>
+        <a href="top.php" class="back-btn">←</a>
 
         <h1 class="title">会員登録</h1>
 
