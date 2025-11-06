@@ -293,3 +293,6 @@ h1 {
     transform: translateY(4px);
     box-shadow: 0 0 0 #c70062;
 }
+.footer{
+    background-color: #ffe6f0; /* ポップなデザインの背景色 */
+}
