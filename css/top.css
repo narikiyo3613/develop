@@ -31,9 +31,7 @@ h1 {
     display: none;
 }
 /* メインフォームの .search ボタン (Bulmaクラスがない場合の表示用) */
-.search {
-    /* HTML側がBulma構造ではない場合のみ有効化 */
-}
+/*.search { HTML側がBulma構造ではない場合のみ有効化 }*/
 
 /* ログイン/会員登録ボタン (変更なし) */
 .clickLogin, 
@@ -118,8 +116,8 @@ h1 {
 /* 閉じるボタンのスタイル (上端中央) */
 .close-button {
     position: absolute;
-    top: 0; 
-    left: 50%;
+    top: 20; 
+    left: 10%;
     
     font-size: 30px;
     color: #fff;
