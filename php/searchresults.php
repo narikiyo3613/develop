@@ -29,7 +29,7 @@ $filtered = array_filter($products, function($item) use ($keyword, $genre) {
 <body>
     <div class="container">
 
-        <a href="top.html" class="back-btn">←</a>
+        <a href="top.php" class="back-btn">←</a>
 
         <form class="search-form" method="get">
             <input type="text" name="keyword" placeholder="🔍 ペットフード" value="<?= htmlspecialchars($keyword) ?>">
