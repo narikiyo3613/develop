@@ -28,16 +28,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // メール送信内容
     $subject = "【MofuMofu】メールアドレスの確認をお願いします";
     $message = "MofuMofuへの仮登録ありがとうございます。\n以下のリンクから本登録を完了してください。\n\n{$url}\n\n";
-    $headers = "From: noreply@mofumofu.jp";
+    $headers = "From: noreply@aso2401367.cocotte.jp";
 
     mb_language("Japanese");
     mb_internal_encoding("UTF-8");
 
-    if (mb_send_mail($email, $subject, $message, $headers)) {
-        header("Location: register-done.html");
-        exit;
-    } else {
-        echo "メール送信に失敗しました。";
-    }
+    $result = mb_send_mail($email, $subject, $message, $headers);
+if ($result) {
+    echo "メール送信成功";
+} else {
+    echo "メール送信失敗";
+}
+
 }
 ?>
