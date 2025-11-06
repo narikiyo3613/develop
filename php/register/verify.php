@@ -25,7 +25,7 @@ if (isset($_GET['token'])) {
                 これでMofuMofuの会員登録が完了しました。<br><br>
                 さっそくログインしてサービスをお楽しみください。
             </p>
-            <a href='../html/login.html' style='
+            <a href='../login.html' style='
                 display:inline-block;
                 margin-top:30px;
                 background-color:#6ec6a3;
@@ -52,7 +52,7 @@ if (isset($_GET['token'])) {
                 すでに登録が完了しているか、<br>
                 無効なURLの可能性があります。
             </p>
-            <a href='../html/top.html' style='
+            <a href='../top.php' style='
                 display:inline-block;
                 margin-top:30px;
                 background-color:#ff7f7f;
@@ -79,7 +79,7 @@ if (isset($_GET['token'])) {
         <p style='font-size:1.1rem;'>
             登録メールに記載されたURLからアクセスしてください。
         </p>
-        <a href='../html/top.html' style='
+        <a href='../top.php' style='
             display:inline-block;
             margin-top:30px;
             background-color:#ff7f7f;
