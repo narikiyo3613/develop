@@ -38,7 +38,7 @@ $cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <div class="cart-container">
 
     <!-- ホーム画面に戻るボタン -->
-    <a href="top.html" class="back-btn">←</a>
+    <a href="top.php" class="back-btn">←</a>
 
     <h1 class="title">カート</h1>
 
