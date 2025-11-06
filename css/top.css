@@ -6,6 +6,9 @@ body {
     background-color: #ffe6f0; /* ポップなデザインの背景色 */
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* タイトル */
@@ -116,8 +119,8 @@ h1 {
 /* 閉じるボタンのスタイル (上端中央) */
 .close-button {
     position: absolute;
-    top: 20; 
-    left: 10;
+    top: 25px; 
+    right: 3px;
     
     font-size: 30px;
     color: #fff;
