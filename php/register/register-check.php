@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$email, $hashed, $token]);
 
     // 認証用URL
-    $url = "https://aso2401367.cocotte.jp/2025/develop/php/verify.php?token=" . $token;
+    $url = "https://aso2401367.cocotte.jp/2025/develop/php/register/verify.php?token=" . $token;
 
     // メール送信内容
     $subject = "【MofuMofu】メールアドレスの確認をお願いします";
