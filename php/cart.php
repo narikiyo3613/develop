@@ -48,6 +48,8 @@ $cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p class="empty">カートに商品はありません。</p>
       <?php else: ?>
         <?php foreach ($cart_items as $item): ?>
+        <!-- 🔗 商品詳細ページへのリンクを追加↓↓ あとで実装したいと思います
+        <a href="product_detail.php?id=<?= urlencode($item['product_id']) ?>" class="product-link">　-->
           <div class="product-card">
             <img src="<?= htmlspecialchars($item['image_url'], ENT_QUOTES) ?>" alt="<?= htmlspecialchars($item['name'], ENT_QUOTES) ?>">
             <h3><?= htmlspecialchars($item['name'], ENT_QUOTES) ?></h3>
@@ -60,7 +62,7 @@ $cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <?php if (!empty($cart_items)): ?>
-      <form action="payment_form.html" method="post" class="purchase-form">
+      <form action="payment_form1.html" method="post" class="purchase-form">
         <button type="submit" class="purchase-btn">購入する</button>
       </form>
     <?php endif; ?>
