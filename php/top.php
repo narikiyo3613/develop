@@ -94,6 +94,6 @@
     </div>
     <a href="payment_form1.html">支払い画面</a>
     <a href="admin1.html">管理者画面</a>
-    <a herf="user.detail.html">マイページ</a>
+    <a herf="user-detail.html">マイページ</a>
 </footer>
 </html>
