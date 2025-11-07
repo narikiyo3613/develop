@@ -128,5 +128,6 @@ if (!isset($_SESSION['user_id'])) {
             closeBtn.addEventListener('click', () => popup.classList.remove('active'));
         });
     </script>
+    <script src="../../script/topScript.js"></script>
 </body>
 </html>
