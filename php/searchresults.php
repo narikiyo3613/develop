@@ -1,4 +1,9 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+?>
+
+<?php
 // ====== データベース接続 ======
 require_once 'db-connect.php';
 
@@ -8,7 +13,7 @@ $keyword = $_GET['keyword'] ?? '';
 $genre = $_GET['genre'] ?? '';
 
 // ====== SQL生成 ======
-$sql = "SELECT name, price, category, image_url FROM product WHERE 1";
+$sql = "SELECT name, price, category, image_url FROM products WHERE 1";
 
 $params = [];
 
