@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+}
+
+.back-btn {
+    font-size: 50px;
+    color: #76c7a5;
+    text-decoration: none;
+    margin-right: 40px;
+}
+
+.title span {
+    font-size: 40px;
+    margin-right: 10px;
+}
+
+.favorite-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+.item-card {
+    width: 260px;
+    background: #e3e3e3;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.item-img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.item-info {
+    margin-top: 10px;
+}
+
+.item-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.item-price {
+    color: red;
+    font-size: 18px;
+}
+
+.favorite-icon {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: #76c7a5;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    color: white;
+    font-size: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
