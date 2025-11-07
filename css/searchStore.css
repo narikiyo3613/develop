@@ -1,0 +1,96 @@
+/* style.css */
+
+/* 基本的なリセットとフォント設定 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+h1,
+h2 {
+    color: #0056b3;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+}
+
+/* --- 検索フォームのスタイル --- */
+#search-form-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* paddingを含めて幅を100%にする */
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* --- 検索結果のスタイル --- */
+#store-list {
+    list-style: none;
+    /* リストの黒点を消す */
+    padding: 0;
+}
+
+#store-list li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s;
+}
+
+#store-list li:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+#store-list h3 {
+    margin-top: 0;
+    color: #d9534f;
+}
+
+.initial-message {
+    font-style: italic;
+    color: #666;
+}
+
+/* 地図コンテナのスタイル */
+#map-container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
