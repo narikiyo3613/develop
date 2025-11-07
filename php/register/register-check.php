@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 メールをご確認のうえ、<br>
                 24時間以内に登録を完了してください。
             </p>
-            <a href='../html/top.html' style='
+            <a href='../top.html' style='
                 display:inline-block;
                 margin-top:30px;
                 background-color:#ff7f7f;
