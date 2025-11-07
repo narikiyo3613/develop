@@ -38,7 +38,7 @@ if (!isset($_SESSION['user_id'])) {
                             ようこそ、<strong><?php echo htmlspecialchars($_SESSION['user_name'] ?: 'ユーザー'); ?></strong> さん
                         </span>
                         <a class="button is-light" href="../login/logout.php">ログアウト</a>
-                        <a class="button is-primary" href="mypage.php">マイページ</a>
+                        <a class="button is-primary" href="../user-detail.php">マイページ</a>
                     </div>
                 </div>
             </div>
