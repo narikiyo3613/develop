@@ -39,7 +39,6 @@ $cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- ホーム画面に戻るボタン -->
     <a href="top.html" class="back-btn">←</a>
-
     <h1 class="title">カート</h1>
 
     <!-- カート内商品を表示する -->
