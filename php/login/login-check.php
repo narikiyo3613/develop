@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['email'] = $user['email'];
 
         // ログイン後のページへリダイレクト
-        header("Location: mypage.php");
+        header("Location: login-check.php");
         exit;
     } else {
         echo "
