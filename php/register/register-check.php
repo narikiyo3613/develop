@@ -23,21 +23,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$email, $hashed, $token]);
 
     // 認証用URL
-    $url = "http://localhost/verify.php?token=" . $token;
+    $url = "https://aso2401367.cocotte.jp/2025/develop/php/register/verify.php?token=" . $token;
 
     // メール送信内容
     $subject = "【MofuMofu】メールアドレスの確認をお願いします";
     $message = "MofuMofuへの仮登録ありがとうございます。\n以下のリンクから本登録を完了してください。\n\n{$url}\n\n";
-    $headers = "From: noreply@mofumofu.jp";
+    $headers = "From: noreply@aso2401367.cocotte.jp";
 
     mb_language("Japanese");
     mb_internal_encoding("UTF-8");
 
-    if (mb_send_mail($email, $subject, $message, $headers)) {
-        header("Location: register-done.html");
-        exit;
+    $result = mb_send_mail($email, $subject, $message, $headers);
+
+    if ($result) {
+        echo "
+        <div style='
+            font-family: \"Hiragino Kaku Gothic ProN\", sans-serif;
+            background-color:#f8fbff;
+            text-align:center;
+            padding:80px 20px;
+        '>
+            <h1 style='color:#ff7f7f;'>仮登録が完了しました！</h1>
+            <p style='font-size:1.1rem;'>
+                ご登録いただいたメールアドレス宛に、<br>
+                本登録用のリンクをお送りしました。<br><br>
+                メールをご確認のうえ、<br>
+                24時間以内に登録を完了してください。
+            </p>
+            <a href='../top.html' style='
+                display:inline-block;
+                margin-top:30px;
+                background-color:#ff7f7f;
+                color:white;
+                padding:12px 30px;
+                border-radius:30px;
+                text-decoration:none;
+                font-weight:bold;
+                transition:0.3s;
+            '>トップページに戻る</a>
+        </div>
+        ";
     } else {
-        echo "メール送信に失敗しました。";
+        echo "<p>メール送信に失敗しました。時間をおいて再度お試しください。</p>";
     }
+
+
 }
 ?>

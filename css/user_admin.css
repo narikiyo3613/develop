@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 28px;
+    color: #2e8b57; /* 緑色 */
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
+.user-form {
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+/* フォームの行レイアウト */
+.form-row {
+    display: flex;
+    align-items: flex-end; /* ボタンとインプットを底揃え */
+    gap: 10px; /* 要素間のスペース */
+}
+
+.input-group {
+    flex-grow: 1; /* インプットフィールドがスペースを占有 */
+    display: flex;
+    flex-direction: column; /* ラベルとインプットを縦に配置 */
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+    /* 既存データ行のラベルは非表示にするため、CSSで調整 */
+}
+
+/* 商品番号、商品名、ジャンルの幅調整 */
+.input-group:nth-child(1) { width: 120px; } /* 商品番号 */
+.input-group:nth-child(2) { width: 250px; } /* 商品名 */
+.input-group:nth-child(3) { width: 150px; } /* ジャンル */
+
+
+input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 100px; /* 最小幅を設定 */
+}
+
+/* 画像で表示されている入力フィールドの「###」の文字色を薄くする */
+.add-form input[value="###"] {
+    color: #aaa;
+}
+
+/* ボタンのスタイル */
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    height: 34px; /* 入力フィールドの高さに合わせる */
+    white-space: nowrap; /* ボタン内のテキストの折り返しを防ぐ */
+}
+
+.btn-add, .btn-update, .btn-delete {
+    background-color: #36454F; /* 黒っぽい色 */
+}
+
+/* 既存商品の行のラベルを非表示にする（画像のデザインに近づける） */
+.user-list .input-group label {
+    display: none;
+}
+
+/* 既存商品と新規追加フォームの間に線を追加 */
+.user-list {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}

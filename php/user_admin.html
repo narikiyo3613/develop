@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザー管理画面</title>
+    <link rel="stylesheet" href="../css/user_admin.css">
+</head>
+<body>
+    <header>
+        <h1>管理者画面</h1>
+    </header>
+
+    <main>
+        <h2 class="user-title">ユーザー管理</h2>
+
+        <form action="user_admin.php" method="post" class="user-form add-form">
+            <input type="hidden" name="action" value="add">
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="new_user_id">ユーザー名</label>
+                    <input type="text" id="new_user_id" value="###" required>
+                </div>
+                <div class="input-group">
+                    <label for="new_user_name">メールアドレス</label>
+                    <input type="text" id="new_user_name" name="user_name" value="###" required>
+                </div>
+                <div class="input-group">
+                    <label for="new_password">パスワード</label>
+                    <input type="text" id="new_password" name="password" value="###" required>
+                </div>
+                <button type="submit" class="btn btn-add">追加</button>
+            </div>
+        </form>
+
+        <div class="user-list">
+            <form action="user_admin.php" method="post" class="user-form">
+                <input type="hidden" name="user_id" value="###">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>ユーザー名</label>
+                        <input type="text" value="###" required>
+                    </div>
+                    <div class="input-group">
+                        <label>メールアドレス</label>
+                        <input type="text" name="user_name" value="Value" required>
+                    </div>
+                    <div class="input-group">
+                        <label>パスワード</label>
+                        <input type="text" name="password" value="Value" required>
+                    </div>
+                    <button type="submit" name="action" value="update" class="btn btn-update">更新</button>
+                    <button type="submit" name="action" value="delete" class="btn btn-delete">削除</button>
+                </div>
+            </form>
+
+            <form action="user_admin.php" method="post" class="user-form">
+                <input type="hidden" name="user_id" value="###">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>ユーザ名</label>
+                        <input type="text" value="###" required>
+                    </div>
+                    <div class="input-group">
+                        <label>メールアドレス</label>
+                        <input type="text" name="user_name" value="Value" required>
+                    </div>
+                    <div class="input-group">
+                        <label>パスワード</label>
+                        <input type="text" name="password" value="Value" required>
+                    </div>
+                    <button type="submit" name="action" value="update" class="btn btn-update">更新</button>
+                    <button type="submit" name="action" value="delete" class="btn btn-delete">削除</button>
+                </div>
+            </form>
+
+            <form action="user_admin.php" method="post" class="user-form">
+                <input type="hidden" name="user_id" value="1003">
+                <div
