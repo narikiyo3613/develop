@@ -97,7 +97,7 @@
         <li><a href="admin1.html">管理者画面</a></li>
         <li><a href="user-detail.html">マイページ</a></li>
         <li><a href="https://maps.app.goo.gl/fZsdSSUxEbDEXhQx6">本店</a></li>
-        <li><a href="searchStore.html"></a>店舗検索</li>
+        <li><a href="searchStore.html">店舗検索</a></li>
     </ul>
 </footer>
 </html>

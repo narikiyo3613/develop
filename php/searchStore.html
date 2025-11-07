@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店舗検索機能</title>
+    <link rel="stylesheet" href="../css/searchStore.css">
+
+</head>
+
+<body>
+
+    <header>
+        <h1>ECサイト 店舗検索</h1>
+    </header>
+
+    <main>
+        <section id="search-form-section">
+            <form id="store-search-form">
+                <p>エリアやキーワードを入力して店舗を検索してください。</p>
+
+                <div class="form-group">
+                    <label for="area-select">エリアで絞り込み:</label>
+                    <select id="area-select" name="area">
+                        <option value="">-- すべてのエリア --</option>
+                        <option value="tokyo">東京都</option>
+                        <option value="osaka">大阪府</option>
+                        <option value="fukuoka">福岡県</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="keyword-input">キーワード:</label>
+                    <input type="text" id="keyword-input" name="keyword" placeholder="例: 渋谷、カフェ、限定商品">
+                </div>
+
+                <button type="submit">検索</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section id="search-results-section">
+            <h2>検索結果</h2>
+            <ul id="store-list">
+                <li class="initial-message">検索条件を入力して「検索」ボタンを押してください。</li>
+            </ul>
+
+            <div id="map-container" style="height: 400px; background-color: #eee; margin-top: 20px;">
+                地図の埋め込みエリア（Google Maps APIなどを利用）
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <small>&copy; Your EC Site</small>
+    </footer>
+
+    <script src="../script/searchStore.js" defer></script>
+
+</body>
+
+</html>
