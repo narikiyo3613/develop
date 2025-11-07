@@ -25,7 +25,7 @@ if (isset($_GET['token'])) {
                 これでMofuMofuの会員登録が完了しました。<br><br>
                 さっそくログインしてサービスをお楽しみください。
             </p>
-            <a href='../login.html' style='
+            <a href='../login/login.php' style='
                 display:inline-block;
                 margin-top:30px;
                 background-color:#6ec6a3;

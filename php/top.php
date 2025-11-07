@@ -25,7 +25,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-light clickLogin" href="login.html">ログイン</a>
+                        <a class="button is-light clickLogin" href="login/login.php">ログイン</a>
                         <a class="button is-info clickRegistration" href="register/register-input.php">会員登録</a>
                     </div>
                 </div>
