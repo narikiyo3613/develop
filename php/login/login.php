@@ -13,7 +13,7 @@
 
         <h1 class="title">ログイン</h1>
 
-        <form action="login_check.php" method="post" class="login-form">
+        <form action="login-check.php" method="post" class="login-form">
             <label for="email">メールアドレスを入力してください</label>
             <input type="email" id="email" name="email" placeholder="例：abc@gmail.com" required>
 
