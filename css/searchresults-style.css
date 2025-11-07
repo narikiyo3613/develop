@@ -73,7 +73,7 @@ body {
 
 .card {
     background-color: #e6e6e6;
-    border-radius: 12px;
+    border-radius: 8px;
     width: 280px;
     padding: 20px;
     text-align: left;
@@ -100,7 +100,7 @@ body {
     font-size: 0.9rem;
 }
 
-.star {
+.card .star {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -112,15 +112,4 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 1.2rem;
-}
-
-.star:hover {
-    background-color: #4da885;
-}
-
-.star.active {
-    background-color: #ff9ca0;
 }
