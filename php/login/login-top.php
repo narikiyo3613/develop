@@ -39,7 +39,7 @@ if (!isset($_SESSION['user_id'])) {
                         <span class="navbar-item has-text-white">
                             ようこそ、<strong><?php echo htmlspecialchars($_SESSION['user_name'] ?: 'ユーザー'); ?></strong> さん
                         </span>
-                        <a class="button is-primary" href="user-detail.php">マイページ</a>
+                        <a class="button is-primary" href="../user-detail.php">マイページ</a>
                         <a class="button is-light" href="../login/logout.php">ログアウト</a>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ if (!isset($_SESSION['user_id'])) {
                 <button type="submit" class="search-icon-btn">🔍</button>
             </form>
 
-            <p><a href="user-detail.php">マイページ</a></p>
+            <p><a href="../user-detail.php">マイページ</a></p>
             <p><a href="../favorite.php">お気に入り</a></p>
             <p><a href="../cart.php">カートを見る</a></p>
             <p><a href="../inquiry.php">お問い合わせ</a></p>
