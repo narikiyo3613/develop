@@ -13,7 +13,8 @@ $keyword = $_GET['keyword'] ?? '';
 $genre = $_GET['genre'] ?? '';
 
 // ====== SQL生成 ======
-$sql = "SELECT name, price, category, image_url FROM products WHERE 1";
+$sql = "SELECT product_id, name, price, category, image_url FROM products WHERE 1";
+
 
 $params = [];
 
@@ -70,10 +71,11 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <h3><?= htmlspecialchars($item['name']) ?></h3>
                         <p class="price"><?= number_format($item['price']) ?>円</p>
 
-                        <form method="post" class="star-form" action="favorite.php">
-                            <input type="hidden" name="product_name" value="<?= htmlspecialchars($item['name']) ?>">
-                            <button type="submit" class="star">★</button>
-                        </form>
+        <form method="post" class="star-form" action="favorite.php">
+            <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
+            <button type="submit" class="star">★</button>
+        </form>
+
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>

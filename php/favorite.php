@@ -1,92 +1,115 @@
 <?php
 session_start();
+require_once 'db-connect.php';
+
+if (!isset($_SESSION['user_id'])) {
+    exit("ログインしてください");
+}
+
 $user_id = $_SESSION['user_id'];
 
-require_once 'db_connect.php';
-
-// お気に入り一覧の取得
-$sql = "SELECT f.favorite_id, p.*
-        FROM favorites AS f
-        JOIN product AS p ON f.product_id = p.product_id
-        WHERE f.user_id = ?
-        ORDER BY f.created_at DESC";
+// お気に入り一覧取得
+$sql = "
+    SELECT 
+        f.favorite_id, 
+        p.product_id, 
+        p.name, 
+        p.description,
+        p.price,
+        p.stock,
+        p.category,
+        p.birthday,
+        p.image_url
+    FROM favorites AS f
+    INNER JOIN products AS p
+        ON f.product_id = p.product_id
+    WHERE f.user_id = ?
+    ORDER BY f.created_at DESC
+";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$user_id]);
 $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$count = count($favorites);
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>お気に入り一覧</title>
-    <link rel="stylesheet" href="favorite.css">
+<meta charset="UTF-8">
+<title>お気に入り一覧</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
-        // ★ お気に入り削除（Ajax）
-        function removeFavorite(favorite_id) {
-
-            if (!confirm("お気に入りから削除しますか？")) return;
-
-            let formData = new FormData();
-            formData.append("favorite_id", favorite_id);
-
-            fetch("remove_favorite.php", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-
-                // カード削除
-                const card = document.getElementById("fav-" + favorite_id);
-                if (card) card.remove();
-
-                // 件数更新
-                const countElem = document.getElementById("item-count");
-                countElem.innerText = Number(countElem.innerText) - 1;
-            });
-        }
-    </script>
-
+<style>
+.favorite-item{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+.favorite-item img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+</style>
 </head>
 <body>
 
-    <div class="header">
-        <!-- トップページに戻るボタン-->
-        <a href="top.html" class="back-btn">←</a>
+<h2>お気に入り一覧（<?= count($favorites) ?>件）</h2>
 
-        <div class="title">
-            <span>全</span>
-            <span id="item-count"><?= $count ?></span>
-            <span>件</span>
+<div id="favorite-list">
+<?php foreach ($favorites as $fav): ?>
+    <div class="favorite-item" id="fav-<?= $fav['favorite_id'] ?>">
+
+        <!-- 画像が無い場合のデフォルト画像 -->
+        <?php
+            $img = $fav['image_url'] ?: 'noimage.png';
+        ?>
+        <img src="<?= htmlspecialchars($img) ?>" alt="">
+
+        <div>
+            <p><?= htmlspecialchars($fav['name']) ?></p>
+            <p>価格：<?= number_format($fav['price']) ?>円</p>
+
+            <!-- Ajax お気に入り解除ボタン -->
+            <button class="delete-fav" data-id="<?= $fav['favorite_id'] ?>">
+                お気に入り解除
+            </button>
         </div>
     </div>
+<?php endforeach; ?>
+</div>
 
-    <div class="favorite-list">
-        <?php foreach ($favorites as $item): ?>
-            <div class="item-card" id="fav-<?= $item['favorite_id'] ?>">
+<script>
+// ✅ Ajaxでお気に入り解除
+$(".delete-fav").on("click", function(){
+    let favoriteId = $(this).data("id");
+    let target = $("#fav-" + favoriteId);
 
-                <a href="product_detail.php?id=<?= $item['product_id'] ?>">
-                    <img src="<?= htmlspecialchars($item['image_url']) ?>" class="item-img">
-                </a>
+    $.ajax({
+        url: "remove_favorite.php",
+        type: "POST",
+        data: { favorite_id: favoriteId },
+        success: function(res){
+            console.log(res);
 
-                <div class="item-info">
-                    <p class="item-name"><?= htmlspecialchars($item['name']) ?></p>
-                    <p class="item-category"><?= htmlspecialchars($item['category']) ?></p>
-                    <p class="item-price"><?= number_format($item['price']) ?>円</p>
-                    <p class="item-birth"><?= htmlspecialchars($item['birthday']) ?> 生まれ</p>
-                </div>
+            target.fadeOut(300, function(){
+                $(this).remove();
 
-                <div class="favorite-icon"
-                    onclick="removeFavorite(<?= $item['favorite_id'] ?>)">★</div>
-
-            </div>
-        <?php endforeach; ?>
-    </div>
+                // ✅ 件数を更新
+                let count = $(".favorite-item").length;
+                $("h2").text(`お気に入り一覧（${count}件）`);
+            });
+        },
+        error: function(){
+            alert("削除に失敗しました");
+        }
+    });
+});
+</script>
 
 </body>
 </html>
