@@ -29,7 +29,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     <!-- 左上の戻るボタン -->
     <div class="back-button">
-        <a href="top.php" class="back-link">←</a>
+        <a href="login/login-top.php" class="back-link">←</a>
     </div>
 
     <!-- ユーザー情報ヘッダー -->
