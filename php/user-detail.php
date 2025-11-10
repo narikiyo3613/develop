@@ -26,6 +26,18 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 <body>
 
 <div class="user-detail-container">
+    <!-- 左上の戻るボタン --> 
+    <div class="back-button">
+        <a href="login/login-top.php" class="back-link">←</a>
+    </div>
+    
+    <!-- ユーザー情報ヘッダー -->
+    <div class="user-header">
+        <img src="../image/user-icon.png" alt="ユーザーアイコン" class="user-icon">
+        <span class="user-name"> 
+            <?php echo htmlspecialchars($user['name'] ?? '名無しのユーザー'); ?>
+        </span>
+</div>
 
     <!-- サイドメニュー -->
     <div class="side-menu">
