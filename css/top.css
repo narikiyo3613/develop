@@ -111,7 +111,7 @@ h1 {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
     border: 2px solid #fff;
     font-weight: normal;
-    transform: translate(-50%, -50%); 
+    /* transform: translate(-50%, -50%); /* 元のコードから微調整 */
 }
 .close-button::before {
     content: "+";
@@ -239,33 +239,44 @@ h1 {
 
 
 /* ==================================
-   新着商品リストのレイアウト設定 (横並び)
+   新着商品リストのレイアウト設定 (横スクロール)
    ================================== */
 .container {
-    padding: 40px;
+    padding: 40px 20px; /* 左右にパディングを追加し、スクロール時に見切れを防ぐ */
     text-align: center;
-    width: 100%; /* 全幅を確保 */
-    max-width: 1200px; /* 必要に応じて最大幅を設定 */
-    margin: 0 auto; /* 中央寄せ */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* 商品カード全体を保持するグリッドコンテナ */
+/* 商品カード全体を保持する Flex コンテナ */
 .grid {
-    /* CSS Gridレイアウトを適用し、横並びにする */
-    display: grid; 
-    /* 画面幅に応じて列数を自動調整。カード最小幅は300px。 */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    display: flex; /* Flexboxに変更 */
     gap: 30px; 
-    justify-items: center; 
+    justify-content: flex-start; /* カードを左から並べる */
+    
+    /* 横スクロールを有効化 */
+    overflow-x: auto; 
+    overflow-y: hidden;
+    flex-wrap: nowrap; /* 折り返しを禁止 (重要) */
+    
     padding: 20px 0;
+    -webkit-overflow-scrolling: touch; /* iOSで滑らかにスクロール */
+}
+
+.grid {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 /* 個々の商品カードのスタイル */
 .card {
     background-color: #fff; 
     border-radius: 15px; 
-    width: 100%; 
-    max-width: 320px; 
+    
+    width: 300px; /* カードの幅を固定 */
+    flex-shrink: 0; /* 縮小を禁止 (重要) */
+    
     padding: 20px;
     text-align: left;
     position: relative;
@@ -323,7 +334,7 @@ h1 {
 .footer {
     background-color: #ffe6f0; 
     padding: 40px 20px;
-    margin-top: auto; /* bodyのflex-direction: column; と組み合わせてフッターを下に固定 */
+    margin-top: auto; 
 }
 
 .footer .about-container {
@@ -357,24 +368,21 @@ h1 {
 
 /* フッターメニュー (横並びにする部分) */
 .footer ul {
-    /* リストアイテムを横一列に並べる */
     display: flex; 
-    /* 左右中央揃えにする */
     justify-content: center; 
-    /* リストの点 (・) を非表示にする */
     list-style: none; 
     padding: 0; 
     margin: 20px 0; 
-    flex-wrap: wrap; /* 画面が狭くなったら折り返す */
+    flex-wrap: wrap; 
 }
 
 .footer ul li {
-    margin: 5px 15px; /* 上下にマージンを追加し、タッチしやすいようにする */
+    margin: 5px 15px; 
 }
 
 .footer ul li a {
     text-decoration: none; 
-    color: #ff007f; /* リンクの色を設定 */
+    color: #ff007f; 
     font-weight: bold;
     white-space: nowrap; 
 }
