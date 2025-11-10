@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <div class="user-detail-container" style="text-align:center; margin-top:80px;">
     <h1><?php echo htmlspecialchars($message); ?></h1>
-    <a href="user_detail.php" style="
+    <a href="user-detail.php" style="
         display:inline-block;
         background-color:#ff7f7f;
         color:#fff;
