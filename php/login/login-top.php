@@ -67,7 +67,7 @@ if (!isset($_SESSION['user_id'])) {
             <p><a href="../inquiry.php">お問い合わせ</a></p>
             <p><a href="../login/logout.php" style="color:#ff7f7f;">ログアウト</a></p>
 
-            <button id="closePopupBtn" class="close-button">閉じる</button>
+            <button id="closePopupBtn" class="close-button"></button>
         </div>
     </div>
 
