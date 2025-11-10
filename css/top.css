@@ -264,10 +264,6 @@ h1 {
     -webkit-overflow-scrolling: touch; /* iOSで滑らかにスクロール */
 }
 
-/* スクロールバーを非表示 (任意) */
-.grid::-webkit-scrollbar {
-    display: none;
-}
 .grid {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
