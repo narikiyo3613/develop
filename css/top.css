@@ -303,3 +303,87 @@ h1 {
     padding: 40px;
     text-align: center;
 }
+/* ==================================
+   新着商品リストのレイアウト設定
+   ================================== */
+
+/* 商品カード全体を保持するグリッドコンテナ */
+.grid {
+    /* CSS Gridレイアウトを適用 */
+    display: grid; 
+    
+    /* 画面サイズに応じて列数を自動調整（レスポンシブ対応） 
+       各列の最小幅を280pxに設定し、可能な限り多くの列を配置する */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    
+    /* カード間の間隔（行と列）を設定 */
+    gap: 30px; 
+    
+    /* コンテナ内でアイテムを中央寄せ（grid-template-columnsで1frを使っているため、ここでは必須ではありませんが念のため） */
+    justify-items: center; 
+    
+    /* 横スクロールバーを防ぎ、必要に応じて縦スクロールを有効にするための最大高さを設定 */
+    max-height: auto; /* トップページ全体がスクロールするため、ここでは最大高さを削除またはautoに設定 */
+    overflow-y: visible;
+    padding: 20px 0;
+}
+
+/* 個々の商品カードのスタイル */
+.card {
+    /* カードの背景、角丸、幅を調整 */
+    background-color: #fff; /* 背景を白に設定 */
+    border-radius: 15px; 
+    width: 100%; /* グリッドアイテムとして親要素の幅を占める */
+    max-width: 320px; 
+    padding: 20px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 軽い影で浮き立たせる */
+    transition: transform 0.2s;
+}
+
+/* ホバー時のアニメーション */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* カード内の画像 */
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* カード内の価格 */
+.card .price {
+    color: #ff007f; /* 強調したい色に変更 */
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* お気に入りボタンの調整 */
+.card .star {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff007f; /* ポップなデザインの色 */
+    color: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: 0 3px 0 #cc0066;
+    cursor: pointer;
+}
+.card .star:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 #cc0066;
+}
