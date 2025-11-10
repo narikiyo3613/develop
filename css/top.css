@@ -386,3 +386,27 @@ h1 {
     font-weight: bold;
     white-space: nowrap; 
 }
+/* ==================================
+   新着商品リストのレイアウト設定 (横スクロール)
+   ================================== */
+/* ... 既存の .container, .grid の定義の間に追記 ... */
+
+/* スクロールバーの表示を強制する設定 */
+.grid::-webkit-scrollbar {
+    display: block; /* Chrome, Safari 用: 非表示設定を上書き */
+    height: 10px;   /* スクロールバーの高さ */
+}
+.grid::-webkit-scrollbar-thumb {
+    background-color: #ff9ca0; /* バーの色の例 */
+    border-radius: 10px;
+}
+.grid::-webkit-scrollbar-track {
+    background: #f0f0f0; /* トラック（レール）の色の例 */
+}
+
+/* スクロールバーの非表示コードを削除/修正 */
+.grid {
+    -ms-overflow-style: auto; /* Edge/IE: none を auto に変更 */
+    scrollbar-width: auto;    /* Firefox: none を auto に変更 */
+    /* ... 既存の設定 ... */
+}
