@@ -217,24 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- 地図関連関数 (グローバルスコープに移動) ---
 
 /**
- * 地図を初期化し、map-containerに表示する (Google Maps APIによってコールバックされる)
- */
-function initMap() {
-    const mapContainer = document.getElementById('map-container');
-
-    // 初期表示の中心座標（ここでは日本の中心付近を使用）
-    const initialLocation = { lat: 35.5, lng: 137.5 };
-
-    map = new google.maps.Map(mapContainer, {
-        center: initialLocation,
-        zoom: 5, // 日本全体が概ね見えるズームレベル
-    });
-
-    // 地図が初期化されたら、初期状態（全件）で検索を実行し、マーカーを表示する
-    performSearch();
-}
-
-/**
  * 全てのマーカーを地図から削除し、markers配列をクリアする
  */
 function clearMarkers() {
