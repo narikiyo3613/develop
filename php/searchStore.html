@@ -12,7 +12,20 @@
 </head>
 
 <body>
+    <script>
+        // searchStore.js から切り出した initMap 関数をここに配置
+        function initMap() {
+            const mapContainer = document.getElementById('map-container');
+            const initialLocation = { lat: 35.5, lng: 137.5 };
 
+            // mapがグローバルに定義されていることを確認
+            map = new google.maps.Map(mapContainer, {
+                center: initialLocation,
+                zoom: 5,
+            });
+            performSearch();
+        }
+    </script>
     <header>
         <h1>ECサイト 店舗検索</h1>
     </header>
@@ -64,7 +77,7 @@
     </main>
 
     <footer>
-        <small>&copy; Your EC Site</small>
+        <small>&copy; MofuMofu Systems All Rights Reserved.</small>
     </footer>
 
     <script src="../script/searchStore.js" defer></script>
