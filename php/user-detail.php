@@ -1,3 +1,30 @@
+<?php
+session_start();
+require 'db-connect.php';
+
+// ログインチェック
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login/login.php");
+    exit;
+}
+
+$user_id = $_SESSION['user_id'];
+
+// DBからユーザー情報取得
+$stmt = $pdo->prepare("SELECT name, email, address, phone FROM users WHERE user_id = ?");
+$stmt->execute([$user_id]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>マイページ</title>
+    <link rel="stylesheet" href="../css/user_detail.css">
+</head>
+<body>
+
 <div class="user-detail-container">
 
     <!-- サイドメニュー -->
@@ -57,3 +84,7 @@
 
     </div>
 </div>
+
+
+</body>
+</html>
