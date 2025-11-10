@@ -95,7 +95,7 @@
     <ul>
         <li><a href="payment_form1.html">支払い画面</a></li>
         <li><a href="admin1.html">管理者画面</a></li>
-        <li><a href="user-detail.html">マイページ</a></li>
+        <li><a href="user-detail.php">マイページ</a></li>
         <li><a href="https://maps.app.goo.gl/fZsdSSUxEbDEXhQx6">本店</a></li>
         <li><a href="searchStore.html">店舗検索</a></li>
     </ul>
