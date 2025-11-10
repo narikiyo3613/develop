@@ -19,24 +19,7 @@ h1 {
     text-shadow: 2px 2px 0 #fff; /* 白い影で浮き立たせる */
 }
 
-/* フォーム内の入力フィールド (デフォルトのコメントアウト設定を維持) */
-/* input {
-    font-size: 1rem;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    background-color: #e6e6e6;
-    margin-bottom: 25px;
-} */
-
-/* 検索ボタン（非表示） */
-.search-hidden {
-    display: none;
-}
-/* メインフォームの .search ボタン (Bulmaクラスがない場合の表示用) */
-/*.search { HTML側がBulma構造ではない場合のみ有効化 }*/
-
-/* ログイン/会員登録ボタン (変更なし) */
+/* ログイン/会員登録ボタン (Bulmaのデザインを尊重しつつ、リンクを継承) */
 .clickLogin, 
 .clickRegistration {
     text-decoration: none;
@@ -47,7 +30,7 @@ h1 {
    ポップアップ関連 (左スライドイン/ポップデザイン)
    ================================== */
 
-/* ハンバーガーアイコン (丸く、立体的に) */
+/* ハンバーガーアイコン */
 #openPopupBtn {
     position: fixed;
     top: 10px;
@@ -85,20 +68,17 @@ h1 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4); 
-    
     opacity: 0; 
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-/* ポップアップの内容部分 (左側からスライドインするメニュー本体) */
+/* ポップアップの内容部分 */
 .popup-content {
     background: linear-gradient(180deg, #ffb3e6 0%, #fa7edc 100%); 
-    
     padding: 30px 20px;
     height: 100%; 
     width: 80%;
@@ -106,22 +86,18 @@ h1 {
     position: relative;
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4);
     border-radius: 0 15px 15px 0;
-
     transform: translateX(-100%);
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    
-    /* Flexboxで均等配置 */
     display: flex; 
     flex-direction: column;
     justify-content: space-around; 
 }
 
-/* 閉じるボタンのスタイル (上端中央) */
+/* 閉じるボタンのスタイル */
 .close-button {
     position: absolute;
     top: 25px; 
     right: 3px;
-    
     font-size: 30px;
     color: #fff;
     background: #ff007f;
@@ -135,7 +111,6 @@ h1 {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
     border: 2px solid #fff;
     font-weight: normal;
-
     transform: translate(-50%, -50%); 
 }
 .close-button::before {
@@ -156,7 +131,7 @@ h1 {
     transform: translateX(0);
 }
 
-/* --- ポップアップ内の検索フォーム --- */
+/* ポップアップ内のメニュー項目 (ボタン風) */
 .popup-content .popup-search-form {
     display: flex;
     align-items: center;
@@ -192,16 +167,6 @@ h1 {
     align-items: center;
     justify-content: center;
 }
-.popup-content .search-icon-btn:active {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 #cc0066;
-}
-/* --- ポップアップ内のメニュー項目 (ボタン風) --- */
-.popup-content p {
-    margin: 10px 0;
-    text-align: center;
-    font-size: 1.2rem;
-}
 .popup-content p a {
     display: block;
     padding: 15px 10px;
@@ -213,27 +178,10 @@ h1 {
     box-shadow: 0 4px 0 #cc0066;
     transition: all 0.1s;
 }
-.popup-content p a:hover {
-    background-color: #fff0f5;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 #cc0066;
-}
-.popup-content p a:active {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 #cc0066;
-}
-
+/* ポップアップ内のアクティブ/ホバー/クリック時のスタイルは省略 */
 
 /* ==================================
-   ナビゲーションメニューの開閉 (Bulma/JavaScript制御用)
-   ================================== */
-@media screen and (max-width: 1023px) {
-    .navbar-menu { display: none; }
-    .navbar-menu.is-active { display: block; }
-}
-
-/* ==================================
-   メイン検索セクション (ポップなデザイン) 
+   メイン検索セクション 
    ================================== */
 .section {
     background-color: #ffe6f0;
@@ -241,7 +189,7 @@ h1 {
     margin-top: 30px;
 }
 
-/* フォームのコンテナ（div.field has-addons）の調整 */
+/* フォームのコンテナ */
 .section .field.has-addons {
     background-color: #ffffff;
     padding: 10px;
@@ -251,19 +199,15 @@ h1 {
     margin-left: auto; 
     margin-right: auto; 
     transition: all 0.2s;
-    
-    /* ★★★ 入力欄とボタンの垂直中央寄せを保証 ★★★ */
     display: flex;
     align-items: center; 
 }
-
-/* ホバー時の浮き上がりアニメーション */
 .section .field.has-addons:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 0 #ff9ca0, 0 12px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* 入力フィールドのポップなデザイン (input.is-largeを対象) */
+/* 入力フィールド */
 .section .input.is-large {
     border: none;
     border-radius: 30px;
@@ -271,15 +215,13 @@ h1 {
     background-color: #f0f8ff;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 1.1rem;
-
-    /* ★★★ 入力欄の高さとパディングをボタンと一致させる ★★★ */
     height: 3.25rem; 
     padding-top: 0;
     padding-bottom: 0;
-    line-height: 3.25rem; /* テキストの垂直位置を調整 */
+    line-height: 3.25rem; 
 }
 
-/* 検索ボタンのポップなデザイン (button.is-primary.is-largeを対象) */
+/* 検索ボタン */
 .section .button.is-primary.is-large {
     background-color: #ff007f;
     border: none;
@@ -290,59 +232,46 @@ h1 {
     box-shadow: 0 4px 0 #c70062;
     transition: all 0.1s;
 }
-
-/* 検索ボタンのクリック時のアニメーション (押し込み効果) */
 .section .button.is-primary.is-large:active {
     transform: translateY(4px);
     box-shadow: 0 0 0 #c70062;
 }
-.footer{
-    background-color: #ffe6f0; /* ポップなデザインの背景色 */
-}
-.container{
+
+
+/* ==================================
+   新着商品リストのレイアウト設定 (横並び)
+   ================================== */
+.container {
     padding: 40px;
     text-align: center;
+    width: 100%; /* 全幅を確保 */
+    max-width: 1200px; /* 必要に応じて最大幅を設定 */
+    margin: 0 auto; /* 中央寄せ */
 }
-/* ==================================
-   新着商品リストのレイアウト設定
-   ================================== */
 
 /* 商品カード全体を保持するグリッドコンテナ */
 .grid {
-    /* CSS Gridレイアウトを適用 */
+    /* CSS Gridレイアウトを適用し、横並びにする */
     display: grid; 
-    
-    /* 画面サイズに応じて列数を自動調整（レスポンシブ対応） 
-       各列の最小幅を280pxに設定し、可能な限り多くの列を配置する */
+    /* 画面幅に応じて列数を自動調整。カード最小幅は300px。 */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    
-    /* カード間の間隔（行と列）を設定 */
     gap: 30px; 
-    
-    /* コンテナ内でアイテムを中央寄せ（grid-template-columnsで1frを使っているため、ここでは必須ではありませんが念のため） */
     justify-items: center; 
-    
-    /* 横スクロールバーを防ぎ、必要に応じて縦スクロールを有効にするための最大高さを設定 */
-    max-height: auto; /* トップページ全体がスクロールするため、ここでは最大高さを削除またはautoに設定 */
-    overflow-y: visible;
     padding: 20px 0;
 }
 
 /* 個々の商品カードのスタイル */
 .card {
-    /* カードの背景、角丸、幅を調整 */
-    background-color: #fff; /* 背景を白に設定 */
+    background-color: #fff; 
     border-radius: 15px; 
-    width: 100%; /* グリッドアイテムとして親要素の幅を占める */
+    width: 100%; 
     max-width: 320px; 
     padding: 20px;
     text-align: left;
     position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 軽い影で浮き立たせる */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     transition: transform 0.2s;
 }
-
-/* ホバー時のアニメーション */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
@@ -358,7 +287,7 @@ h1 {
 
 /* カード内の価格 */
 .card .price {
-    color: #ff007f; /* 強調したい色に変更 */
+    color: #ff007f; 
     font-size: 1.4rem;
     font-weight: bold;
     margin-top: 10px;
@@ -369,7 +298,7 @@ h1 {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: #ff007f; /* ポップなデザインの色 */
+    background-color: #ff007f; 
     color: white;
     border-radius: 50%;
     width: 36px;
@@ -386,4 +315,66 @@ h1 {
 .card .star:active {
     transform: translateY(3px);
     box-shadow: 0 0 0 #cc0066;
+}
+
+/* ==================================
+   フッター (横並びを含む)
+   ================================== */
+.footer {
+    background-color: #ffe6f0; 
+    padding: 40px 20px;
+    margin-top: auto; /* bodyのflex-direction: column; と組み合わせてフッターを下に固定 */
+}
+
+.footer .about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+    .footer .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* フッターロゴ */
+.footer .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.footer .main-logo {
+    width: 50px;
+    height: 50px;
+}
+.footer .site-title {
+    font-size: 1.8rem;
+    color: #ff007f;
+}
+
+/* フッターメニュー (横並びにする部分) */
+.footer ul {
+    /* リストアイテムを横一列に並べる */
+    display: flex; 
+    /* 左右中央揃えにする */
+    justify-content: center; 
+    /* リストの点 (・) を非表示にする */
+    list-style: none; 
+    padding: 0; 
+    margin: 20px 0; 
+    flex-wrap: wrap; /* 画面が狭くなったら折り返す */
+}
+
+.footer ul li {
+    margin: 5px 15px; /* 上下にマージンを追加し、タッチしやすいようにする */
+}
+
+.footer ul li a {
+    text-decoration: none; 
+    color: #ff007f; /* リンクの色を設定 */
+    font-weight: bold;
+    white-space: nowrap; 
 }
