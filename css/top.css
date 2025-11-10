@@ -299,3 +299,7 @@ h1 {
 .footer{
     background-color: #ffe6f0; /* ポップなデザインの背景色 */
 }
+.container{
+    padding: 40px;
+    text-align: center;
+}

@@ -1,3 +1,17 @@
+<?php require "db-connect.php"?>
+<?php
+// ====== 新着商品取得のためのデータベース処理 ======
+// 最新の商品8件を created_at の降順で取得するSQL
+try {
+    $sql_new_arrivals = "SELECT product_id, name, price, image_url FROM products ORDER BY created_at DESC LIMIT 8";
+    $stmt_new_arrivals = $pdo->query($sql_new_arrivals);
+    $new_arrivals_products = $stmt_new_arrivals->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    // データベースエラー時の処理 (実際はより詳細なエラーハンドリング推奨)
+    error_log("DB Error: " . $e->getMessage());
+    $new_arrivals_products = []; // エラー時は空の配列を設定
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -68,7 +82,29 @@
             </div>
         </form>
     </section>
-
+    <div class="container"> 
+        <h2 class="title is-2" style="margin-bottom: 30px;">✨ 新着商品 ✨</h2>
+        
+        <div class="grid">
+            <?php if (count($new_arrivals_products) === 0): ?>
+                <p>現在、新着商品はありません。</p>
+            <?php else: ?>
+                <?php foreach ($new_arrivals_products as $item): ?>
+                    <div class="card">
+                        <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                        <h3><?= htmlspecialchars($item['name']) ?></h3>
+                        <p class="price"><?= number_format($item['price']) ?>円</p>
+                        
+                        <form method="post" class="star-form" action="favorite.php">
+                            <input type="hidden" name="product_name" value="<?= htmlspecialchars($item['name']) ?>">
+                            <button type="submit" class="star">★</button>
+                        </form>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+        <a href="searchresults.php" class="button is-info is-outlined" style="margin-top: 30px;">もっと見る</a>
+    </div>
     <script src="../script/topScript.js"></script>
 </body>
 <footer class="footer">
