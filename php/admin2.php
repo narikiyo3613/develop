@@ -11,6 +11,7 @@ $menus = [
     <meta charset="UTF-8">
     <title>管理者画面</title>
     <link rel="stylesheet" href="admin.css">
+    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 </head>
 <body>
     <div class="admin-container">

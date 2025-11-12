@@ -54,6 +54,7 @@ if ($product_id && is_numeric($product_id)) {
     <title><?= $product ? htmlspecialchars($product['name']) : '商品詳細' ?></title>
     <link rel="stylesheet" href="../css/searchresults-style.css"> 
     <link rel="stylesheet" href="../css/product-detail-style.css"> 
+    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 </head>
 <body>
     <div class="container">

@@ -38,6 +38,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>検索結果</title>
     <link rel="stylesheet" href="../css/searchresults-style.css">
+    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
     <style>
         .star {
             position: absolute;

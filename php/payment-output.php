@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>購入完了</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 </head>
 <body>
     <div class="complete-container">
