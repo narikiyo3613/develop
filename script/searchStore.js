@@ -8,50 +8,132 @@ let markers = [];
 // 1. ダミーの店舗データ (緯度・経度はダミーですが、店舗ごとに異なる値に変更しました)
 const stores = [
     {
-        name: "ペッツ 東京本店",
+        name: "ペットワールド 東京八重洲口店",
         area: "tokyo",
-        lat: 35.658034, 
-        lng: 139.701636, // 渋谷近辺
-        keyword: "犬,猫,ペットホテル,大型",
-        address: "東京都渋谷区公園通り1-1",
-        service: "トリミング、ホテル、用品販売"
+        lat: 35.681236,
+        lng: 139.767125, // 東京駅八重洲口近辺
+        keyword: "犬,猫,トリミング,用品販売,駅直結",
+        address: "東京都千代田区丸の内1-5",
+        service: "トリミング、用品販売、ペット保険相談"
     },
     {
-        name: "わんにゃん 大阪梅田店",
-        area: "osaka",
-        lat: 34.702485, 
-        lng: 135.495964, // 大阪駅近辺
-        keyword: "犬,トリミング,駅近",
-        address: "大阪府大阪市北区梅田2-2",
-        service: "トリミング、フード販売"
+        name: "にゃんこステーション 名古屋",
+        area: "nagoya",
+        lat: 35.170915,
+        lng: 136.881534, // 名古屋駅近辺（西側）
+        keyword: "猫,キャットホテル,一時預かり,駅近",
+        address: "愛知県名古屋市中村区名駅4-20",
+        service: "キャットホテル、猫の一時預かり"
     },
     {
-        name: "アニマルライフ 福岡天神",
+        name: "どうぶつ広場 博多駅アミュ店",
         area: "fukuoka",
-        lat: 33.589139, 
-        lng: 130.395729, // 福岡天神近辺
-        keyword: "エキゾチック,鳥,小動物,専門店",
-        address: "福岡県福岡市中央区天神3-3",
-        service: "生体販売（鳥・小動物）、用品"
+        lat: 33.590139,
+        lng: 130.419137, // 博多駅ビル内想定
+        keyword: "犬,猫,小動物,生体販売,フード",
+        address: "福岡県福岡市博多区博多駅中央街1-1 JR博多シティ内",
+        service: "生体販売（犬・猫・小動物）、フード・用品販売"
     },
     {
-        name: "ワンコのお宿 新宿",
+        name: "ドッグラン＆カフェ 東京丸の内",
         area: "tokyo",
-        lat: 35.688226, 
-        lng: 139.699763, // 新宿近辺
-        keyword: "ペットホテル,犬専用,送迎",
-        address: "東京都新宿区西新宿4-4",
-        service: "ペットホテル（犬限定）、一時預かり"
+        lat: 35.681283,
+        lng: 139.765691, // 東京駅丸の内側近辺
+        keyword: "犬,カフェ,ドッグラン,イベント",
+        address: "東京都千代田区丸の内2-1",
+        service: "ドッグカフェ、室内ドッグラン、しつけ教室"
     },
     {
-        name: "Cat's Garden 難波",
-        area: "osaka",
-        lat: 34.664421, 
-        lng: 135.500249, // 難波近辺
-        keyword: "猫,キャットカフェ,限定グッズ",
-        address: "大阪府大阪市浪速区難波5-5",
-        service: "キャットカフェ、猫用品販売"
+        name: "エキゾチックペットの森 名古屋",
+        area: "nagoya",
+        lat: 35.172153,
+        lng: 136.885661, // 名古屋駅東側近辺
+        keyword: "エキゾチック,爬虫類,鳥,専門店,珍種",
+        address: "愛知県名古屋市中村区名駅1-1-4",
+        service: "生体販売（爬虫類・鳥類）、専用用品販売"
     },
+    {
+        name: "北のわんわんホテル 札幌駅前",
+        area: "sapporo",
+        lat: 43.069408,
+        lng: 141.350369, // 札幌駅近辺
+        keyword: "犬,ペットホテル,大型犬対応,送迎",
+        address: "北海道札幌市北区北6条西4-1",
+        service: "ペットホテル（犬専門）、送迎サービス"
+    },
+    {
+        name: "ヨコハマ・グルーミングサロン",
+        area: "yokohama",
+        lat: 35.466030,
+        lng: 139.622610, // 横浜駅西口近辺
+        keyword: "トリミング,犬,猫,予約制,高級",
+        address: "神奈川県横浜市西区高島2-18",
+        service: "グルーミング・トリミング（犬・猫）、エステ"
+    },
+    {
+        name: "バード＆小動物専門店 SAPPORO",
+        area: "sapporo",
+        lat: 43.067300,
+        lng: 141.354000, // 札幌駅東側近辺
+        keyword: "鳥,小動物,ハムスター,専門",
+        address: "北海道札幌市中央区北5条東2-2",
+        service: "生体販売（鳥・小動物）、飼育用品"
+    },
+    {
+        name: "マリンペット 横浜東口",
+        area: "yokohama",
+        lat: 35.463210,
+        lng: 139.626500, // 横浜駅東口近辺
+        keyword: "熱帯魚,水槽,アクアリウム,海水魚",
+        address: "神奈川県横浜市西区金港町1-10",
+        service: "熱帯魚・海水魚の生体販売、水槽・関連用品設置サービス"
+    },
+    // --- 新規追加分（仙台・広島・神戸・京都・大宮） ---
+    {
+        name: "杜の都ペットクリニック",
+        area: "sendai",
+        lat: 38.261895,
+        lng: 140.880467, // 仙台駅東口近辺
+        keyword: "動物病院,緊急,夜間診療,犬,猫",
+        address: "宮城県仙台市宮城野区榴岡4-1",
+        service: "動物医療（診療・手術）、予防接種"
+    },
+    {
+        name: "ひろしまワンニャン市場",
+        area: "hiroshima",
+        lat: 34.396550,
+        lng: 132.478800, // 広島駅南口近辺
+        keyword: "犬,猫,生体販売,フード,しつけ",
+        address: "広島県広島市南区松原町5-1",
+        service: "生体販売（犬・猫）、フード・用品、しつけ相談"
+    },
+    {
+        name: "港町アニマルクリニック 神戸三宮",
+        area: "kobe",
+        lat: 34.693450,
+        lng: 135.195000, // 三宮駅近辺を想定（神戸の中心部）
+        keyword: "動物病院,老犬介護,健康診断",
+        address: "兵庫県神戸市中央区加納町4-3",
+        service: "動物医療、老犬介護相談、定期健診"
+    },
+    {
+        name: "古都のキャットカフェ 祇園",
+        area: "kyoto",
+        lat: 35.003900,
+        lng: 135.779700, // 京都駅からは少し離れるが、観光客向けを想定
+        keyword: "猫,キャットカフェ,保護猫,観光",
+        address: "京都府京都市東山区祇園町南側570",
+        service: "キャットカフェ、猫用品販売、里親募集"
+    },
+    {
+        name: "さいたまアニマルグッズ大宮店",
+        area: "omiya",
+        lat: 35.906950,
+        lng: 139.623400, // 大宮駅西口近辺
+        keyword: "用品専門店,大型店,フード,アウトレット",
+        address: "埼玉県さいたま市大宮区桜木町1-10",
+        service: "ペット用品・フード販売、アウトレットコーナー"
+    }
 ];
 
 // 2. HTML要素の取得（変更なし）
@@ -83,7 +165,7 @@ function performSearch() {
         if (keyword) {
             const searchFields = [
                 store.name.toLowerCase(),
-                store.keyword.toLowerCase(), 
+                store.keyword.toLowerCase(),
                 store.address.toLowerCase(),
                 store.service.toLowerCase()
             ].join(' ');
@@ -96,9 +178,9 @@ function performSearch() {
 
     // HTMLリストの表示を更新
     displayResults(filteredStores);
-    
+
     // 【★地図の表示を更新★】
-    displayResultsOnMap(filteredStores); 
+    displayResultsOnMap(filteredStores);
 }
 
 // 5. 結果をHTMLに表示する関数
@@ -135,24 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- 地図関連関数 (グローバルスコープに移動) ---
 
 /**
- * 地図を初期化し、map-containerに表示する (Google Maps APIによってコールバックされる)
- */
-function initMap() {
-    const mapContainer = document.getElementById('map-container');
-
-    // 初期表示の中心座標（ここでは日本の中心付近を使用）
-    const initialLocation = { lat: 35.5, lng: 137.5 };
-
-    map = new google.maps.Map(mapContainer, {
-        center: initialLocation,
-        zoom: 5, // 日本全体が概ね見えるズームレベル
-    });
-
-    // 地図が初期化されたら、初期状態（全件）で検索を実行し、マーカーを表示する
-    performSearch();
-}
-
-/**
  * 全てのマーカーを地図から削除し、markers配列をクリアする
  */
 function clearMarkers() {
@@ -179,8 +243,8 @@ function displayResultsOnMap(results) {
     results.forEach(store => {
         // stores配列の緯度・経度を使用
         const position = {
-            lat: store.lat, 
-            lng: store.lng 
+            lat: store.lat,
+            lng: store.lng
         };
 
         const marker = new google.maps.Marker({
@@ -188,10 +252,10 @@ function displayResultsOnMap(results) {
             map: map,
             title: store.name,
         });
-        
+
         // (任意) マーカーにクリックイベントを追加
         marker.addListener('click', () => {
-             alert(`${store.name}の情報を表示します`);
+            alert(`${store.name}の情報を表示します`);
         });
 
         markers.push(marker);

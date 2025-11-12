@@ -1,0 +1,141 @@
+/* ---------------------------------- */
+/* 詳細カード全体のスタイル */
+/* ---------------------------------- */
+.detail-card {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f7f7f7; /* card (#e6e6e6)より少し明るく */
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    display: flex; /* 画像と情報を横並びにする */
+    gap: 30px;
+}
+
+/* エラーボックスのスタイル */
+.error-box {
+    background-color: #ffe6e6;
+    color: #cc0000;
+    text-align: center;
+}
+.error-box h1 {
+    color: #cc0000;
+}
+
+/* ---------------------------------- */
+/* 画像エリア */
+/* ---------------------------------- */
+.image-area {
+    flex: 0 0 45%; /* 幅を45%に固定 */
+}
+
+.detail-card img {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: contain; /* アスペクト比を維持し、全体を表示 */
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+/* ---------------------------------- */
+/* 詳細情報エリア */
+/* ---------------------------------- */
+.detail-info {
+    flex: 1; /* 残りのスペースを占有 */
+}
+
+.detail-info h1 {
+    color: #333;
+    margin-top: 0;
+    font-size: 2.2rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ff9ca0; /* メインカラーで区切り線 */
+}
+
+.detail-info .price {
+    font-size: 2.2rem;
+    color: #ff9ca0; /* 検索ボタンと同じ色 */
+    font-weight: bold;
+    margin: 15px 0 25px;
+}
+
+/* 補足情報（ジャンル、在庫など） */
+.meta-data p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #666;
+}
+.stock-ok {
+    color: #6ec6a3; /* 戻るボタンと同じ色 */
+    font-weight: bold;
+}
+.stock-zero {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+/* ---------------------------------- */
+/* アクションボタンエリア */
+/* ---------------------------------- */
+.action-area {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.add-to-cart-btn {
+    padding: 15px 30px;
+    background-color: #ff9ca0; 
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    flex-grow: 1;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover:not(:disabled) {
+    background-color: #ff7d82;
+}
+
+.add-to-cart-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* お気に入りボタン（検索結果のスタイルを継承し、サイズを大きく） */
+.star-form .star {
+    background-color: #6ec6a3; 
+    border: none;
+    color: white;
+    border-radius: 10px; /* 四角形に変更 */
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.star-form .star:hover {
+    background-color: #5bb391;
+}
+
+/* ---------------------------------- */
+/* 説明文エリア */
+/* ---------------------------------- */
+.description h2 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.description p {
+    line-height: 1.8;
+    color: #444;
+}

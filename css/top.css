@@ -1,301 +1,400 @@
 /* ==================================
-   基本設定
-   ================================== */
+基本設定
+================================== */
 body {
-    font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
-    background-color: #ffe6f0; /* ポップなデザインの背景色 */
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+ font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+ background-color: #ffe6f0; /* ポップなデザインの背景色 */
+ margin: 0;
+ padding: 0;
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
 }
 
 /* タイトル */
 h1 {
-    color: #ff9ca0;
-    font-size: 2.8rem;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 0 #fff; /* 白い影で浮き立たせる */
+ color: #ff9ca0;
+ font-size: 2.8rem;
+ margin-bottom: 30px;
+ text-shadow: 2px 2px 0 #fff; /* 白い影で浮き立たせる */
 }
 
-/* フォーム内の入力フィールド (デフォルトのコメントアウト設定を維持) */
-/* input {
-    font-size: 1rem;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    background-color: #e6e6e6;
-    margin-bottom: 25px;
-} */
-
-/* 検索ボタン（非表示） */
-.search-hidden {
-    display: none;
-}
-/* メインフォームの .search ボタン (Bulmaクラスがない場合の表示用) */
-/*.search { HTML側がBulma構造ではない場合のみ有効化 }*/
-
-/* ログイン/会員登録ボタン (変更なし) */
+/* ログイン/会員登録ボタン (Bulmaのデザインを尊重しつつ、リンクを継承) */
 .clickLogin, 
 .clickRegistration {
-    text-decoration: none;
-    color: inherit;
+ text-decoration: none;
+ color: inherit;
 }
 
 /* ==================================
-   ポップアップ関連 (左スライドイン/ポップデザイン)
-   ================================== */
+ポップアップ関連 (左スライドイン/ポップデザイン)
+================================== */
 
-/* ハンバーガーアイコン (丸く、立体的に) */
+/* ハンバーガーアイコン */
 #openPopupBtn {
-    position: fixed;
-    top: 10px;
-    left: 10px; 
-    z-index: 1000;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 40px;
-    height: 40px;
-    background: #fff;
-    border-radius: 50%;
-    border: 3px solid #ff007f;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    padding: 8px;
-    transition: transform 0.2s;
+ position: fixed;
+ top: 10px;
+ left: 10px; 
+ z-index: 1000;
+ cursor: pointer;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-around;
+ width: 40px;
+ height: 40px;
+ background: #fff;
+ border-radius: 50%;
+ border: 3px solid #ff007f;
+ box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+ padding: 8px;
+ transition: transform 0.2s;
 }
 #openPopupBtn:active {
-    transform: scale(0.95);
+ transform: scale(0.95);
 }
 #openPopupBtn span {
-    display: block;
-    height: 4px;
-    background: #ff007f;
-    border-radius: 2px;
+ display: block;
+ height: 4px;
+ background: #ff007f;
+ border-radius: 2px;
 }
 
 /* ポップアップ全体（オーバーレイ）のスタイル */
 .popup {
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); 
-    
-    opacity: 0; 
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+ position: fixed;
+ z-index: 1000;
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ background-color: rgba(0, 0, 0, 0.4); 
+ opacity: 0; 
+ visibility: hidden;
+ transition: opacity 0.3s ease, visibility 0.3s ease;
+ display: flex;
+ justify-content: flex-start;
+ align-items: flex-start;
 }
 
-/* ポップアップの内容部分 (左側からスライドインするメニュー本体) */
+/* ポップアップの内容部分 */
 .popup-content {
-    background: linear-gradient(180deg, #ffb3e6 0%, #fa7edc 100%); 
-    
-    padding: 30px 20px;
-    height: 100%; 
-    width: 80%;
-    max-width: 320px;
-    position: relative;
-    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4);
-    border-radius: 0 15px 15px 0;
-
-    transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    
-    /* Flexboxで均等配置 */
-    display: flex; 
-    flex-direction: column;
-    justify-content: space-around; 
+ background: linear-gradient(180deg, #ffb3e6 0%, #fa7edc 100%); 
+ padding: 30px 20px;
+ height: 100%; 
+ width: 80%;
+ max-width: 320px;
+ position: relative;
+ box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4);
+ border-radius: 0 15px 15px 0;
+ transform: translateX(-100%);
+ transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+ display: flex; 
+ flex-direction: column;
+ justify-content: space-around; 
 }
 
-/* 閉じるボタンのスタイル (上端中央) */
+/* 閉じるボタンのスタイル */
 .close-button {
-    position: absolute;
-    top: 25px; 
-    right: 3px;
-    
-    font-size: 30px;
-    color: #fff;
-    background: #ff007f;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    line-height: 40px;
-    text-align: center;
-    padding: 0;
-    cursor: pointer;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-    border: 2px solid #fff;
-    font-weight: normal;
-
-    transform: translate(-50%, -50%); 
+ position: absolute;
+ top: 25px; 
+ right: 3px;
+ font-size: 30px;
+ color: #fff;
+ background: #ff007f;
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ line-height: 40px;
+ text-align: center;
+ padding: 0;
+ cursor: pointer;
+ box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+ border: 2px solid #fff;
+ font-weight: normal;
+ /* transform: translate(-50%, -50%); /* 元のコードから微調整 */
 }
 .close-button::before {
-    content: "+";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg); 
-    line-height: 1;
+ content: "+";
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%) rotate(45deg); 
+ line-height: 1;
 }
 
 /* JavaScriptで表示・非表示を切り替えるためのクラス */
 .popup.is-active {
-    opacity: 1;
-    visibility: visible;
+ opacity: 1;
+ visibility: visible;
 }
 .popup.is-active .popup-content {
-    transform: translateX(0);
+ transform: translateX(0);
 }
 
-/* --- ポップアップ内の検索フォーム --- */
+/* ポップアップ内のメニュー項目 (ボタン風) */
 .popup-content .popup-search-form {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 30px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ margin-bottom: 20px;
+ padding: 10px;
+ background-color: #fff;
+ border-radius: 30px;
+ box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 .popup-content .popupSearch {
-    flex-grow: 1;
-    border: none;
-    background: transparent;
-    padding: 10px 15px;
-    font-size: 1.1rem;
-    color: #333;
-    outline: none;
+ flex-grow: 1;
+ border: none;
+ background: transparent;
+ padding: 10px 15px;
+ font-size: 1.1rem;
+ color: #333;
+ outline: none;
 }
 .popup-content .search-icon-btn {
-    background-color: #ff007f;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 4px 0 #cc0066;
-    transition: all 0.1s;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.popup-content .search-icon-btn:active {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 #cc0066;
-}
-/* --- ポップアップ内のメニュー項目 (ボタン風) --- */
-.popup-content p {
-    margin: 10px 0;
-    text-align: center;
-    font-size: 1.2rem;
+ background-color: #ff007f;
+ color: white;
+ border: none;
+ border-radius: 50%;
+ width: 45px;
+ height: 45px;
+ font-size: 1.2rem;
+ cursor: pointer;
+ box-shadow: 0 4px 0 #cc0066;
+ transition: all 0.1s;
+ flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 .popup-content p a {
-    display: block;
-    padding: 15px 10px;
-    background-color: #ffffff;
-    color: #ff007f;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    box-shadow: 0 4px 0 #cc0066;
-    transition: all 0.1s;
+ display: block;
+ padding: 15px 10px;
+ background-color: #ffffff;
+ color: #ff007f;
+ text-decoration: none;
+ border-radius: 10px;
+ font-weight: bold;
+ box-shadow: 0 4px 0 #cc0066;
+ transition: all 0.1s;
 }
-.popup-content p a:hover {
-    background-color: #fff0f5;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 #cc0066;
-}
-.popup-content p a:active {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 #cc0066;
-}
-
+/* ポップアップ内のアクティブ/ホバー/クリック時のスタイルは省略 */
 
 /* ==================================
-   ナビゲーションメニューの開閉 (Bulma/JavaScript制御用)
-   ================================== */
-@media screen and (max-width: 1023px) {
-    .navbar-menu { display: none; }
-    .navbar-menu.is-active { display: block; }
-}
-
-/* ==================================
-   メイン検索セクション (ポップなデザイン) 
-   ================================== */
+メイン検索セクション 
+================================== */
 .section {
-    background-color: #ffe6f0;
-    padding: 60px 20px;
-    margin-top: 30px;
+ background-color: #ffe6f0;
+ padding: 60px 20px;
+ margin-top: 30px;
 }
 
-/* フォームのコンテナ（div.field has-addons）の調整 */
+/* フォームのコンテナ */
 .section .field.has-addons {
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 50px;
-    box-shadow: 0 8px 0 #ff9ca0, 0 10px 15px rgba(0, 0, 0, 0.2); 
-    max-width: 600px;
-    margin-left: auto; 
-    margin-right: auto; 
-    transition: all 0.2s;
-    
-    /* ★★★ 入力欄とボタンの垂直中央寄せを保証 ★★★ */
-    display: flex;
-    align-items: center; 
+ background-color: #ffffff;
+ padding: 10px;
+ border-radius: 50px;
+ box-shadow: 0 8px 0 #ff9ca0, 0 10px 15px rgba(0, 0, 0, 0.2); 
+ max-width: 600px;
+ margin-left: auto; 
+ margin-right: auto; 
+ transition: all 0.2s;
+ display: flex;
+ align-items: center; 
 }
-
-/* ホバー時の浮き上がりアニメーション */
 .section .field.has-addons:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 0 #ff9ca0, 0 12px 20px rgba(0, 0, 0, 0.3);
+ transform: translateY(-2px);
+ box-shadow: 0 10px 0 #ff9ca0, 0 12px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* 入力フィールドのポップなデザイン (input.is-largeを対象) */
+/* 入力フィールド */
 .section .input.is-large {
-    border: none;
-    border-radius: 30px;
-    padding-left: 20px;
-    background-color: #f0f8ff;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1.1rem;
-
-    /* ★★★ 入力欄の高さとパディングをボタンと一致させる ★★★ */
-    height: 3.25rem; 
-    padding-top: 0;
-    padding-bottom: 0;
-    line-height: 3.25rem; /* テキストの垂直位置を調整 */
+ border: none;
+ border-radius: 30px;
+ padding-left: 20px;
+ background-color: #f0f8ff;
+ box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+ font-size: 1.1rem;
+ height: 3.25rem; 
+ padding-top: 0;
+ padding-bottom: 0;
+ line-height: 3.25rem; 
 }
 
-/* 検索ボタンのポップなデザイン (button.is-primary.is-largeを対象) */
+/* 検索ボタン */
 .section .button.is-primary.is-large {
-    background-color: #ff007f;
-    border: none;
-    border-radius: 30px;
-    font-weight: bold;
-    color: white;
-    padding: 0 30px;
-    box-shadow: 0 4px 0 #c70062;
-    transition: all 0.1s;
+ background-color: #ff007f;
+ border: none;
+ border-radius: 30px;
+ font-weight: bold;
+ color: white;
+ padding: 0 30px;
+ box-shadow: 0 4px 0 #c70062;
+ transition: all 0.1s;
+}
+.section .button.is-primary.is-large:active {
+ transform: translateY(4px);
+ box-shadow: 0 0 0 #c70062;
 }
 
-/* 検索ボタンのクリック時のアニメーション (押し込み効果) */
-.section .button.is-primary.is-large:active {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 #c70062;
+
+/* ==================================
+新着商品リストのレイアウト設定 (横スクロール)
+================================== */
+.container {
+ padding: 40px 20px; /* 左右にパディングを追加し、スクロール時に見切れを防ぐ */
+ text-align: center;
+ width: 100%;
+ max-width: 1200px;
+ margin: 0 auto;
 }
-.footer{
-    background-color: #ffe6f0; /* ポップなデザインの背景色 */
+
+/* 商品カード全体を保持する Flex コンテナ */
+.grid {
+ display: flex; /* Flexboxに変更 */
+ gap: 30px; 
+ justify-content: flex-start; /* カードを左から並べる */
+ 
+ /* 横スクロールを有効化 */
+ overflow-x: auto; 
+ overflow-y: hidden;
+ flex-wrap: nowrap; /* 折り返しを禁止 (重要) */
+ 
+ padding: 20px 0;
+ -webkit-overflow-scrolling: touch; /* iOSで滑らかにスクロール */
+    
+    /* 👇👇👇 スクロールバーの表示を有効化 👇👇👇 */
+ -ms-overflow-style: auto; /* Edge/IE: 表示 */
+ scrollbar-width: auto; /* Firefox: 表示 */
+}
+
+/* Chrome, Safari 用のスクロールバーのスタイル設定 */
+.grid::-webkit-scrollbar {
+ display: block; /* 強制的に表示 */
+ height: 10px;  /* スクロールバーの高さ */
+}
+.grid::-webkit-scrollbar-thumb {
+ background-color: #ff9ca0; /* バーの色 */
+ border-radius: 10px;
+}
+.grid::-webkit-scrollbar-track {
+ background: #f0f0f0; /* トラック（レール）の色 */
+}
+
+/* 個々の商品カードのスタイル */
+.card {
+ background-color: #fff; 
+ border-radius: 15px; 
+ 
+ width: 300px; /* カードの幅を固定 */
+ flex-shrink: 0; /* 縮小を禁止 (重要) */
+ 
+ padding: 20px;
+ text-align: left;
+ position: relative;
+ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+ transition: transform 0.2s;
+}
+.card:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* カード内の画像 */
+.card img {
+ width: 100%;
+ height: auto;
+ border-radius: 10px;
+ object-fit: cover;
+}
+
+/* カード内の価格 */
+.card .price {
+ color: #ff007f; 
+ font-size: 1.4rem;
+ font-weight: bold;
+ margin-top: 10px;
+}
+
+/* お気に入りボタンの調整 */
+.card .star {
+ position: absolute;
+ bottom: 20px;
+ right: 20px;
+ background-color: #ff007f; 
+ color: white;
+ border-radius: 50%;
+ width: 36px;
+ height: 36px;
+ font-size: 1.2rem;
+ line-height: 1;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ border: none;
+ box-shadow: 0 3px 0 #cc0066;
+ cursor: pointer;
+}
+.card .star:active {
+ transform: translateY(3px);
+ box-shadow: 0 0 0 #cc0066;
+}
+
+/* ==================================
+フッター (横並びを含む)
+================================== */
+.footer {
+ background-color: #ffe6f0; 
+ padding: 40px 20px;
+ margin-top: auto; 
+}
+
+.footer .about-container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 40px;
+ margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+ .footer .about-container {
+  flex-direction: column;
+  text-align: center;
+ }
+}
+
+/* フッターロゴ */
+.footer .logo-area {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+}
+.footer .main-logo {
+ width: 50px;
+ height: 50px;
+}
+.footer .site-title {
+ font-size: 1.8rem;
+ color: #ff007f;
+}
+
+/* フッターメニュー (横並びにする部分) */
+.footer ul {
+ display: flex; 
+ justify-content: center; 
+ list-style: none; 
+ padding: 0; 
+ margin: 20px 0; 
+ flex-wrap: wrap; 
+}
+
+.footer ul li {
+ margin: 5px 15px; 
+}
+
+.footer ul li a {
+ text-decoration: none; 
+ color: #ff007f; 
+ font-weight: bold;
+ white-space: nowrap; 
 }

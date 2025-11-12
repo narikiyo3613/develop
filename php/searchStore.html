@@ -6,12 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>店舗検索機能</title>
     <link rel="stylesheet" href="../css/searchStore.css">
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcwZwXndixEiWAuCATfCuocOPZtv1lBzI&callback=initMap">
-    </script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcwZwXndixEiWAuCATfCuocOPZtv1lBzI&callback=initMap">
+        </script>
 </head>
 
 <body>
+    <script>
+        // searchStore.js から切り出した initMap 関数をここに配置
+        function initMap() {
+            const mapContainer = document.getElementById('map-container');
+            const initialLocation = { lat: 35.5, lng: 137.5 };
 
+            // mapがグローバルに定義されていることを確認
+            map = new google.maps.Map(mapContainer, {
+                center: initialLocation,
+                zoom: 5,
+            });
+            performSearch();
+        }
+    </script>
     <header>
         <h1>ECサイト 店舗検索</h1>
     </header>
@@ -26,8 +40,15 @@
                     <select id="area-select" name="area">
                         <option value="">-- すべてのエリア --</option>
                         <option value="tokyo">東京都</option>
-                        <option value="osaka">大阪府</option>
+                        <option value="nagoya">愛知県</option>
                         <option value="fukuoka">福岡県</option>
+                        <option value="sapporo">北海道</option>
+                        <option value="yokohama">神奈川県</option>
+                        <option value="sendai">宮城県</option>
+                        <option value="hiroshima">広島県</option>
+                        <option value="kobe">兵庫県</option>
+                        <option value="kyoto">京都府</option>
+                        <option value="omiya">埼玉県</option>
                     </select>
                 </div>
 
@@ -56,10 +77,10 @@
     </main>
 
     <footer>
-        <small>&copy; Your EC Site</small>
+        <small>&copy; MofuMofu Systems All Rights Reserved.</small>
     </footer>
 
-    <script src="../script/searchStore.js" defer></script>
+    <script src="../script/searchStore.js"></script>
 
 </body>
 
