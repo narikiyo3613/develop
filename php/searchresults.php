@@ -64,9 +64,9 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </style>
 </head>
 <body>
-<div class="container">
+    <div class="container">
 
-    <a href="top.php" class="back-btn">←</a>
+        <a href="top.php" class="back-btn">←</a>
 
         <form class="search-form" method="get">
             <input type="text" name="keyword" placeholder="🔍 ペットフード" value="<?= htmlspecialchars($keyword) ?>">
@@ -81,30 +81,30 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <button type="submit">検索</button>
         </form>
 
-    <h2 class="count">全 <?= count($products) ?> 件</h2>
+        <h2 class="count">全 <?= count($products) ?> 件</h2>
 
-    <div class="grid">
-        <?php if (count($products) === 0): ?>
-            <p>該当する商品が見つかりませんでした。</p>
-        <?php else: ?>
-            <?php foreach ($products as $item): ?>
-                <div class="card">
-                    <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
-                    <h3><?= htmlspecialchars($item['name']) ?></h3>
-                    <p class="price"><?= number_format($item['price']) ?>円</p>
+        <div class="grid">
+            <?php if (count($products) === 0): ?>
+                <p>該当する商品が見つかりませんでした。</p>
+            <?php else: ?>
+                <?php foreach ($products as $item): ?>
+                    <div class="card">
+                        <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                        <h3><?= htmlspecialchars($item['name']) ?></h3>
+                        <p class="price"><?= number_format($item['price']) ?>円</p>
 
-                    <?php if ($is_logged_in): ?>
-                        <button 
-                            class="star" 
-                            data-product-id="<?= htmlspecialchars($item['product_id']) ?>"
-                            data-user-id="<?= htmlspecialchars($user_id) ?>"
-                        >★</button>
-                    <?php else: ?>
-                        <button class="star" onclick="location.href='login/login.php'">★</button>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+                        <?php if ($is_logged_in): ?>
+                        <form method="post" class="star-form" action="favorite.php">
+                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
+                            <button type="submit" class="star">★</button>
+                        </form>
+                        <?php else: ?>
+                        <?php endif; ?>
+                        </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+
     </div>
 </div>
 
