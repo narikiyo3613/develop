@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // 未ログインならログインページにリダイレクト
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../login/login.php");
@@ -8,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 
-<?php require "db-connect.php" ?>
+<?php require "../db-connect.php" ?>
 <?php
 // ====== 新着商品取得のためのデータベース処理 ======
 // 最新の商品8件を created_at の降順で取得するSQL
