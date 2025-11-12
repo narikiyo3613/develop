@@ -1,10 +1,24 @@
 <?php
 session_start();
-
 // 未ログインならログインページにリダイレクト
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../login/login.php");
     exit;
+}
+?>
+
+<?php require "../db-connect.php" ?>
+<?php
+// ====== 新着商品取得のためのデータベース処理 ======
+// 最新の商品8件を created_at の降順で取得するSQL
+try {
+    $sql_new_arrivals = "SELECT product_id, name, price, image_url FROM products ORDER BY created_at DESC LIMIT 8";
+    $stmt_new_arrivals = $pdo->query($sql_new_arrivals);
+    $new_arrivals_products = $stmt_new_arrivals->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    // データベースエラー時の処理 (実際はより詳細なエラーハンドリング推奨)
+    error_log("DB Error: " . $e->getMessage());
+    $new_arrivals_products = []; // エラー時は空の配列を設定
 }
 ?>
 
@@ -88,30 +102,31 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </form>
     </section>
-    <div class="container">
+
+    <!-- ✨ 新着商品一覧 ✨ -->
+    <div class="container" style="margin-bottom: 80px;">
         <h2 class="title is-2" style="margin-bottom: 30px;">✨ 新着商品 ✨</h2>
 
         <div class="grid">
-            <?php if (count($new_arrivals_products) === 0): ?>
+            <?php if (empty($new_arrivals_products)): ?>
                 <p>現在、新着商品はありません。</p>
             <?php else: ?>
                 <?php foreach ($new_arrivals_products as $item): ?>
                     <div class="card">
-                        <a href="../product-detail.php?id=<?= htmlspecialchars($item['product_id']) ?>">
+                        <a href="../ProductDetail.php?id=<?= htmlspecialchars($item['product_id']) ?>">
                             <img src="../<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>
-
                         <p class="price"><?= number_format($item['price']) ?>円</p>
-
-                        <form method="post" class="star-form" action="favorite.php">
+                        <form method="post" class="star-form" action="../favorite.php">
                             <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
-                            <button type="submit" class="star">★</button>
+                            <button type="submit" class="star" title="お気に入りに追加">★</button>
                         </form>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
+
         <a href="../searchresults.php" class="button is-info is-outlined" style="margin-top: 30px;">もっと見る</a>
     </div>
 
