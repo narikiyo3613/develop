@@ -59,6 +59,8 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
+<a href="login/login-top.php" class="back-btn">←</a>
+
 <h2>お気に入り一覧（<?= count($favorites) ?>件）</h2>
 
 <div id="favorite-list">
