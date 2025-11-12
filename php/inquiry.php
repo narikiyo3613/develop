@@ -51,7 +51,7 @@
 </head>
 <body>
     <h1>お問い合わせ</h1>
-    <form action="../register/inquiry-thanks.php" method="post">
+    <form action="inquiry-thanks.php" method="post">
         <label for="message">お問合せ内容:</label>
         <textarea id="message" name="message"></textarea>
         <br>
