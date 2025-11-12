@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>パスワード変更</title>
     <link rel="stylesheet" href="../css/user_detail.css">
+    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 </head>
 <body>
 <div class="user-detail-container" style="text-align:center; margin-top:80px;">
