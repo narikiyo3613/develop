@@ -1,6 +1,5 @@
 <?php
 session_start();
-// db-connect.phpがデータベース接続を$pdo変数に格納していると仮定
 require_once 'db-connect.php';
 
 // ログイン中のユーザーIDを取得
@@ -14,7 +13,7 @@ if (!$user_id) {
     exit;
 }
 
-// データベースからカート内容を取得するSQL
+// データベースからカート内容を取得する
 $sql = "
     SELECT 
         c.cart_id,
@@ -23,7 +22,6 @@ $sql = "
         p.name,
         p.price,
         p.image_url,
-        p.shop,
         p.birthday
     FROM carts AS c
     JOIN products AS p ON c.product_id = p.product_id
