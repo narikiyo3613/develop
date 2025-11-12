@@ -22,6 +22,7 @@ try {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="../css/top.css">
     <link rel="stylesheet" href="../css/intro.css">
+    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 </head>
 
 <body>
@@ -88,17 +89,25 @@ try {
         <h2 class="title is-2" style="margin-bottom: 30px;">✨ 新着商品 ✨</h2>
 
         <div class="grid">
-            <a href="product-detail.php?id=<?= htmlspecialchars($item['product_id']) ?>">
-                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
-                <h3><?= htmlspecialchars($item['name']) ?></h3>
-            </a>
+            <?php if (count($new_arrivals_products) === 0): ?>
+                <p>現在、新着商品はありません。</p>
+            <?php else: ?>
+                <?php foreach ($new_arrivals_products as $item): ?>
+                    <div class="card">
+                        <a href="product-detail.php?id=<?= htmlspecialchars($item['product_id']) ?>">
+                            <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                            <h3><?= htmlspecialchars($item['name']) ?></h3>
+                        </a>
 
-            <p class="price"><?= number_format($item['price']) ?>円</p>
+                        <p class="price"><?= number_format($item['price']) ?>円</p>
 
-            <form method="post" class="star-form" action="favorite.php">
-                <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
-                <button type="submit" class="star">★</button>
-            </form>
+                        <form method="post" class="star-form" action="favorite.php">
+                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
+                            <button type="submit" class="star">★</button>
+                        </form>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
         <a href="searchresults.php" class="button is-info is-outlined" style="margin-top: 30px;">もっと見る</a>
     </div>
