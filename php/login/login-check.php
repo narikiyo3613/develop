@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color:#ff7f7f;
         '>
             <h2>メールアドレスまたはパスワードが間違っています。</h2>
-            <a href='login.html' style='color:#ff7f7f;text-decoration:underline;'>ログインページに戻る</a>
+            <a href='login.php' style='color:#ff7f7f;text-decoration:underline;'>ログインページに戻る</a>
         </div>
         ";
     }

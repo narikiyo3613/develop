@@ -1,3 +1,4 @@
+/* 画面全体 */
 body {
   margin: 0;
   font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
@@ -5,95 +6,48 @@ body {
   color: #222;
 }
 
+/* 全体レイアウト：左にサイドメニュー、右に内容 */
 .user-detail-container {
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
-  padding: 40px;
-}
-
-/* 戻るボタン */
-.back-button {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-}
-
-.back-link {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  background-color: #8fd6c6;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 50px;
-  font-size: 30px;
-  color: white;
-  text-decoration: none;
-}
-
-/* ユーザー情報ヘッダー */
-.user-header {
-  display: flex;
-  align-items: center;
-  margin-left: 100px;
-  margin-top: 30px;
-}
-
-.user-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: #f4c4c4;
-  object-fit: cover;
-}
-
-.user-name {
-  font-size: 1.5rem;
-  margin-left: 20px;
+  padding: 60px 100px;
+  gap: 60px;
 }
 
 /* サイドメニュー */
 .side-menu {
-  position: absolute;
-  top: 180px;
-  left: 100px;
+  width: 200px;
+  margin-top: 150px;
+  flex-shrink: 0; /* ← サイドメニューの幅を固定 */
 }
 
-.side-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* メイン部分：縦並びにする */
+.profile-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* ← これがキモ！ */
+  gap: 40px; /* フォームの間隔 */
+  min-width: 0; /* ← レイアウト崩れ防止 */
 }
 
-.side-menu li {
-  margin: 20px 0;
-}
-
-.side-menu a {
-  text-decoration: none;
-  color: #000;
-  font-size: 1.2rem;
-}
-
-/* プロフィールフォーム */
+/* 各フォームカード */
 .profile-card {
-  position: absolute;
-  top: 160px;
-  right: 120px;
-  width: 450px;
-  background-color: #ddd;
+  width: 100%;
+  background-color: #f8f8f8;
   border-radius: 20px;
   padding: 30px 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
+/* タイトルなど */
 .profile-card h2 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 10px;
 }
 
 .profile-card hr {
-  border: 1px solid #444;
+  border: 1px solid #ccc;
   margin-bottom: 20px;
 }
 
@@ -110,6 +64,8 @@ body {
   border: none;
   border-radius: 6px;
   background-color: #fff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .profile-card button {
@@ -120,5 +76,22 @@ body {
   color: #fff;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.2s;
   float: right;
+}
+
+.profile-card button:hover {
+  background-color: #ff7b7b;
+}
+
+/* サイドメニューリンク */
+.side-menu a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+.side-menu a:hover {
+  color: #ff9e9e;
 }
