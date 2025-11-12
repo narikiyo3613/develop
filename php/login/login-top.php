@@ -57,7 +57,7 @@ if (!isset($_SESSION['user_id'])) {
     <div id="popup" class="popup">
         <div class="popup-content">
             <form action="../searchresults.php" method="get" class="popup-search-form">
-                <input type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
+                <input type="text" name="keyword" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
                 <button type="submit" class="search-icon-btn">🔍</button>
             </form>
 
@@ -79,7 +79,7 @@ if (!isset($_SESSION['user_id'])) {
         <form action="../searchresults.php" method="get">
             <div class="field has-addons is-justify-content-center">
                 <div class="control is-expanded">
-                    <input class="input is-large" type="text" name="query" maxlength="100"
+                    <input class="input is-large" type="text" name="keyword" maxlength="100"
                         placeholder="気になる犬種や場所で探す" required>
                 </div>
                 <div class="control">
