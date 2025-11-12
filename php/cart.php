@@ -46,14 +46,14 @@ if (!empty($cart_items)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>カート商品一覧</title>
-    <link rel="stylesheet" href="cart.css"> 
+    <link rel="stylesheet" href="../css/carts.css"> 
 </head>
 <body>
 
     <div class="cart-container">
 
     <!-- ホーム画面に戻るボタン -->
-    <a href="top.html" class="back-btn">←</a>
+    <a href="login/login-top.php" class="back-btn">←</a>
     <h1 class="title">カート</h1>
 
         <div class="product-grid">

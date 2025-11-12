@@ -11,7 +11,8 @@ $user_id = $_SESSION['user_id'];
 // お気に入り一覧取得
 $sql = "
     SELECT 
-        f.favorite_id, 
+        f.favorite_id,
+        f.user_id,
         p.product_id, 
         p.name, 
         p.description,

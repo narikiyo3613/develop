@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // 未ログインならログインページにリダイレクト
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../login/login.php");
@@ -114,7 +113,7 @@ try {
             <?php else: ?>
                 <?php foreach ($new_arrivals_products as $item): ?>
                     <div class="card">
-                        <a href="../product-detail.php?id=<?= htmlspecialchars($item['product_id']) ?>">
+                        <a href="../ProductDetails.php?id=<?= htmlspecialchars($item['product_id']) ?>">
                             <img src="../<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>

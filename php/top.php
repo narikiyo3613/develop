@@ -94,14 +94,14 @@ try {
             <?php else: ?>
                 <?php foreach ($new_arrivals_products as $item): ?>
                     <div class="card">
-                        <a href="product-detail.php?id=<?= htmlspecialchars($item['product_id']) ?>">
+                        <a href="ProductDetails.php?id=<?= htmlspecialchars($item['product_id']) ?>">
                             <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>
 
                         <p class="price"><?= number_format($item['price']) ?>円</p>
 
-                        <form method="post" class="star-form" action="favorite.php">
+                        <form method="post" class="star-form" action="login/login.php">
                             <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
                             <button type="submit" class="star">★</button>
                         </form>
