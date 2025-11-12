@@ -57,7 +57,7 @@ if (!isset($_SESSION['user_id'])) {
     <div id="popup" class="popup">
         <div class="popup-content">
             <form action="../searchresults.php" method="get" class="popup-search-form">
-                <input type="text" name="query" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
+                <input type="text" name="keyword" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
                 <button type="submit" class="search-icon-btn">🔍</button>
             </form>
 
@@ -79,7 +79,7 @@ if (!isset($_SESSION['user_id'])) {
         <form action="../searchresults.php" method="get">
             <div class="field has-addons is-justify-content-center">
                 <div class="control is-expanded">
-                    <input class="input is-large" type="text" name="query" maxlength="100"
+                    <input class="input is-large" type="text" name="keyword" maxlength="100"
                         placeholder="気になる犬種や場所で探す" required>
                 </div>
                 <div class="control">
@@ -88,32 +88,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </form>
     </section>
-    <div class="container">
-        <h2 class="title is-2" style="margin-bottom: 30px;">✨ 新着商品 ✨</h2>
-
-        <div class="grid">
-            <?php if (count($new_arrivals_products) === 0): ?>
-                <p>現在、新着商品はありません。</p>
-            <?php else: ?>
-                <?php foreach ($new_arrivals_products as $item): ?>
-                    <div class="card">
-                        <a href="../product-detail.php?id=<?= htmlspecialchars($item['product_id']) ?>">
-                            <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
-                            <h3><?= htmlspecialchars($item['name']) ?></h3>
-                        </a>
-
-                        <p class="price"><?= number_format($item['price']) ?>円</p>
-
-                        <form method="post" class="star-form" action="favorite.php">
-                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
-                            <button type="submit" class="star">★</button>
-                        </form>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-        <a href="../searchresults.php" class="button is-info is-outlined" style="margin-top: 30px;">もっと見る</a>
-    </div>
+    
 
     <!-- フッター -->
     <footer class="footer">

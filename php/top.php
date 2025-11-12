@@ -101,7 +101,7 @@ try {
 
                         <p class="price"><?= number_format($item['price']) ?>円</p>
 
-                        <form method="post" class="star-form" action="favorite.php">
+                        <form method="post" class="star-form" action="login/login.php">
                             <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
                             <button type="submit" class="star">★</button>
                         </form>
