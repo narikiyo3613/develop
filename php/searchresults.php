@@ -1,4 +1,7 @@
 <?php
+// ★ 1. セッションを開始
+session_start();
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 ?>
@@ -6,6 +9,10 @@ error_reporting(E_ALL);
 <?php
 // ====== データベース接続 ======
 require_once 'db-connect.php';
+
+// ★ 2. ログイン状態の確認
+// 'user_id' セッション変数に値があればログイン中と判断
+$is_logged_in = isset($_SESSION['user_id']);
 
 
 // ====== 入力を取得 ======
@@ -71,12 +78,14 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <h3><?= htmlspecialchars($item['name']) ?></h3>
                         <p class="price"><?= number_format($item['price']) ?>円</p>
 
-        <form method="post" class="star-form" action="favorite.php">
-            <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
-            <button type="submit" class="star">★</button>
-        </form>
-
-                    </div>
+                        <?php if ($is_logged_in): ?>
+                        <form method="post" class="star-form" action="favorite.php">
+                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
+                            <button type="submit" class="star">★</button>
+                        </form>
+                        <?php else: ?>
+                        <?php endif; ?>
+                        </div>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
