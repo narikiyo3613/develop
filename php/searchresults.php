@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productId = this.dataset.productId;
             const userId = this.dataset.userId;
 
-            fetch('favorite-add.php', {
+            fetch('add_favorite.php', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
