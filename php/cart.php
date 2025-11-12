@@ -46,7 +46,7 @@ if (!empty($cart_items)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>カート商品一覧</title>
-    <link rel="stylesheet" href="../css/cart.css"> 
+    <link rel="stylesheet" href="../css/carts.css"> 
 </head>
 <body>
 
