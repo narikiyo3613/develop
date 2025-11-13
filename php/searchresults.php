@@ -66,8 +66,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <div class="container">
-
-        <a href="top.php" class="back-btn">←</a>
+        <a href="login/login-top.php" class="back-btn">←</a>
 
         <form class="search-form" method="get">
             <input type="text" name="keyword" placeholder="🔍 ペットフード" value="<?= htmlspecialchars($keyword) ?>">
@@ -94,20 +93,16 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <h3><?= htmlspecialchars($item['name']) ?></h3>
                         <p class="price"><?= number_format($item['price']) ?>円</p>
 
-                        <?php if ($is_logged_in): ?>
-                        <form method="post" class="star-form" action="favorite.php">
-                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
-                            <button type="submit" class="star">★</button>
-                        </form>
-                        <?php else: ?>
-                        <?php endif; ?>
-                        </div>
+                        <button class="star"
+                            data-product-id="<?= htmlspecialchars($item['product_id']) ?>"
+                            data-user-id="<?= $user_id ?? '' ?>">
+                            ★
+                        </button>
+                    </div>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
-
     </div>
-</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -115,34 +110,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     stars.forEach(star => {
         star.addEventListener('click', function(e) {
-            // ログインしていない場合は何もしない（リンク遷移）
-            if (!this.dataset.userId) return;
-
             e.preventDefault();
 
-            // 二度押し防止
-            if (this.classList.contains('active')) return;
-
-            const productId = this.dataset.productId;
             const userId = this.dataset.userId;
+            const productId = this.dataset.productId;
 
+            // 🔒 未ログインならログインページへ
+            if (!userId) {
+                window.location.href = 'login/login.php';
+                return;
+            }
+
+            // 押した瞬間に見た目を変更
+            this.classList.add('active');
+
+            // ✅ favorites に登録（非同期通信）
             fetch('add_favorite.php', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    product_id: productId,
-                    user_id: userId
-                })
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: `product_id=${encodeURIComponent(productId)}`
             })
             .then(res => res.json())
             .then(data => {
-                if (data.success) {
-                    this.classList.add('active');
-                } else {
-                    alert('登録に失敗しました');
+                if (!data.success) {
+                    alert('お気に入り登録に失敗しました');
+                    this.classList.remove('active'); // 失敗時は元に戻す
                 }
             })
-            .catch(err => console.error(err));
+            .catch(err => {
+                console.error(err);
+                this.classList.remove('active');
+            });
         });
     });
 });

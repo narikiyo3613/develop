@@ -74,6 +74,24 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <button type="submit">変更を保存</button>
         </form>
     </div>
+    
+    <!-- パスワード変更 -->
+        <div class="profile-card">
+            <h2>パスワード変更</h2>
+            <hr>
+            <form action="update-password.php" method="post">
+                <label for="current_password">現在のパスワード</label>
+                <input type="password" id="current_password" name="current_password" required>
+
+                <label for="new_password">新しいパスワード</label>
+                <input type="password" id="new_password" name="new_password" required>
+
+                <label for="confirm_password">新しいパスワード（確認）</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+
+                <button type="submit">パスワードを変更</button>
+            </form>
+        </div>
 
 </div>
 

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
-  background-color: #fff;
+  background-color: #ffe6f0;
   color: #222;
 }
 
@@ -13,10 +13,17 @@ body {
 }
 
 /* 戻るボタン */
-.back-button {
-  position: absolute;
-  top: 30px;
-  left: 30px;
+.back-btn {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    text-decoration: none;
+    background-color: #6ec6a3;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 50%;
 }
 
 .back-link {
@@ -78,13 +85,11 @@ body {
 
 /* プロフィールフォーム */
 .profile-card {
-  position: absolute;
-  top: 160px;
-  right: 120px;
-  width: 450px;
-  background-color: #ddd;
+  width: 100%;
+  background-color: #f8f8f8;
   border-radius: 20px;
   padding: 30px 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .profile-card h2 {
@@ -121,4 +126,8 @@ body {
   font-weight: bold;
   cursor: pointer;
   float: right;
+}
+
+.profile-card button:hover {
+  background-color: #ff7b7b;
 }
