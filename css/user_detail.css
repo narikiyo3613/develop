@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
-  background-color: #fff;
+  background-color: #ffe6f0;
   color: #222;
 }
 
@@ -13,10 +13,17 @@ body {
 }
 
 /* 戻るボタン */
-.back-button {
-  position: absolute;
-  top: 30px;
-  left: 30px;
+.back-btn {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    text-decoration: none;
+    background-color: #6ec6a3;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 50%;
 }
 
 .back-link {

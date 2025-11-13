@@ -78,6 +78,12 @@ body {
     padding: 20px;
     text-align: left;
     position: relative;
+    
+}
+
+.card:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .card img {

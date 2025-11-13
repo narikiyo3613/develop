@@ -31,6 +31,7 @@ try {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="../../css/top.css">
     <link rel="stylesheet" href="../../css/intro.css">
+    <link rel="icon" type="image/png" href="../../image/もふもふアイコン.png">
     
 </head>
 
@@ -113,7 +114,7 @@ try {
             <?php else: ?>
                 <?php foreach ($new_arrivals_products as $item): ?>
                     <div class="card">
-                        <a href="../ProductDetail.php?id=<?= htmlspecialchars($item['product_id']) ?>">
+                        <a href="../ProductDetails.php?id=<?= htmlspecialchars($item['product_id']) ?>">
                             <img src="../<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>

@@ -10,10 +10,16 @@ body {
 }
 
 .back-btn {
-    font-size: 50px;
-    color: #76c7a5;
+    position: absolute;
+    top: 30px;
+    left: 40px;
     text-decoration: none;
-    margin-right: 40px;
+    background-color: #6ec6a3;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 50%;
 }
 
 .title span {

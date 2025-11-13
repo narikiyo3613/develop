@@ -94,7 +94,7 @@ try {
             <?php else: ?>
                 <?php foreach ($new_arrivals_products as $item): ?>
                     <div class="card">
-                        <a href="ProductDetail.php?id=<?= htmlspecialchars($item['product_id']) ?>">
+                        <a href="ProductDetails.php?id=<?= htmlspecialchars($item['product_id']) ?>">
                             <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>
@@ -137,7 +137,7 @@ try {
     <ul>
         <li><a href="payment_form1.html">支払い画面</a></li>
         <li><a href="admin1.html">管理者画面</a></li>
-        <li><a href="user-detail.html">マイページ</a></li>
+        <li><a href="user-detail.php">マイページ</a></li>
         <li><a href="https://maps.app.goo.gl/fZsdSSUxEbDEXhQx6">本店</a></li>
         <li><a href="searchStore.html">店舗検索</a></li>
         <li><a href="terms.html">利用規約</a></li>
