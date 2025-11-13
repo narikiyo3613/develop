@@ -50,7 +50,10 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         </ul>
     </div>
 
+    <div class="profile-section">
+
     <!-- プロフィール編集フォーム -->
+    
     <div class="profile-card">
         <h2>プロフィール情報</h2>
         <hr>
@@ -92,6 +95,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <button type="submit">パスワードを変更</button>
             </form>
         </div>
+
+</div>
 
 </div>
 

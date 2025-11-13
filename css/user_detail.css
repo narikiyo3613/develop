@@ -84,6 +84,14 @@ body {
 }
 
 /* プロフィールフォーム */
+
+.profile-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* ← これが効いてない可能性大！ */
+  gap: 40px;
+}
+
 .profile-card {
   width: 100%;
   background-color: #f8f8f8;
