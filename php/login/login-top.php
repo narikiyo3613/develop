@@ -31,6 +31,7 @@ try {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="../../css/top.css">
     <link rel="stylesheet" href="../../css/intro.css">
+    <link rel="icon" type="image/png" href="../../image/もふもふアイコン.png">
     
 </head>
 

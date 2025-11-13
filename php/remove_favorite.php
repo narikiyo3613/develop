@@ -1,5 +1,6 @@
 <?php
 session_start();
+echo '<head><link rel="icon" type="image/png" href="../image/もふもふアイコン.png"></head>';
 require_once 'db-connect.php';
 
 if (!isset($_SESSION['user_id'])) {

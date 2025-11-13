@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result) {
         echo "
+        <head><link rel='icon' type='image/png' href='../../image/もふもふアイコン.png'></head>
         <div style='
             font-family: \"Hiragino Kaku Gothic ProN\", sans-serif;
             background-color:#f8fbff;

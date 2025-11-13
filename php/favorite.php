@@ -39,7 +39,7 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <meta charset="UTF-8">
 <title>お気に入り一覧</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 <style>
 .favorite-item{
     display: flex;

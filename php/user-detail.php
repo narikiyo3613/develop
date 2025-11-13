@@ -22,6 +22,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>マイページ</title>
     <link rel="stylesheet" href="../css/user_detail.css">
+    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 </head>
 <body>
 

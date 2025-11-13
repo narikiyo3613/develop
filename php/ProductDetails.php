@@ -54,11 +54,12 @@ if ($product_id && is_numeric($product_id)) {
     <title><?= $product ? htmlspecialchars($product['name']) : '商品詳細' ?></title>
     <link rel="stylesheet" href="../css/searchresults-style.css"> 
     <link rel="stylesheet" href="../css/product-detail-style.css"> 
+    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 </head>
 <body>
     <div class="container">
 
-        <a href="top.php" class="back-btn">←</a> 
+        <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
 
         <?php if ($error_message): ?>
             <div class="detail-card error-box">
