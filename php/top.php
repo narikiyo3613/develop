@@ -117,7 +117,7 @@ try {
     <div class="about-container">
 
         <div class="logo-area">
-            <img src="../image/もふもふアイコン.png" alt="MofuMofuロゴ" class="main-logo">
+            <img src="../image/もふもふアイコン.png" alt="MofuMofuロゴ" class="main-logo"><br>
             <h1 class="site-title">MofuMofu</h1>
         </div>
 
