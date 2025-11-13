@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // ✅ ログイン済みの場合: お気に入り登録ページへ（お気に入り処理を実行）
                 // フォームの action に設定されている favorite.php へ遷移させる
                 // ここでは submit を行い、form の action へ遷移させる
-                this.closest('.star-form').submit(); 
+                this.classList.add('active'); 
                 
             } else {
                 // 🔒 未ログインの場合: ログインページへリダイレクト
