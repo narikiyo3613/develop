@@ -59,7 +59,7 @@ if ($product_id && is_numeric($product_id)) {
 <body>
     <div class="container">
 
-        <a href="top.php" class="back-btn">←</a> 
+        <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
 
         <?php if ($error_message): ?>
             <div class="detail-card error-box">
