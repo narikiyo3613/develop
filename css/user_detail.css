@@ -85,13 +85,11 @@ body {
 
 /* プロフィールフォーム */
 .profile-card {
-  position: absolute;
-  top: 160px;
-  right: 120px;
-  width: 450px;
-  background-color: #ddd;
+  width: 100%;
+  background-color: #f8f8f8;
   border-radius: 20px;
   padding: 30px 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .profile-card h2 {
@@ -128,4 +126,8 @@ body {
   font-weight: bold;
   cursor: pointer;
   float: right;
+}
+
+.profile-card button:hover {
+  background-color: #ff7b7b;
 }
