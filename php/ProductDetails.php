@@ -119,9 +119,8 @@ if ($product_id && is_numeric($product_id)) {
                 </div>
             </div>
         <?php endif; ?>
-        <script src="../script/searchresult.js"></script>
         <script src="../script/ProductDetail.js"></script>
-
+        <script src="../script/searchresult.js"></script>
     </div>
 </body>
 
