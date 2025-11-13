@@ -54,7 +54,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="profile-card">
         <h2>プロフィール情報</h2>
         <hr>
-        <form action="update_profile.php" method="post">
+        <form action="update-profile.php" method="post">
             <label for="name">名前</label>
             <input type="text" id="name" name="name"
                 value="<?php echo htmlspecialchars($user['name']); ?>">

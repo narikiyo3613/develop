@@ -7,9 +7,9 @@ body {
 
 .user-detail-container {
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
-  padding: 40px;
+  padding: 60px 100px;
+  gap: 60px;
 }
 
 /* 戻るボタン */
@@ -90,6 +90,7 @@ body {
   border-radius: 20px;
   padding: 30px 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .profile-card h2 {
