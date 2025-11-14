@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const fd = new FormData();
             fd.append("product_id", id);
 
-            const res = await fetch("../add-favorite.php", {
+            const res = await fetch("../add_favorite.php", {
                 method: "POST",
                 body: fd
             });
