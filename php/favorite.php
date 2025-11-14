@@ -110,7 +110,7 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <script>
-// ===== お気に入り解除（Ajax） =====
+// ===== お気に入り解除=====
 $(".delete-fav").on("click", function(event){
     event.stopPropagation(); // カードリンクのクリックを無効化
     event.preventDefault();
