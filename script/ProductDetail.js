@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 🔐 未ログインの場合: アラートを出してログイン画面へ
                 alert('お気に入り登録にはログインが必要です。');
                 // 適切なログイン画面のパスを指定してください
-                window.location.href = '../login/login.php'; 
+                window.location.href = '../php/login/login.php'; 
                 return; // ここで処理を終了
             }
             
