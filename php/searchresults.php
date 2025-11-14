@@ -76,7 +76,9 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <option value="猫" <?= $genre === '猫' ? 'selected' : '' ?>>猫</option>
                 <option value="小動物" <?= $genre === '小動物' ? 'selected' : '' ?>>小動物</option>
                 <option value="鳥" <?= $genre === '鳥' ? 'selected' : '' ?>>鳥</option>
+                <option value="鹿" <?= $genre === '鹿' ? 'selected' : '' ?>>鹿</option>
                 <option value="ペットフード" <?= $genre === 'ペットフード' ? 'selected' : '' ?>>ペットフード</option>
+
             </select>
             <button type="submit">検索</button>
         </form>
