@@ -59,11 +59,12 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-<a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
 
 <h2>お気に入り一覧（<?= count($favorites) ?>件）</h2>
+<a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
 
 <div id="favorite-list">
+
 <?php foreach ($favorites as $fav): ?>
     <div class="favorite-item" id="fav-<?= $fav['favorite_id'] ?>">
 
