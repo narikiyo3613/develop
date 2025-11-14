@@ -7,7 +7,6 @@ error_reporting(E_ALL);
 // 実際のファイル名に合わせてください
 require_once 'db-connect.php';
 
-require_once 'db-connect.php';
 
 // セッションを開始
 if (session_status() == PHP_SESSION_NONE) {
