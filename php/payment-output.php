@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 </head>
 <body>
+    <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
     <div class="complete-container">
         <div class="image-area">
             <img src="images/success.png" alt="登録完了" class="success-img">

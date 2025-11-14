@@ -66,7 +66,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <div class="container">
-        <a href="login/login-top.php" class="back-btn">←</a>
+        <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
 
         <form class="search-form" method="get">
             <input type="text" name="keyword" placeholder="🔍 ペットフード" value="<?= htmlspecialchars($keyword) ?>">
@@ -76,7 +76,9 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <option value="猫" <?= $genre === '猫' ? 'selected' : '' ?>>猫</option>
                 <option value="小動物" <?= $genre === '小動物' ? 'selected' : '' ?>>小動物</option>
                 <option value="鳥" <?= $genre === '鳥' ? 'selected' : '' ?>>鳥</option>
+                <option value="鹿" <?= $genre === '鹿' ? 'selected' : '' ?>>鹿</option>
                 <option value="ペットフード" <?= $genre === 'ペットフード' ? 'selected' : '' ?>>ペットフード</option>
+
             </select>
             <button type="submit">検索</button>
         </form>

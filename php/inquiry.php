@@ -51,6 +51,7 @@
     </style>
 </head>
 <body>
+    <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
     <h1>お問い合わせ</h1>
     <form action="inquiry-thanks.php" method="post">
         <label for="message">お問合せ内容:</label>
