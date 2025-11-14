@@ -15,6 +15,10 @@ try {
     $sql_new_arrivals = "SELECT product_id, name, price, image_url FROM products ORDER BY created_at DESC LIMIT 8";
     $stmt_new_arrivals = $pdo->query($sql_new_arrivals);
     $new_arrivals_products = $stmt_new_arrivals->fetchAll(PDO::FETCH_ASSOC);
+    $sql_fav = "SELECT product_id FROM favorites WHERE user_id = ?";
+    $stmt_fav = $pdo->prepare($sql_fav);
+    $stmt_fav->execute([$_SESSION['user_id']]);
+    $favorites = $stmt_fav->fetchAll(PDO::FETCH_COLUMN);
 } catch (PDOException $e) {
     // データベースエラー時の処理 (実際はより詳細なエラーハンドリング推奨)
     error_log("DB Error: " . $e->getMessage());
@@ -119,10 +123,11 @@ try {
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>
                         <p class="price"><?= number_format($item['price']) ?>円</p>
-                        <button
-                            class="star favorite-btn"
+                        <button 
+                            class="star favorite-btn <?= in_array($item['product_id'], $favorites) ? 'favorited' : '' ?>"
                             data-product-id="<?= $item['product_id'] ?>"
                         >★</button>
+
 
 
                     </div>
