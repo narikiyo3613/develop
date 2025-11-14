@@ -96,7 +96,7 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
                 <div class="card" id="fav-<?= $fav['favorite_id'] ?>">
 
-                    <!-- カード全体をクリックで商品詳細へ -->
+                    <!-- カードをクリックで商品詳細 -->
                     <a class="card-link" href="detail.php?id=<?= $fav['product_id'] ?>">
 
                         <img src="<?= htmlspecialchars($fav['image_url'] ?: 'noimage.png') ?>"
@@ -120,7 +120,7 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <script>
-// ===== お気に入り解除（Ajax） =====
+// ===== お気に入り解除=====
 $(".delete-fav").on("click", function(event){
     event.stopPropagation(); // カードリンクのクリックを無効化
     event.preventDefault();
