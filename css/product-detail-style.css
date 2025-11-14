@@ -139,3 +139,15 @@
     line-height: 1.8;
     color: #444;
 }
+/* 例: product-detail-style.css */
+.star {
+    color: #ccc; /* 通常の星の色 */
+    font-size: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.star.active {
+    color: gold; /* 🌟アクティブ時の星の色 (必須) */
+}

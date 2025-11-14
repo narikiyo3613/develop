@@ -100,13 +100,20 @@ if ($product_id && is_numeric($product_id)) {
                     </div>
 
                     <div class="action-area">
+                        <div class="quantity-control">
+                            <label for="quantity">数量:</label>
+                            <input type="number" id="quantity" value="1" min="1"
+                                max="<?= htmlspecialchars($product['stock']) ?>" style="width: 50px;">
+                        </div>
                         <button class="add-to-cart-btn" <?= $product['stock'] <= 0 ? 'disabled' : '' ?>>
                             カートに入れる
                         </button>
 
                         <form method="post" class="star-form" action="favorite.php">
                             <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['product_id']) ?>">
-                            <button type="submit" class="star" data-product-id="<?= htmlspecialchars($product['product_id']) ?>" data-user-id="<?= htmlspecialchars($current_user_id) ?>">★</button>
+                            <button type="submit" class="star"
+                                data-product-id="<?= htmlspecialchars($product['product_id']) ?>"
+                                data-user-id="<?= htmlspecialchars($current_user_id) ?>">★</button>
                         </form>
                     </div>
 
