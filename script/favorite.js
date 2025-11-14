@@ -1,33 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".favorite-btn").forEach(btn => {
-        btn.addEventListener("click", async function () {
+        btn.addEventListener("click", async function() {
 
-            const productId = this.dataset.productId;
+            const id = this.dataset.productId;
 
-            const formData = new FormData();
-            formData.append("product_id", productId);
+            const fd = new FormData();
+            fd.append("product_id", id);
 
-            const response = await fetch("../add_favorite.php", {
+            const res = await fetch("../add-favorite.php", {
                 method: "POST",
-                body: formData
+                body: fd
             });
 
-            const result = await response.json();
+            const json = await res.json();
 
-            if (result.success) {
-
-                // すでに登録済みだった場合
-                if (result.message === "already_exists") {
-                    this.classList.add("favorited");
-                    return;
+            if (json.success) {
+                if (json.mode === "added") {
+                    this.classList.add("favorited");  // 金色に
+                } else if (json.mode === "removed") {
+                    this.classList.remove("favorited"); // ピンクに戻す
                 }
-
-                // 新規追加成功時
-                this.classList.add("favorited");
-
             } else {
-                alert("お気に入り追加に失敗しました…");
+                alert("エラー：" + json.error);
             }
         });
     });
