@@ -119,12 +119,11 @@ try {
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>
                         <p class="price"><?= number_format($item['price']) ?>円</p>
-                        <button 
-                            class="star favorite-btn" 
-                            data-product-id="<?= htmlspecialchars($item['product_id']) ?>" 
-                            title="お気に入りに追加">
-                            ★
-                        </button>
+                        <button
+                            class="star favorite-btn"
+                            data-product-id="<?= $item['product_id'] ?>"
+                        >★</button>
+
 
                     </div>
                 <?php endforeach; ?>
