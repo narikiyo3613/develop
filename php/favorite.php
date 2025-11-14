@@ -2,22 +2,21 @@
 session_start();
 require_once 'db-connect.php';
 
+// ログイン確認
 if (!isset($_SESSION['user_id'])) {
     exit("ログインしてください");
 }
 
 $user_id = $_SESSION['user_id'];
+$is_logged_in = true;
 
 // お気に入り一覧取得
 $sql = "
     SELECT 
         f.favorite_id,
-        f.user_id,
         p.product_id, 
         p.name, 
-        p.description,
         p.price,
-        p.stock,
         p.category,
         p.birthday,
         p.image_url
@@ -31,62 +30,101 @@ $sql = "
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$user_id]);
 $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <title>お気に入り一覧</title>
+
+<link rel="stylesheet" href="../css/searchresults-style.css">
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
-.favorite-item{
+/* お気に入りボタン */
+.star {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #FFD700; /* 黄色で初期表示 */
+    color: white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
 }
-.favorite-item img{
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-right: 15px;
-    border-radius: 5px;
+
+/* カードをリンク化 */
+.card-link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+.back-green {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #6ec6a3;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 </style>
 </head>
 <body>
 
-<h2>お気に入り一覧（<?= count($favorites) ?>件）</h2>
+<div class="container">
 
-<div id="favorite-list">
-<?php foreach ($favorites as $fav): ?>
-    <div class="favorite-item" id="fav-<?= $fav['favorite_id'] ?>">
+    <!-- 緑の戻るボタン -->
+    <a href="top.php" class="back-green">← 戻る</a>
 
-        <!-- 画像が無い場合のデフォルト画像 -->
-        <?php
-            $img = $fav['image_url'] ?: 'noimage.png';
-        ?>
-        <img src="<?= htmlspecialchars($img) ?>" alt="">
+    <h2 class="count">お気に入り <?= count($favorites) ?> 件</h2>
 
-        <div>
-            <p><?= htmlspecialchars($fav['name']) ?></p>
-            <p>価格：<?= number_format($fav['price']) ?>円</p>
+    <div class="grid">
+        <?php if (count($favorites) === 0): ?>
+            <p>お気に入り商品がありません。</p>
+        <?php else: ?>
+            <?php foreach ($favorites as $fav): ?>
+                
+                <div class="card" id="fav-<?= $fav['favorite_id'] ?>">
 
-            <!-- Ajax お気に入り解除ボタン -->
-            <button class="delete-fav" data-id="<?= $fav['favorite_id'] ?>">
-                お気に入り解除
-            </button>
-        </div>
+                    <!-- カード全体をクリックで商品詳細へ -->
+                    <a class="card-link" href="detail.php?id=<?= $fav['product_id'] ?>">
+
+                        <img src="<?= htmlspecialchars($fav['image_url'] ?: 'noimage.png') ?>"
+                             alt="<?= htmlspecialchars($fav['name']) ?>">
+
+                        <h3><?= htmlspecialchars($fav['name']) ?></h3>
+
+                        <p class="price"><?= number_format($fav['price']) ?>円</p>
+
+                    </a>
+
+                    <!-- ★ お気に入り解除（Ajax） -->
+                    <button class="star delete-fav" data-id="<?= $fav['favorite_id'] ?>">★</button>
+
+                </div>
+
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
-<?php endforeach; ?>
+
 </div>
 
 <script>
-// ✅ Ajaxでお気に入り解除
-$(".delete-fav").on("click", function(){
+// ===== お気に入り解除（Ajax） =====
+$(".delete-fav").on("click", function(event){
+    event.stopPropagation(); // カードリンクのクリックを無効化
+    event.preventDefault();
+
     let favoriteId = $(this).data("id");
     let target = $("#fav-" + favoriteId);
 
@@ -95,14 +133,12 @@ $(".delete-fav").on("click", function(){
         type: "POST",
         data: { favorite_id: favoriteId },
         success: function(res){
-            console.log(res);
-
             target.fadeOut(300, function(){
                 $(this).remove();
 
-                // ✅ 件数を更新
-                let count = $(".favorite-item").length;
-                $("h2").text(`お気に入り一覧（${count}件）`);
+                // 件数更新
+                let count = $(".card").length;
+                $(".count").text(`お気に入り ${count} 件`);
             });
         },
         error: function(){
