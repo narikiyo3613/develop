@@ -119,10 +119,13 @@ try {
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>
                         <p class="price"><?= number_format($item['price']) ?>円</p>
-                        <form method="post" class="star-form" action="../favorite.php">
-                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
-                            <button type="submit" class="star" title="お気に入りに追加">★</button>
-                        </form>
+                        <button 
+                            class="star favorite-btn" 
+                            data-product-id="<?= htmlspecialchars($item['product_id']) ?>" 
+                            title="お気に入りに追加">
+                            ★
+                        </button>
+
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
@@ -152,10 +155,16 @@ try {
             </div>
         </div>
 
-        <div class="footer-links has-text-centered" style="margin-top:20px;">
-            <a href="../favorite.php">お気に入り</a> |
-            <a href="../cart.php">カート</a> |
-            <a href="../inquiry.php">お問い合わせ</a>
+        <ul>
+            <li><a href="searchStore.html">店舗検索</a></li>
+            <li><a href="terms.html">利用規約</a></li>
+            <li><a href="privacy.html">プライバシーポリシー</a></li>
+            <li><a href="legal_act.html">特定商取引法に基づく表示</a></li>
+            <li><a href="shipping.html">配送・送料について</a></li>
+            <li><a href="return.html">返品・交換について</a></li>
+        </ul>
+        <div class="copyright">
+            <small>© MofuMofu Systems All Rights Reserved.</small>
         </div>
     </footer>
 
@@ -171,5 +180,6 @@ try {
         });
     </script>
     <script src="../../script/topScript.js"></script>
+    <script src="../../script/favorite.js"></script>
 </body>
 </html>
