@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 💡 実際の処理の代わりに、受け取ったデータを画面に出力してみます
     echo '<head><link rel="icon" type="image/png" href="../image/もふもふアイコン.png"></head>';
+    echo '<a href="#" onclick="history.back(); return false;" class="back-btn">←</a>';
     echo "<h1>登録内容の確認</h1>";
     echo "<p>お名前（フリガナ）: $name_furigana</p>";
     echo "<p>郵便番号: $zip_code</p>";
