@@ -76,7 +76,9 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <option value="猫" <?= $genre === '猫' ? 'selected' : '' ?>>猫</option>
                 <option value="小動物" <?= $genre === '小動物' ? 'selected' : '' ?>>小動物</option>
                 <option value="鳥" <?= $genre === '鳥' ? 'selected' : '' ?>>鳥</option>
+                <option value="鹿" <?= $genre === '鹿' ? 'selected' : '' ?>>鹿</option>
                 <option value="ペットフード" <?= $genre === 'ペットフード' ? 'selected' : '' ?>>ペットフード</option>
+
             </select>
             <button type="submit">検索</button>
         </form>
@@ -84,24 +86,28 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2 class="count">全 <?= count($products) ?> 件</h2>
 
         <div class="grid">
-            <?php if (count($products) === 0): ?>
-                <p>該当する商品が見つかりませんでした。</p>
-            <?php else: ?>
-                <?php foreach ($products as $item): ?>
-                    <div class="card">
-                        <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
-                        <h3><?= htmlspecialchars($item['name']) ?></h3>
-                        <p class="price"><?= number_format($item['price']) ?>円</p>
+    <?php if (count($products) === 0): ?>
+        <p>該当する商品が見つかりませんでした。</p>
+    <?php else: ?>
+        <?php foreach ($products as $item): ?>
+            <div class="card" 
+                 onclick="if(!event.target.classList.contains('star')) { 
+                     window.location.href='ProductDetails.php?id=<?= htmlspecialchars($item['product_id']) ?>'; 
+                 }">
+                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                <h3><?= htmlspecialchars($item['name']) ?></h3>
+                <p class="price"><?= number_format($item['price']) ?>円</p>
 
-                        <button class="star"
-                            data-product-id="<?= htmlspecialchars($item['product_id']) ?>"
-                            data-user-id="<?= $user_id ?? '' ?>">
-                            ★
-                        </button>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
+                <button class="star"
+                    data-product-id="<?= htmlspecialchars($item['product_id']) ?>"
+                    data-user-id="<?= $user_id ?? '' ?>">
+                    ★
+                </button>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+
     </div>
 
 <script src="../script/searchresult.js"></script>
