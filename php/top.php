@@ -117,7 +117,7 @@ try {
     <div class="about-container">
 
         <div class="logo-area">
-            <img src="../image/もふもふアイコン.png" alt="MofuMofuロゴ" class="main-logo">
+            <img src="../image/もふもふアイコン.png" alt="MofuMofuロゴ" class="main-logo"><br>
             <h1 class="site-title">MofuMofu</h1>
         </div>
 
@@ -135,10 +135,6 @@ try {
 
     </div>
     <ul>
-        <li><a href="payment_form1.html">支払い画面</a></li>
-        <li><a href="admin1.html">管理者画面</a></li>
-        <li><a href="user-detail.html">マイページ</a></li>
-        <li><a href="https://maps.app.goo.gl/fZsdSSUxEbDEXhQx6">本店</a></li>
         <li><a href="searchStore.html">店舗検索</a></li>
         <li><a href="terms.html">利用規約</a></li>
         <li><a href="privacy.html">プライバシーポリシー</a></li>
