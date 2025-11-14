@@ -28,16 +28,20 @@ if ($genre !== '') {
 
 $favorite_product_ids = [];
 if ($is_logged_in) {
-    $sql = "SELECT product_id FROM favorites WHERE user_id = ?";
-    $stmt = $pdo->prepare($sql);
+
+    
+    $sql_fav = "SELECT product_id FROM favorites WHERE user_id = ?";
+    $stmt = $pdo->prepare($sql_fav);
     $stmt->execute([$user_id]);
     $favorite_product_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
 }
 
-// データ取得
+// データ取得（メイン検索）
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
