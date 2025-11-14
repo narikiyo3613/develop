@@ -22,6 +22,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>マイページ</title>
     <link rel="stylesheet" href="../css/user_detail.css">
+    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 </head>
 <body>
 
@@ -49,11 +50,14 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         </ul>
     </div>
 
+    <div class="profile-section">
+
     <!-- プロフィール編集フォーム -->
+    
     <div class="profile-card">
         <h2>プロフィール情報</h2>
         <hr>
-        <form action="update_profile.php" method="post">
+        <form action="update-profile.php" method="post">
             <label for="name">名前</label>
             <input type="text" id="name" name="name"
                 value="<?php echo htmlspecialchars($user['name']); ?>">
@@ -73,6 +77,26 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <button type="submit">変更を保存</button>
         </form>
     </div>
+    
+    <!-- パスワード変更 -->
+        <div class="profile-card">
+            <h2>パスワード変更</h2>
+            <hr>
+            <form action="update-password.php" method="post">
+                <label for="current_password">現在のパスワード</label>
+                <input type="password" id="current_password" name="current_password" required>
+
+                <label for="new_password">新しいパスワード</label>
+                <input type="password" id="new_password" name="new_password" required>
+
+                <label for="confirm_password">新しいパスワード（確認）</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+
+                <button type="submit">パスワードを変更</button>
+            </form>
+        </div>
+
+</div>
 
 </div>
 

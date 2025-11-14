@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("UPDATE users SET name = ?, email = ?, address = ?, phone = ? WHERE user_id = ?");
     $stmt->execute([$name, $email, $address, $phone, $user_id]);
 
-    header("Location: user_detail.php");
+    header("Location: user-detail.php");
     exit;
 }
 ?>

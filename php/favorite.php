@@ -41,7 +41,7 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <link rel="stylesheet" href="../css/searchresults-style.css">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 <style>
 /* お気に入りボタン */
 .star {

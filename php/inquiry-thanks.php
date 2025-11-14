@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
     <title>送信完了</title>
     <style>
         body {
@@ -41,6 +42,6 @@
 <body>
     <h1>送信完了しました</h1>
     <p>お問い合わせありがとうございます。<br>内容を確認させていただきます。</p>
-    <a href="login/login-top.php">戻る</a>
+    <a href="top.php">戻る</a>
 </body>
 </html>

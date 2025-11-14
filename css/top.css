@@ -367,7 +367,7 @@ h1 {
 .footer .logo-area {
  display: flex;
  align-items: center;
- gap: 10px;
+ gap: 30px;
 }
 .footer .main-logo {
  width: 50px;

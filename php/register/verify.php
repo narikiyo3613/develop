@@ -12,6 +12,7 @@ if (isset($_GET['token'])) {
         $update->execute([$token]);
 
         // ✅ 見た目を整えた出力
+        echo '<link rel="icon" type="image/png" href="../../image/もふもふアイコン.png">';
         echo "
         <div style='
             font-family: \"Hiragino Kaku Gothic ProN\", sans-serif;

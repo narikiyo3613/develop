@@ -1,6 +1,6 @@
 <?php
 // PHPの処理開始
-
+echo '<head><link rel="icon" type="image/png" href="../image/もふもふアイコン.png"></head>';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // フォームから送信された 'action' パラメータを取得 (add, update, delete)
     $action = $_POST['action'] ?? '';
