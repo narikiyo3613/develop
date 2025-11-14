@@ -54,7 +54,7 @@ if (!empty($cart_items)) {
     <div class="cart-container">
 
     <!-- ホーム画面に戻るボタン -->
-    <a href="login/login-top.php" class="back-btn">←</a>
+    <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
     <h1 class="title">カート</h1>
 
         <div class="product-grid">

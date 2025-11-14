@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 </head>
 <body>
+    <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
     <header>
         <h1>管理者画面</h1>
     </header>

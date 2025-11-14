@@ -40,6 +40,7 @@
     </style>
 </head>
 <body>
+    <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
     <h1>送信完了しました</h1>
     <p>お問い合わせありがとうございます。<br>内容を確認させていただきます。</p>
     <a href="top.php">戻る</a>
