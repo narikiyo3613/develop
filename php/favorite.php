@@ -81,18 +81,14 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
+
+<h2>お気に入り一覧（<?= count($favorites) ?>件）</h2>
 <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
 
-    <div class="grid">
-        <?php if (count($favorites) === 0): ?>
-            <p>お気に入り商品がありません。</p>
-        <?php else: ?>
-            <?php foreach ($favorites as $fav): ?>
-                
-                <div class="card" id="fav-<?= $fav['favorite_id'] ?>">
+<div id="favorite-list">
 
-                    <!-- カード全体をクリックで商品詳細へ -->
-                    <a class="card-link" href="detail.php?id=<?= $fav['product_id'] ?>">
+<?php foreach ($favorites as $fav): ?>
+    <div class="favorite-item" id="fav-<?= $fav['favorite_id'] ?>">
 
                         <img src="<?= htmlspecialchars($fav['image_url'] ?: 'noimage.png') ?>"
                              alt="<?= htmlspecialchars($fav['name']) ?>">
