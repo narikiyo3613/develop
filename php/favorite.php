@@ -81,32 +81,31 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-
-<h2>お気に入り一覧（<?= count($favorites) ?>件）</h2>
 <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
+<h2 id="favorite-count-title">お気に入り一覧（<?= count($favorites) ?>件）</h2> 
 
 <div id="favorite-list">
 
-<?php foreach ($favorites as $fav): ?>
-    <div class="favorite-item" id="fav-<?= $fav['favorite_id'] ?>">
+<?php if (!empty($favorites)): // 🌟 リストの開始 (お気に入りがある場合) 🌟 ?>
+    <?php foreach ($favorites as $fav): // 🌟 ループの開始 🌟 ?>
+        
+        <div class="favorite-item" id="fav-<?= htmlspecialchars($fav['favorite_id']) ?>">
 
-                        <img src="<?= htmlspecialchars($fav['image_url'] ?: 'noimage.png') ?>"
-                             alt="<?= htmlspecialchars($fav['name']) ?>">
+            <a href="product-detail.php?id=<?= htmlspecialchars($fav['product_id']) ?>" class="card-link">
+                
+                <img src="<?= htmlspecialchars($fav['image_url'] ?: 'noimage.png') ?>"
+                    alt="<?= htmlspecialchars($fav['name']) ?>">
 
-                        <h3><?= htmlspecialchars($fav['name']) ?></h3>
+                <h3><?= htmlspecialchars($fav['name']) ?></h3>
 
-                        <p class="price"><?= number_format($fav['price']) ?>円</p>
+                <p class="price"><?= number_format($fav['price']) ?>円</p>
 
-                    </a>
+            </a> <button class="star delete-fav" data-id="<?= htmlspecialchars($fav['favorite_id']) ?>">★</button>
 
-                    <!-- ★ お気に入り解除（Ajax） -->
-                    <button class="star delete-fav" data-id="<?= $fav['favorite_id'] ?>">★</button>
-
-                </div>
-
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
+        </div> <?php endforeach; // 🌟 ループの終了 🌟 ?>
+<?php else: ?>
+    <p style="text-align: center; margin-top: 50px;">お気に入り商品はまだ登録されていません。</p>
+<?php endif; // 🌟 リストの終了 🌟 ?>
 
 </div>
 
@@ -120,16 +119,24 @@ $(".delete-fav").on("click", function(event){
     let target = $("#fav-" + favoriteId);
 
     $.ajax({
-        url: "remove_favorite.php",
+        url: "remove_favorite.php", // 削除処理を行うPHPファイル
         type: "POST",
         data: { favorite_id: favoriteId },
         success: function(res){
+            // サーバー側で削除が成功した場合
             target.fadeOut(300, function(){
                 $(this).remove();
 
-                // 件数更新
-                let count = $(".card").length;
-                $(".count").text(`お気に入り ${count} 件`);
+                // 🌟 件数更新 🌟
+                // 現在残っている.favorite-itemの数を数える
+                let count = $(".favorite-item").length; 
+                // H2タグのテキストを更新
+                $("#favorite-count-title").text(`お気に入り一覧（${count}件）`); 
+                
+                // 最後のアイテムが削除された場合
+                if (count === 0) {
+                    $("#favorite-list").append('<p style="text-align: center; margin-top: 50px;">お気に入り商品はまだ登録されていません。</p>');
+                }
             });
         },
         error: function(){
