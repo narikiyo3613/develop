@@ -81,12 +81,7 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-<div class="container">
-
-    <!-- 緑の戻るボタン -->
-    <a href="top.php" class="back-green">← 戻る</a>
-
-    <h2 class="count">お気に入り <?= count($favorites) ?> 件</h2>
+<a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
 
     <div class="grid">
         <?php if (count($favorites) === 0): ?>
