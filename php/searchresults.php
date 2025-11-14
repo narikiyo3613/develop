@@ -26,6 +26,14 @@ if ($genre !== '') {
     $params[':genre'] = $genre;
 }
 
+$favorite_product_ids = [];
+if ($is_logged_in) {
+    $sql = "SELECT product_id FROM favorites WHERE user_id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$user_id]);
+    $favorite_product_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+}
+
 // データ取得
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
@@ -40,28 +48,32 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../css/searchresults-style.css">
     <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
     <style>
-        .star {
+        .favorite-btn {
             position: absolute;
             bottom: 20px;
             right: 20px;
-            background-color: #6ec6a3;
+            background-color: #ff007f;
             color: white;
             border-radius: 50%;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
+            font-size: 1.2rem;
+            line-height: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
             border: none;
+            box-shadow: 0 3px 0 #cc0066;
+            cursor: pointer;
             transition: 0.2s;
-        }
+            }
 
-        /* 押した後の黄色状態 */
-        .star.active {
+            /* 追加済み（黄色） */
+            .favorite-btn.favorited {
             background-color: #FFD700;
-            color: white;
-        }
+            box-shadow: 0 3px 0 #c5a000;
+            }
+
     </style>
 </head>
 <body>
@@ -91,17 +103,17 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php else: ?>
         <?php foreach ($products as $item): ?>
             <div class="card" 
-                 onclick="if(!event.target.classList.contains('star')) { 
-                     window.location.href='ProductDetails.php?id=<?= htmlspecialchars($item['product_id']) ?>'; 
-                 }">
+                onclick="if(!event.target.classList.contains('star')) { 
+                    window.location.href='ProductDetails.php?id=<?= htmlspecialchars($item['product_id']) ?>'; 
+                }">
                 <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                 <h3><?= htmlspecialchars($item['name']) ?></h3>
                 <p class="price"><?= number_format($item['price']) ?>円</p>
 
-                <button class="star"
+                <button 
+                    class="favorite-btn <?= in_array($item['product_id'], $favorite_product_ids) ? 'favorited' : '' ?>"
                     data-product-id="<?= htmlspecialchars($item['product_id']) ?>"
-                    data-user-id="<?= $user_id ?? '' ?>">
-                    ★
+                >★
                 </button>
             </div>
         <?php endforeach; ?>
