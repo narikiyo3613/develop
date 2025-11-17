@@ -28,6 +28,7 @@ try {
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +37,7 @@ try {
     <link rel="stylesheet" href="../../css/top.css">
     <link rel="stylesheet" href="../../css/intro.css">
     <link rel="icon" type="image/png" href="../../image/もふもふアイコン.png">
-    
+
 </head>
 
 <body>
@@ -76,7 +77,8 @@ try {
     <div id="popup" class="popup">
         <div class="popup-content">
             <form action="../searchresults.php" method="get" class="popup-search-form">
-                <input type="text" name="keyword" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
+                <input type="text" name="keyword" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch"
+                    required>
                 <button type="submit" class="search-icon-btn">🔍</button>
             </form>
 
@@ -98,8 +100,8 @@ try {
         <form action="../searchresults.php" method="get">
             <div class="field has-addons is-justify-content-center">
                 <div class="control is-expanded">
-                    <input class="input is-large" type="text" name="keyword" maxlength="100"
-                        placeholder="気になる犬種や場所で探す" required>
+                    <input class="input is-large" type="text" name="keyword" maxlength="100" placeholder="気になる犬種や場所で探す"
+                        required>
                 </div>
                 <div class="control">
                     <button type="submit" class="button is-primary is-large">検索</button>
@@ -119,7 +121,8 @@ try {
                 <?php foreach ($new_arrivals_products as $item): ?>
                     <div class="card">
                         <a href="../ProductDetails.php?id=<?= htmlspecialchars($item['product_id']) ?>">
-                            <img src="../<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                            <img src="../<?= htmlspecialchars($item['image_url']) ?>"
+                                alt="<?= htmlspecialchars($item['name']) ?>">
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>
                         <p class="price"><?= number_format($item['price']) ?>円</p>
@@ -143,9 +146,9 @@ try {
         <div class="about-container">
             <div class="logo-area">
                 <img src="../../image/もふもふアイコン.png" alt="MofuMofuロゴ" class="main-logo">
-                <h1 class="site-title">MofuMofu</h1>
-            </div>
 
+            </div>
+            <h1 class="site-title">MofuMofu</h1>
             <div class="description">
                 <p>
                     もふもふシステムズは全国の<br>
@@ -186,4 +189,5 @@ try {
     <script src="../../script/topScript.js"></script>
     <script src="../../script/favorite.js"></script>
 </body>
+
 </html>
