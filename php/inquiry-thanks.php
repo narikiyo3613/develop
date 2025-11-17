@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,12 +38,27 @@
         a:hover {
             background-color: #005fa3;
         }
+
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            text-decoration: none;
+            background-color: #6ec6a3;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 50%;
+        }
     </style>
 </head>
+
 <body>
     <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
     <h1>送信完了しました</h1>
     <p>お問い合わせありがとうございます。<br>内容を確認させていただきます。</p>
     <a href="top.php">戻る</a>
 </body>
+
 </html>
