@@ -89,3 +89,46 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// ------------------------------
+// ★ 商品詳細 お気に入り登録処理
+// ------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+    const star = document.querySelector(".star");
+
+    if (!star) return;
+
+    star.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        const userId = this.dataset.userId;
+        const productId = this.dataset.productId;
+
+        // ▼ ログインしていない場合はログインページへ
+        if (!userId) {
+            window.location.href = "login/login.php";
+            return;
+        }
+
+        // 見た目を先に変えて「反応いい UI」にする
+        this.classList.add("active");
+
+        // ▼ Fetch でお気に入り登録
+        fetch("add_favorite.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `product_id=${encodeURIComponent(productId)}`
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (!data.success) {
+                alert("お気に入り登録に失敗しました");
+                this.classList.remove("active");
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            this.classList.remove("active");
+        });
+    });
+});
