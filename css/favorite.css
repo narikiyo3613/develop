@@ -11,9 +11,9 @@ body {
 }
 
 .back-btn {
-    position: absolute;
-    top: 30px;
-    left: 40px;
+    position: fixed;
+    top: 60px;
+    left: 18px;
     text-decoration: none;
     background-color: #6ec6a3;
     color: white;
@@ -21,7 +21,9 @@ body {
     font-weight: bold;
     padding: 10px 20px;
     border-radius: 50%;
+    z-index: 1000;
 }
+
 
 .title span {
     font-size: 40px;
@@ -200,4 +202,11 @@ body {
     border: none;
     background: #ff007f;
     color: white;
+}
+#favorite-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 90px;       /* 上部に大きめの余白 */
+    margin-bottom: 40px;    /* 下にも余白 */
 }
