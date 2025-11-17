@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,41 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
     <style>
-        body { padding-top: 20px; padding-bottom: 20px; }
-        .content h2 { margin-top: 1.5em; border-left: 5px solid #ff007f; padding-left: 10px; }
-        .content ol, .content ul { margin-left: 20px; }
-        .content p { line-height: 1.8; }
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .content h2 {
+            margin-top: 1.5em;
+            border-left: 5px solid #ff007f;
+            padding-left: 10px;
+        }
+
+        .content ol,
+        .content ul {
+            margin-left: 20px;
+        }
+
+        .content p {
+            line-height: 1.8;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            text-decoration: none;
+            background-color: #6ec6a3;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 50%;
+        }
     </style>
 </head>
+
 <body>
     <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
     <div class="container">
@@ -37,7 +67,8 @@
             <p class="has-text-danger has-text-weight-bold">【重要】生体の売買契約成立後のキャンセルは、原則としてお受けできません。</p>
             <ul>
                 <li>やむを得ない事情によるキャンセルの場合は、ご購入代金の30%をキャンセル料として申し受けます。</li>
-                <li><strong>生体に関する保証（生命保証）</strong>：お引渡し後30日以内に、当社の責に帰すべき事由により当該生体が死亡した場合は、当社の定める保証規定に基づき対応いたします。詳細な保証内容は別途お渡しする書類をご確認ください。</li>
+                <li><strong>生体に関する保証（生命保証）</strong>：お引渡し後30日以内に、当社の責に帰すべき事由により当該生体が死亡した場合は、当社の定める保証規定に基づき対応いたします。詳細な保証内容は別途お渡しする書類をご確認ください。
+                </li>
             </ul>
 
             <h2 class="is-size-4">連絡先</h2>
@@ -49,4 +80,5 @@
         </div>
     </div>
 </body>
+
 </html>
