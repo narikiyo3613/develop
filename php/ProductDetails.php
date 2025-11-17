@@ -42,6 +42,14 @@ if ($product_id && is_numeric($product_id)) {
 
         if (!$product) {
             $error_message = "指定された商品が見つかりませんでした。";
+        }else{
+            $is_favorited = false;
+            if ($current_user_id) {
+                $sql_fav = "SELECT 1 FROM favorites WHERE user_id = ? AND product_id = ?";
+                $stmt_fav = $pdo->prepare($sql_fav);
+                $stmt_fav->execute([$current_user_id, $product_id]);
+                $is_favorited = $stmt_fav->fetchColumn() ? true : false;
+            }
         }
 
     } catch (PDOException $e) {
@@ -109,11 +117,17 @@ if ($product_id && is_numeric($product_id)) {
                             カートに入れる
                         </button>
 
+                        
+
                         <form method="post" class="star-form" action="favorite.php">
                             <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['product_id']) ?>">
-                            <button type="submit" class="star"
+                            <button type="submit"
+                                class="star <?= $is_favorited ? 'active' : '' ?>"
                                 data-product-id="<?= htmlspecialchars($product['product_id']) ?>"
-                                data-user-id="<?= htmlspecialchars($current_user_id) ?>">★</button>
+                                data-user-id="<?= htmlspecialchars($current_user_id) ?>"
+                            >★
+                            </button>
+
                         </form>
                     </div>
 

@@ -94,8 +94,8 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <input type="text" name="keyword" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
                 <button type="submit" class="search-icon-btn">🔍</button>
             </form>
-            
-            <p><a href="login/login-top.php"><img src="../image/もふもふアイコン.png" alt="MofuMofuロゴ" class="main-logo"></a></p>            
+
+            <p><a href="login/login-top.php">トップページ</a></p>            
             <p><a href="user-detail.php">マイページ</a></p>
             <p><a href="favorite.php">お気に入り</a></p>
             <p><a href="cart.php">カートを見る</a></p>
