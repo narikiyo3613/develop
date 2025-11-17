@@ -9,8 +9,35 @@
     <style>
         body {
             font-family: "Meiryo", sans-serif;
-            margin: 40px;
             background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 戻るボタン（左上固定） */
+        .back-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 8px 14px;
+            background: #eee;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        /* 中央に配置するためのラッパー */
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding-top: 40px; /* 戻るボタンと重ならないよう余白追加 */
+            box-sizing: border-box;
         }
 
         h1 {

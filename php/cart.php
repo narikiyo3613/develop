@@ -51,6 +51,30 @@ if (!empty($cart_items)) {
 </head>
 <body>
 
+    <!-- ✅ ポップアップメニュー -->
+    <button id="openPopupBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <form action="searchresults.php" method="get" class="popup-search-form">
+                <input type="text" name="keyword" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
+                <button type="submit" class="search-icon-btn">🔍</button>
+            </form>
+
+            <p><a href="user-detail.php">マイページ</a></p>
+            <p><a href="favorite.php">お気に入り</a></p>
+            <p><a href="cart.php">カートを見る</a></p>
+            <p><a href="inquiry.php">お問い合わせ</a></p>
+            <p><a href="login/logout.php" style="color:#ff7f7f;">ログアウト</a></p>
+
+            <button id="closePopupBtn" class="close-button"></button>
+        </div>
+    </div>
+
     <div class="cart-container">
 
     <!-- ホーム画面に戻るボタン -->
@@ -107,6 +131,6 @@ if (!empty($cart_items)) {
         <?php endif; ?>
 
     </div>
-
+        <script src="../script/popup.js"></script>
 </body>
 </html>

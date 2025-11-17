@@ -1,16 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".favorite-btn").forEach(btn => {
-        btn.addEventListener("click", async function(e) {
-            e.stopPropagation(); // カード移動を防ぐ
-            e.preventDefault();
+        btn.addEventListener("click", async function() {
 
-            const productId = this.dataset.productId;
+            const id = this.dataset.productId;
 
             const fd = new FormData();
-            fd.append("product_id", productId);
+            fd.append("product_id", id);
 
-            const res = await fetch("add_favorite.php", {
+            const res = await fetch("../add_favorite.php", {
                 method: "POST",
                 body: fd
             });
@@ -19,9 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (json.success) {
                 if (json.mode === "added") {
-                    this.classList.add("favorited");  // 黄色
+                    this.classList.add("favorited");  // 金色に
                 } else if (json.mode === "removed") {
-                    this.classList.remove("favorited"); // ピンク
+                    this.classList.remove("favorited"); // ピンクに戻す
                 }
             } else {
                 alert("エラー：" + json.error);

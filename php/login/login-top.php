@@ -15,6 +15,10 @@ try {
     $sql_new_arrivals = "SELECT product_id, name, price, image_url FROM products ORDER BY created_at DESC LIMIT 8";
     $stmt_new_arrivals = $pdo->query($sql_new_arrivals);
     $new_arrivals_products = $stmt_new_arrivals->fetchAll(PDO::FETCH_ASSOC);
+    $sql_fav = "SELECT product_id FROM favorites WHERE user_id = ?";
+    $stmt_fav = $pdo->prepare($sql_fav);
+    $stmt_fav->execute([$_SESSION['user_id']]);
+    $favorites = $stmt_fav->fetchAll(PDO::FETCH_COLUMN);
 } catch (PDOException $e) {
     // データベースエラー時の処理 (実際はより詳細なエラーハンドリング推奨)
     error_log("DB Error: " . $e->getMessage());
@@ -82,7 +86,7 @@ try {
             <p><a href="../favorite.php">お気に入り</a></p>
             <p><a href="../cart.php">カートを見る</a></p>
             <p><a href="../inquiry.php">お問い合わせ</a></p>
-            <p><a href="../login/logout.php" style="color:#ff7f7f;">ログアウト</a></p>
+            <p><a href="logout.php" style="color:#ff7f7f;">ログアウト</a></p>
 
             <button id="closePopupBtn" class="close-button"></button>
         </div>
@@ -122,10 +126,13 @@ try {
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>
                         <p class="price"><?= number_format($item['price']) ?>円</p>
-                        <form method="post" class="star-form" action="../favorite.php">
-                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
-                            <button type="submit" class="star" title="お気に入りに追加">★</button>
-                        </form>
+                        <button 
+                            class="star favorite-btn <?= in_array($item['product_id'], $favorites) ? 'favorited' : '' ?>"
+                            data-product-id="<?= $item['product_id'] ?>"
+                        >★</button>
+
+
+
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
@@ -155,10 +162,16 @@ try {
             </div>
         </div>
 
-        <div class="footer-links has-text-centered" style="margin-top:20px;">
-            <a href="../favorite.php">お気に入り</a> |
-            <a href="../cart.php">カート</a> |
-            <a href="../inquiry.php">お問い合わせ</a>
+        <ul>
+            <li><a href="../searchStore.html">店舗検索</a></li>
+            <li><a href="../terms.html">利用規約</a></li>
+            <li><a href="../privacy.html">プライバシーポリシー</a></li>
+            <li><a href="../legal_act.html">特定商取引法に基づく表示</a></li>
+            <li><a href="../shipping.html">配送・送料について</a></li>
+            <li><a href="../return.html">返品・交換について</a></li>
+        </ul>
+        <div class="copyright">
+            <small>© MofuMofu Systems All Rights Reserved.</small>
         </div>
     </footer>
 
@@ -174,6 +187,7 @@ try {
         });
     </script>
     <script src="../../script/topScript.js"></script>
+    <script src="../../script/favorite.js"></script>
 </body>
 
 </html>

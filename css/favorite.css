@@ -1,13 +1,14 @@
 body {
-    margin: 0;
-    font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+    font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
     background-color: #ffe6f0;
+    margin: 0;
+    padding: 0;
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    padding: 30px;
+.container {
+    padding: 40px;
+    text-align: center;
+    position: relative;
 }
 
 .back-btn {
@@ -23,58 +24,204 @@ body {
     border-radius: 50%;
 }
 
-.title span {
-    font-size: 40px;
-    margin-right: 10px;
-}
-
-.favorite-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-    padding-bottom: 40px;
-}
-
-.item-card {
-    width: 260px;
-    background: #e3e3e3;
-    padding: 20px;
-    border-radius: 8px;
-    position: relative;
-}
-
-.item-img {
-    width: 100%;
-    border-radius: 6px;
-}
-
-.item-info {
-    margin-top: 10px;
-}
-
-.item-name {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.item-price {
-    color: red;
-    font-size: 18px;
-}
-
-.favorite-icon {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    background: #76c7a5;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    color: white;
-    font-size: 26px;
+.search-form {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+.search-form input[type="text"] {
+    width: 250px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ff9ca0;
+    font-size: 1rem;
+}
+
+.search-form select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.search-form button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #ff9ca0;
+    color: white;
+    border-radius: 10px;
     cursor: pointer;
+}
+
+.count {
+    font-size: 1.8rem;
+    margin: 40px 0 20px;
+    letter-spacing: 0.2em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    overflow-y: auto;
+    max-height: 70vh;
+    padding-bottom: 50px;
+}
+
+.card {
+    background-color: #e6e6e6;
+    border-radius: 8px;
+    width: 280px;
+    padding: 20px;
+    text-align: left;
+    position: relative;
+    
+}
+
+.card:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card .price {
+    color: #ff9ca0;
+    font-weight: bold;
+}
+
+.card .date {
+    font-size: 0.9rem;
+}
+
+
+/* ==================================
+ポップアップ関連
+================================== */
+
+/* ボタン（ハンバーガー） */
+#openPopupBtn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    border: 3px solid #ff007f;
+    padding: 8px;
+}
+
+#openPopupBtn span {
+    display: block;
+    height: 4px;
+    background: #ff007f;
+    border-radius: 2px;
+}
+
+/* ポップアップの背景 */
+.popup {
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+/* アクティブ時 */
+.popup.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* コンテンツ（左からスライド） */
+.popup-content {
+    background: linear-gradient(180deg, #ffb3e6 0%, #fa7edc 100%);
+    width: 80%;
+    max-width: 320px;
+    height: 100%;
+    padding: 30px 20px;
+    transform: translateX(-100%);
+    transition: 0.4s;
+}
+
+.popup.is-active .popup-content {
+    transform: translateX(0);
+}
+
+/* 閉じるボタン */
+.close-button {
+    position: absolute;
+    top: 25px;
+    right: 3px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ff007f;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.close-button::before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* ポップアップ内メニューリンク */
+.popup-content p a {
+    display: block;
+    padding: 15px 10px;
+    background: #fff;
+    color: #ff007f;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 検索フォーム */
+.popup-search-form {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.popupSearch {
+    flex-grow: 1;
+    border: none;
+}
+
+.search-icon-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: #ff007f;
+    color: white;
 }
