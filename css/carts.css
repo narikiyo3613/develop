@@ -242,9 +242,9 @@ button.add-cart-btn:hover {
 
 /*　ポップアップ */
 /* ================================
-   ハンバーガーボタン
+  ハンバーガーボタン
 ================================ */
-.popup-btn {
+#openPopupBtn {
     position: fixed;
     top: 10px;
     left: 10px;
@@ -263,7 +263,7 @@ button.add-cart-btn:hover {
     padding: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
-.popup-btn span {
+#openPopupBtn span {
     display: block;
     height: 4px;
     background: #ff007f;
@@ -271,7 +271,7 @@ button.add-cart-btn:hover {
 }
 
 /* ================================
-   ポップアップ背景
+  ポップアップ背景
 ================================ */
 .popup {
     position: fixed;
