@@ -119,14 +119,12 @@ if ($product_id && is_numeric($product_id)) {
 
                         
 
-                        <form method="post" class="star-form" action="favorite.php">
-                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['product_id']) ?>">
-                            <button type="submit"
-                                class="star <?= $is_favorited ? 'active' : '' ?>"
-                                data-product-id="<?= htmlspecialchars($product['product_id']) ?>"
-                                data-user-id="<?= htmlspecialchars($current_user_id) ?>"
-                            >★
-                            </button>
+                        <button 
+                            class="star favorite-btn <?= $is_favorited ? 'favorited' : '' ?>"
+                            data-product-id="<?= htmlspecialchars($product['product_id']) ?>"
+                        >★
+                        </button>
+
 
                         </form>
                     </div>
@@ -141,6 +139,7 @@ if ($product_id && is_numeric($product_id)) {
         <?php endif; ?>
         <script src="../script/ProductDetail.js"></script>
         <script src="../script/searchresult.js"></script>
+        <script src="../script/favorite.js"></script>
     </div>
 </body>
 
