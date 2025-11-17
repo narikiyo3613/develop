@@ -90,16 +90,16 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <div id="popup" class="popup">
         <div class="popup-content">
-            <form action="../searchresults.php" method="get" class="popup-search-form">
+            <form action="searchresults.php" method="get" class="popup-search-form">
                 <input type="text" name="keyword" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
                 <button type="submit" class="search-icon-btn">🔍</button>
             </form>
 
-            <p><a href="../user-detail.php">マイページ</a></p>
-            <p><a href="../favorite.php">お気に入り</a></p>
-            <p><a href="../cart.php">カートを見る</a></p>
-            <p><a href="../inquiry.php">お問い合わせ</a></p>
-            <p><a href="../login/logout.php" style="color:#ff7f7f;">ログアウト</a></p>
+            <p><a href="user-detail.php">マイページ</a></p>
+            <p><a href="favorite.php">お気に入り</a></p>
+            <p><a href="cart.php">カートを見る</a></p>
+            <p><a href="inquiry.php">お問い合わせ</a></p>
+            <p><a href="login/logout.php" style="color:#ff7f7f;">ログアウト</a></p>
 
             <button id="closePopupBtn" class="close-button"></button>
         </div>
@@ -170,17 +170,6 @@ $(".delete-fav").on("click", function(event){
     });
 });
 </script>
-<script>
-        // ✅ ポップアップ開閉制御
-        document.addEventListener('DOMContentLoaded', () => {
-            const openBtn = document.getElementById('openPopupBtn');
-            const closeBtn = document.getElementById('closePopupBtn');
-            const popup = document.getElementById('popup');
-
-            openBtn.addEventListener('click', () => popup.classList.add('active'));
-            closeBtn.addEventListener('click', () => popup.classList.remove('active'));
-        });
-</script>
-<script src="../../script/topScript.js"></script>
+    <script src="../script/popup.js"></script>
 </body>
 </html>
