@@ -33,7 +33,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     <!-- ユーザー情報ヘッダー -->
     <div class="user-header">
-        <img src="../image/user-icon.png" alt="ユーザーアイコン" class="user-icon">
+        <input type="file" class="user-icon">ユーザーアイコン
         <span class="user-name">
             <?php echo htmlspecialchars($user['name'] ?? '名無しのユーザー'); ?>
         </span>
