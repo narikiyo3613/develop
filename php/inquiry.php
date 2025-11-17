@@ -8,8 +8,35 @@
     <style>
         body {
             font-family: "Meiryo", sans-serif;
-            margin: 40px;
             background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 戻るボタン（左上固定） */
+        .back-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 8px 14px;
+            background: #eee;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        /* 中央に配置するためのラッパー */
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding-top: 40px; /* 戻るボタンと重ならないよう余白追加 */
+            box-sizing: border-box;
         }
 
         h1 {
@@ -30,7 +57,7 @@
             padding: 8px;
             border: 1px solid #999;
             border-radius: 4px;
-            resize: both; /* サイズ変更可能 */
+            resize: both;
             background-color: #fff;
         }
 
@@ -51,14 +78,22 @@
     </style>
 </head>
 <body>
-    <h1>お問い合わせ</h1>
-    <form action="inquiry-thanks.php" method="post">
-        <label for="message">お問合せ内容:</label>
-        <textarea id="message" name="message"></textarea>
-        <br>
-        <button type="submit">送信</button>
-    </form>
+
+    <!-- 戻るボタン -->
+    <a href="index.php" class="back-btn">戻る</a>
+
+    <div class="container">
+        <h1>お問い合わせ</h1>
+        <form action="inquiry-thanks.php" method="post">
+            <label for="message">お問合せ内容:</label>
+            <textarea id="message" name="message"></textarea>
+            <br>
+            <button type="submit">送信</button>
+        </form>
+    </div>
+
 </body>
 </html>
+
 
 
