@@ -118,9 +118,9 @@ try {
 
         <div class="logo-area">
             <img src="../image/もふもふアイコン.png" alt="MofuMofuロゴ" class="main-logo"><br>
-            <h1 class="site-title">MofuMofu</h1>
-        </div>
 
+        </div>
+        <h1 class="site-title">MofuMofu</h1>
         <div class="description">
             <p>
                 もふもふシステムズは全国の<br>
