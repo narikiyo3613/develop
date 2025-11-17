@@ -160,12 +160,12 @@ try {
         </div>
 
         <ul>
-            <li><a href="searchStore.html">店舗検索</a></li>
-            <li><a href="terms.html">利用規約</a></li>
-            <li><a href="privacy.html">プライバシーポリシー</a></li>
-            <li><a href="legal_act.html">特定商取引法に基づく表示</a></li>
-            <li><a href="shipping.html">配送・送料について</a></li>
-            <li><a href="return.html">返品・交換について</a></li>
+            <li><a href="../searchStore.html">店舗検索</a></li>
+            <li><a href="../terms.html">利用規約</a></li>
+            <li><a href="../privacy.html">プライバシーポリシー</a></li>
+            <li><a href="../legal_act.html">特定商取引法に基づく表示</a></li>
+            <li><a href="../shipping.html">配送・送料について</a></li>
+            <li><a href="../return.html">返品・交換について</a></li>
         </ul>
         <div class="copyright">
             <small>© MofuMofu Systems All Rights Reserved.</small>
