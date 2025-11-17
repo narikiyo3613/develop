@@ -84,7 +84,7 @@ try {
             <p><a href="../favorite.php">お気に入り</a></p>
             <p><a href="../cart.php">カートを見る</a></p>
             <p><a href="../inquiry.php">お問い合わせ</a></p>
-            <p><a href="../login/logout.php" style="color:#ff7f7f;">ログアウト</a></p>
+            <p><a href="logout.php" style="color:#ff7f7f;">ログアウト</a></p>
 
             <button id="closePopupBtn" class="close-button"></button>
         </div>
