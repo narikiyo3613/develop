@@ -26,10 +26,22 @@ if ($genre !== '') {
     $params[':genre'] = $genre;
 }
 
-// データ取得
+$favorite_product_ids = [];
+if ($is_logged_in) {
+
+    
+    $sql_fav = "SELECT product_id FROM favorites WHERE user_id = ?";
+    $stmt = $pdo->prepare($sql_fav);
+    $stmt->execute([$user_id]);
+    $favorite_product_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+}
+
+// データ取得（メイン検索）
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -40,33 +52,37 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../css/searchresults-style.css">
     <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
     <style>
-        .star {
+        .favorite-btn {
             position: absolute;
             bottom: 20px;
             right: 20px;
-            background-color: #6ec6a3;
+            background-color: #ff007f;
             color: white;
             border-radius: 50%;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
+            font-size: 1.2rem;
+            line-height: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
             border: none;
+            box-shadow: 0 3px 0 #cc0066;
+            cursor: pointer;
             transition: 0.2s;
-        }
+            }
 
-        /* 押した後の黄色状態 */
-        .star.active {
+            /* 追加済み（黄色） */
+            .favorite-btn.favorited {
             background-color: #FFD700;
-            color: white;
-        }
+            box-shadow: 0 3px 0 #c5a000;
+            }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="login/login-top.php" class="back-btn">←</a>
+        <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
 
         <form class="search-form" method="get">
             <input type="text" name="keyword" placeholder="🔍 ペットフード" value="<?= htmlspecialchars($keyword) ?>">
@@ -76,7 +92,9 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <option value="猫" <?= $genre === '猫' ? 'selected' : '' ?>>猫</option>
                 <option value="小動物" <?= $genre === '小動物' ? 'selected' : '' ?>>小動物</option>
                 <option value="鳥" <?= $genre === '鳥' ? 'selected' : '' ?>>鳥</option>
+                <option value="鹿" <?= $genre === '鹿' ? 'selected' : '' ?>>鹿</option>
                 <option value="ペットフード" <?= $genre === 'ペットフード' ? 'selected' : '' ?>>ペットフード</option>
+
             </select>
             <button type="submit">検索</button>
         </form>
@@ -84,66 +102,30 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h2 class="count">全 <?= count($products) ?> 件</h2>
 
         <div class="grid">
-            <?php if (count($products) === 0): ?>
-                <p>該当する商品が見つかりませんでした。</p>
-            <?php else: ?>
-                <?php foreach ($products as $item): ?>
-                    <div class="card">
-                        <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
-                        <h3><?= htmlspecialchars($item['name']) ?></h3>
-                        <p class="price"><?= number_format($item['price']) ?>円</p>
+    <?php if (count($products) === 0): ?>
+        <p>該当する商品が見つかりませんでした。</p>
+    <?php else: ?>
+        <?php foreach ($products as $item): ?>
+            <div class="card" 
+                onclick="if(!event.target.classList.contains('star')) { 
+                    window.location.href='ProductDetails.php?id=<?= htmlspecialchars($item['product_id']) ?>'; 
+                }">
+                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                <h3><?= htmlspecialchars($item['name']) ?></h3>
+                <p class="price"><?= number_format($item['price']) ?>円</p>
 
-                        <button class="star"
-                            data-product-id="<?= htmlspecialchars($item['product_id']) ?>"
-                            data-user-id="<?= $user_id ?? '' ?>">
-                            ★
-                        </button>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
+                <button 
+                    class="favorite-btn <?= in_array($item['product_id'], $favorite_product_ids) ? 'favorited' : '' ?>"
+                    data-product-id="<?= htmlspecialchars($item['product_id']) ?>"
+                >★
+                </button>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+
     </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const stars = document.querySelectorAll('.star');
-
-    stars.forEach(star => {
-        star.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            const userId = this.dataset.userId;
-            const productId = this.dataset.productId;
-
-            // 🔒 未ログインならログインページへ
-            if (!userId) {
-                window.location.href = 'login/login.php';
-                return;
-            }
-
-            // 押した瞬間に見た目を変更
-            this.classList.add('active');
-
-            // ✅ favorites に登録（非同期通信）
-            fetch('add_favorite.php', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                body: `product_id=${encodeURIComponent(productId)}`
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (!data.success) {
-                    alert('お気に入り登録に失敗しました');
-                    this.classList.remove('active'); // 失敗時は元に戻す
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                this.classList.remove('active');
-            });
-        });
-    });
-});
-</script>
+<script src="../script/searchresult.js"></script>
 </body>
 </html>

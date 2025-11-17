@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,48 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
     <style>
-        body { padding-top: 20px; padding-bottom: 20px; }
-        .content h2 { margin-top: 1.5em; border-left: 5px solid #ff007f; padding-left: 10px; }
-        .content ol, .content ul { margin-left: 20px; }
-        .content p { line-height: 1.8; }
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .content h2 {
+            margin-top: 1.5em;
+            border-left: 5px solid #ff007f;
+            padding-left: 10px;
+        }
+
+        .content ol,
+        .content ul {
+            margin-left: 20px;
+        }
+
+        .content p {
+            line-height: 1.8;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            text-decoration: none;
+            background-color: #6ec6a3;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 50%;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
+        <a href="#" onclick="history.back(); return false;" class="button is-link is-light is-small is-rounded mb-4">
+            <span class="icon">
+                <i class="fas fa-arrow-left"></i> </span>
+            <span>前のページへ戻る</span>
+        </a>
         <h1 class="title is-2 has-text-centered has-text-info">プライバシーポリシー</h1>
         <div class="content">
             <p>もふもふシステムズ（以下「当社」といいます）は、本サービス「MofuMofu」における、利用者の個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」といいます）を定めます。</p>
@@ -28,7 +63,8 @@
             </ol>
 
             <h2 class="is-size-4">第2条（個人情報の第三者提供）</h2>
-            <p>当社は、法令に基づく場合や、利用者の同意がある場合を除き、個人情報を第三者に提供することはありません。ただし、配送業者への氏名・住所の開示など、利用目的の達成に必要な範囲内で個人情報の取扱いを委託する場合は、この限りではありません。</p>
+            <p>当社は、法令に基づく場合や、利用者の同意がある場合を除き、個人情報を第三者に提供することはありません。ただし、配送業者への氏名・住所の開示など、利用目的の達成に必要な範囲内で個人情報の取扱いを委託する場合は、この限りではありません。
+            </p>
 
             <h2 class="is-size-4">第3条（個人情報の安全管理）</h2>
             <p>当社は、個人情報の漏洩、滅失、毀損の防止、その他安全管理のために必要かつ適切な措置を講じます。</p>
@@ -40,4 +76,5 @@
         </div>
     </div>
 </body>
+
 </html>

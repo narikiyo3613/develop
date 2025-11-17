@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,6 +59,7 @@
             border: 1px solid #999;
             border-radius: 4px;
             resize: both;
+            /* サイズ変更可能 */
             background-color: #fff;
         }
 
@@ -75,25 +77,31 @@
         button:hover {
             background-color: #005fa3;
         }
+
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            text-decoration: none;
+            background-color: #6ec6a3;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 50%;
+        }
     </style>
 </head>
+
 <body>
-
-    <!-- 戻るボタン -->
-    <a href="index.php" class="back-btn">戻る</a>
-
-    <div class="container">
-        <h1>お問い合わせ</h1>
-        <form action="inquiry-thanks.php" method="post">
-            <label for="message">お問合せ内容:</label>
-            <textarea id="message" name="message"></textarea>
-            <br>
-            <button type="submit">送信</button>
-        </form>
-    </div>
-
+    <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
+    <h1>お問い合わせ</h1>
+    <form action="inquiry-thanks.php" method="post">
+        <label for="message">お問合せ内容:</label>
+        <textarea id="message" name="message"></textarea>
+        <br>
+        <button type="submit">送信</button>
+    </form>
 </body>
+
 </html>
-
-
-

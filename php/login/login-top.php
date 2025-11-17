@@ -15,6 +15,10 @@ try {
     $sql_new_arrivals = "SELECT product_id, name, price, image_url FROM products ORDER BY created_at DESC LIMIT 8";
     $stmt_new_arrivals = $pdo->query($sql_new_arrivals);
     $new_arrivals_products = $stmt_new_arrivals->fetchAll(PDO::FETCH_ASSOC);
+    $sql_fav = "SELECT product_id FROM favorites WHERE user_id = ?";
+    $stmt_fav = $pdo->prepare($sql_fav);
+    $stmt_fav->execute([$_SESSION['user_id']]);
+    $favorites = $stmt_fav->fetchAll(PDO::FETCH_COLUMN);
 } catch (PDOException $e) {
     // データベースエラー時の処理 (実際はより詳細なエラーハンドリング推奨)
     error_log("DB Error: " . $e->getMessage());
@@ -24,6 +28,7 @@ try {
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +37,7 @@ try {
     <link rel="stylesheet" href="../../css/top.css">
     <link rel="stylesheet" href="../../css/intro.css">
     <link rel="icon" type="image/png" href="../../image/もふもふアイコン.png">
-    
+
 </head>
 
 <body>
@@ -72,7 +77,8 @@ try {
     <div id="popup" class="popup">
         <div class="popup-content">
             <form action="../searchresults.php" method="get" class="popup-search-form">
-                <input type="text" name="keyword" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch" required>
+                <input type="text" name="keyword" maxlength="100" placeholder="気になる犬種や場所で探す" class="popupSearch"
+                    required>
                 <button type="submit" class="search-icon-btn">🔍</button>
             </form>
 
@@ -80,7 +86,7 @@ try {
             <p><a href="../favorite.php">お気に入り</a></p>
             <p><a href="../cart.php">カートを見る</a></p>
             <p><a href="../inquiry.php">お問い合わせ</a></p>
-            <p><a href="../login/logout.php" style="color:#ff7f7f;">ログアウト</a></p>
+            <p><a href="logout.php" style="color:#ff7f7f;">ログアウト</a></p>
 
             <button id="closePopupBtn" class="close-button"></button>
         </div>
@@ -94,8 +100,8 @@ try {
         <form action="../searchresults.php" method="get">
             <div class="field has-addons is-justify-content-center">
                 <div class="control is-expanded">
-                    <input class="input is-large" type="text" name="keyword" maxlength="100"
-                        placeholder="気になる犬種や場所で探す" required>
+                    <input class="input is-large" type="text" name="keyword" maxlength="100" placeholder="気になる犬種や場所で探す"
+                        required>
                 </div>
                 <div class="control">
                     <button type="submit" class="button is-primary is-large">検索</button>
@@ -115,14 +121,18 @@ try {
                 <?php foreach ($new_arrivals_products as $item): ?>
                     <div class="card">
                         <a href="../ProductDetails.php?id=<?= htmlspecialchars($item['product_id']) ?>">
-                            <img src="../<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                            <img src="../<?= htmlspecialchars($item['image_url']) ?>"
+                                alt="<?= htmlspecialchars($item['name']) ?>">
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>
                         <p class="price"><?= number_format($item['price']) ?>円</p>
-                        <form method="post" class="star-form" action="../favorite.php">
-                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($item['product_id']) ?>">
-                            <button type="submit" class="star" title="お気に入りに追加">★</button>
-                        </form>
+                        <button 
+                            class="star favorite-btn <?= in_array($item['product_id'], $favorites) ? 'favorited' : '' ?>"
+                            data-product-id="<?= $item['product_id'] ?>"
+                        >★</button>
+
+
+
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
@@ -136,9 +146,9 @@ try {
         <div class="about-container">
             <div class="logo-area">
                 <img src="../../image/もふもふアイコン.png" alt="MofuMofuロゴ" class="main-logo">
-                <h1 class="site-title">MofuMofu</h1>
-            </div>
 
+            </div>
+            <h1 class="site-title">MofuMofu</h1>
             <div class="description">
                 <p>
                     もふもふシステムズは全国の<br>
@@ -152,10 +162,16 @@ try {
             </div>
         </div>
 
-        <div class="footer-links has-text-centered" style="margin-top:20px;">
-            <a href="../favorite.php">お気に入り</a> |
-            <a href="../cart.php">カート</a> |
-            <a href="../inquiry.php">お問い合わせ</a>
+        <ul>
+            <li><a href="../searchStore.html">店舗検索</a></li>
+            <li><a href="../terms.html">利用規約</a></li>
+            <li><a href="../privacy.html">プライバシーポリシー</a></li>
+            <li><a href="../legal_act.html">特定商取引法に基づく表示</a></li>
+            <li><a href="../shipping.html">配送・送料について</a></li>
+            <li><a href="../return.html">返品・交換について</a></li>
+        </ul>
+        <div class="copyright">
+            <small>© MofuMofu Systems All Rights Reserved.</small>
         </div>
     </footer>
 
@@ -171,5 +187,7 @@ try {
         });
     </script>
     <script src="../../script/topScript.js"></script>
+    <script src="../../script/favorite.js"></script>
 </body>
+
 </html>

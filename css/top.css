@@ -340,6 +340,12 @@ h1 {
  box-shadow: 0 0 0 #cc0066;
 }
 
+.card .star.favorited {
+    background-color: gold; /* ★が光る */
+   box-shadow: 0 3px 0 #b88a00;
+}
+
+
 /* ==================================
 フッター (横並びを含む)
 ================================== */
@@ -347,6 +353,7 @@ h1 {
  background-color: #ffe6f0; 
  padding: 40px 20px;
  margin-top: auto; 
+ text-align: center;
 }
 
 .footer .about-container {
@@ -367,11 +374,11 @@ h1 {
 .footer .logo-area {
  display: flex;
  align-items: center;
- gap: 10px;
+ gap: 30px;
 }
 .footer .main-logo {
- width: 50px;
- height: 50px;
+ width: 20%;
+ height: 20%;
 }
 .footer .site-title {
  font-size: 1.8rem;

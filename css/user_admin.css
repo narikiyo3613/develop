@@ -102,3 +102,15 @@ input[type="text"] {
     border-top: 1px solid #eee;
     padding-top: 10px;
 }
+.back-btn {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    text-decoration: none;
+    background-color: #6ec6a3;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 50%;
+}
