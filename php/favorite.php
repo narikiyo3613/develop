@@ -106,7 +106,7 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
 <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
-<h2>お気に入り一覧（<?= count($favorites) ?>件）</h2>
+<h2 id="favorite-title">お気に入り一覧（<?= count($favorites) ?>件）</h2>
 
 
 <div id="favorite-list">
