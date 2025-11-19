@@ -4,7 +4,7 @@ session_start();
 // ログイン状態チェック
 $logged_in = isset($_SESSION['user_id']);
 $user_name = $logged_in ? $_SESSION['user_name'] : "";
-$user_email = $logged_in ? $_SESSION['user_email'] : "";
+$user_email = $logged_in ? $_SESSION['email'] : "";
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ $user_email = $logged_in ? $_SESSION['user_email'] : "";
                 type="email"
                 id="email"
                 name="email"
-                value="<?= htmlspecialchars($email) ?>"
+                value="<?= htmlspecialchars($user_email) ?>"
                 <?= $logged_in ? "readonly" : "" ?>
             >
 
