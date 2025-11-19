@@ -51,3 +51,36 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// =====================================
+// ★ 商品詳細ページ：お気に入り登録
+// =====================================
+document.addEventListener("DOMContentLoaded", () => {
+    const favBtn = document.querySelector(".favorite-btn");
+    if (!favBtn) return;
+
+    favBtn.addEventListener("click", async function () {
+
+        const productId = this.dataset.productId;
+
+        const fd = new FormData();
+        fd.append("product_id", productId);
+
+        const res = await fetch("../php/add_favorite.php", {
+            method: "POST",
+            body: fd
+        });
+
+        const json = await res.json();
+
+        if (json.success) {
+            if (json.mode === "added") {
+                this.classList.add("favorited");
+            } else if (json.mode === "removed") {
+                this.classList.remove("favorited");
+            }
+        } else {
+            alert("エラー：" + json.error);
+        }
+    });
+});
