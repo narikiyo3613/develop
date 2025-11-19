@@ -1,5 +1,6 @@
 <?php
 session_start();
+// データベース接続ファイル
 require 'db-connect.php';
 
 // ログインチェック
@@ -10,10 +11,15 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// DBからユーザー情報取得
-$stmt = $pdo->prepare("SELECT name, email, address, phone FROM users WHERE user_id = ?");
+// DBからユーザー情報取得（icon_pathを追加取得）
+$stmt = $pdo->prepare("SELECT name, email, address, phone, icon_path FROM users WHERE user_id = ?");
 $stmt->execute([$user_id]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// エラー/成功メッセージの表示用
+$success_message = isset($_SESSION['success']) ? $_SESSION['success'] : '';
+$error_message = isset($_SESSION['error']) ? $_SESSION['error'] : '';
+unset($_SESSION['success'], $_SESSION['error']);
 ?>
 
 <!DOCTYPE html>
@@ -30,22 +36,37 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     <div class="user-detail-container">
 
-        <!-- 左上の戻るボタン -->
         <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
 
-        <!-- ユーザー情報ヘッダー -->
-        <div class="user-header">
-            <label class="clickable-header">
-                <input type="file" id="user-icon-input" class="user-icon" alt="ユーザーアイコン" accept="image/*">
+        <?php if ($success_message): ?>
+            <div style="color: green; text-align: center; margin-bottom: 10px;">
+                <?php echo htmlspecialchars($success_message); ?></div>
+        <?php endif; ?>
+        <?php if ($error_message): ?>
+            <div style="color: red; text-align: center; margin-bottom: 10px;">
+                <?php echo htmlspecialchars($error_message); ?></div>
+        <?php endif; ?>
 
-                <div id="preview-icon" class="icon-preview"></div>
-            </label>
+        <div class="user-header">
+            <form action="upload-icon.php" method="POST" enctype="multipart/form-data" id="icon-upload-form">
+                <label class="clickable-header">
+                    <input type="file" id="user-icon-input" name="user_icon" class="user-icon" alt="ユーザーアイコン"
+                        accept="image/*">
+
+                    <div id="preview-icon" class="icon-preview" <?php if (!empty($user['icon_path'])): ?>
+                            style="background-image: url('<?php echo htmlspecialchars($user['icon_path']); ?>'); background-size: cover;"
+                        <?php else: ?>
+                            style="background-image: url('../image/default_icon.png'); background-size: cover;" <?php endif; ?>>
+                    </div>
+                </label>
+                <button type="submit" style="display: none;" id="icon-submit-btn">アップロード</button>
+            </form>
+
             <span class="user-name">
                 <?php echo htmlspecialchars($user['name'] ?? '名無しのユーザー'); ?>
             </span>
         </div>
 
-        <!-- サイドメニュー -->
         <div class="side-menu">
             <ul>
                 <li><a href="#">個人の情報</a></li>
@@ -55,8 +76,6 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         </div>
 
         <div class="profile-section">
-
-            <!-- プロフィール編集フォーム -->
 
             <div class="profile-card">
                 <h2>プロフィール情報</h2>
@@ -79,7 +98,6 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 </form>
             </div>
 
-            <!-- パスワード変更 -->
             <div class="profile-card">
                 <h2>パスワード変更</h2>
                 <hr>
@@ -100,28 +118,29 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         </div>
 
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const userIconInput = document.getElementById('user-icon-input');
             const previewIcon = document.getElementById('preview-icon');
+            const iconUploadForm = document.getElementById('icon-upload-form'); // フォーム要素を取得
 
             userIconInput.addEventListener('change', function (event) {
-                const file = event.target.files[0]; // 選択されたファイルを取得
+                const file = event.target.files[0];
 
                 if (file) {
-                    const reader = new FileReader(); // FileReaderオブジェクトを作成
+                    const reader = new FileReader();
 
                     reader.onload = function (e) {
-                        // ファイルが読み込まれたら、プレビュー要素の背景画像に設定
+                        // プレビュー表示
                         previewIcon.style.backgroundImage = `url('${e.target.result}')`;
-                        previewIcon.style.backgroundColor = 'transparent'; // 画像が設定されたら背景色は不要
+                        previewIcon.style.backgroundColor = 'transparent';
+
+                        // ファイル選択後、自動でフォームを送信 (upload-icon.phpへ送信)
+                        iconUploadForm.submit();
                     };
 
-                    reader.readAsDataURL(file); // ファイルをData URLとして読み込む
-                } else {
-                    // ファイルが選択されなかった場合（キャンセルなど）
-                    previewIcon.style.backgroundImage = 'none';
-                    previewIcon.style.backgroundColor = '#ccc'; // デフォルトの背景色に戻す
+                    reader.readAsDataURL(file);
                 }
             });
         });
