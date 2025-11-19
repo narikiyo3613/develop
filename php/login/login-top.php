@@ -129,6 +129,7 @@ try {
                         <button 
                             class="star favorite-btn <?= in_array($item['product_id'], $favorites) ? 'favorited' : '' ?>"
                             data-product-id="<?= $item['product_id'] ?>"
+                            data-user-id="<?= $_SESSION['user_id'] ?>"
                         >★</button>
 
 
