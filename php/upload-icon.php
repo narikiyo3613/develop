@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['user_icon'])) {
     // 1. エラーチェック
     if ($file['error'] !== UPLOAD_ERR_OK) {
         $_SESSION['error'] = 'ファイルのアップロードに失敗しました。エラーコード: ' . $file['error'];
-        header("Location: user_detail.php");
+        header("Location: userdetail.php");
         exit;
     }
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['user_icon'])) {
     $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
     if (!in_array($file['type'], $allowed_types)) {
         $_SESSION['error'] = '画像ファイル (JPEG, PNG, GIF) のみアップロード可能です。';
-        header("Location: user_detail.php");
+        header("Location: user-detail.php");
         exit;
     }
 
@@ -69,12 +69,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['user_icon'])) {
         $_SESSION['error'] = 'サーバーへのファイル保存に失敗しました。ディレクトリの書き込み権限を確認してください。';
     }
 
-    header("Location: user_detail.php"); // マイページに戻る
+    header("Location: user-detail.php"); // マイページに戻る
     exit;
 
 } else {
     // POSTリクエストではない、またはファイルがアップロードされていない場合はマイページに戻す
-    header("Location: user_detail.php");
+    header("Location: user-detail.php");
     exit;
 }
 ?>
