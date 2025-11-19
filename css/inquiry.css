@@ -73,3 +73,20 @@ button {
 button:hover {
     background-color: #5ab190;
 }
+
+/* ここがトップに戻るボタンのデザイン */
+.return-top-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    background-color: #6ec6a3;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.return-top-btn:hover {
+    background-color: #5bb391;
+}
