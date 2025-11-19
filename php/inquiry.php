@@ -41,7 +41,7 @@ $user_email = $logged_in ? $_SESSION['user_email'] : "";
                 type="email"
                 id="email"
                 name="email"
-                value="<?= htmlspecialchars($user_email) ?>"
+                value="<?= htmlspecialchars($email) ?>"
                 <?= $logged_in ? "readonly" : "" ?>
             >
 
