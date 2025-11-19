@@ -139,15 +139,26 @@
     line-height: 1.8;
     color: #444;
 }
-/* 例: product-detail-style.css */
-.star {
-    color: #ccc; /* 通常の星の色 */
-    font-size: 24px;
+
+/* お気に入りボタン（商品詳細用） */
+.favorite-btn {
+    background-color: #6ec6a3;
     border: none;
-    background: none;
+    color: white;
+    border-radius: 10px; 
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.star.active {
-    color: gold; /* 🌟アクティブ時の星の色 (必須) */
+.favorite-btn:hover {
+    background-color: #5bb391;
 }
+
+.favorite-btn.favorited {
+    background-color: #FFD700; /* 金色 */
+    color: white;
+}
+
