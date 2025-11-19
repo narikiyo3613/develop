@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>支払情報入力</title>
-    <link rel="stylesheet" href="../css/payment.css">
-    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>支払情報入力</title>
+  <link rel="stylesheet" href="../css/payment.css">
+  <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
 </head>
+
 <body>
-    <div class="container">
+  <div class="container">
 
-        <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
-        <h1 class="title">支払情報入力</h1>
+    <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
+    <h1 class="title">支払情報入力</h1>
 
-        <form action="login_check.php" method="post" class="login-form">
-            <label for="">お名前（フリガナ）</label>
-            <input type="email" id="email" name="email" placeholder="タナカタロウ" required>
+    <form action="payment_output.php" method="post" class="login-form">
 
-            <label for="password">郵便番号（ハイフンなし）</label>
-            <input type="text" id="password" name="password" placeholder="" required>
+      <label for="kanaName">お名前（フリガナ）</label>
+      <input type="text" id="kanaName" name="kana_name" placeholder="タナカタロウ" required>
 
-              <label for="password">都道府県</label>
-            <input type="text" id="password" name="password" placeholder="" required>
+      <label for="zipCode">郵便番号（ハイフンなし）</label>
+      <input type="text" id="zipCode" name="zip_code" placeholder="1234567" required maxlength="7"
+        onKeyUp="AjaxZip3.zip2addr(this,'','prefecture','addressMain');">
 
-              <label for="password">住所</label>
-            <input type="text" id="password" name="password" placeholder="" required>
+      <label for="prefecture">都道府県</label>
+      <input type="text" id="prefecture" name="prefecture" placeholder="" required>
 
-              <label for="password">以降の住所</label>
-            <input type="text" id="password" name="password" placeholder="" required>
+      <label for="addressMain">住所</label>
+      <input type="text" id="addressMain" name="address_main" placeholder="" required>
 
-              <label for="password">電話番号</label>
-            <input type="text" id="password" name="password" placeholder="" required>
+      <label for="addressSub">以降の住所</label>
+      <input type="text" id="addressSub" name="address_sub" placeholder="" required>
 
-              <label for="password">クレジットカード番号</label>
-            <input type="password" id="password" name="password" placeholder="" required>
+      <label for="telNumber">電話番号</label>
+      <input type="tel" id="telNumber" name="tel_number" placeholder="" required>
 
-              <label for="password">セキュリティコード</label>
-            <input type="password" id="password" name="password" placeholder="" required>
+      <label for="cardNumber">クレジットカード番号</label>
+      <input type="text" id="cardNumber" name="card_number" placeholder="" required>
 
-              <label for="password">名義人</label>
-            <input type="text" id="password" name="password" placeholder="" required>
+      <label for="securityCode">セキュリティコード</label>
+      <input type="password" id="securityCode" name="security_code" placeholder="" required>
 
-            <button type="submit" class="login-btn">登録</button>
-        </form>
-    </div>
+      <label for="cardHolder">名義人</label>
+      <input type="text" id="cardHolder" name="card_holder" placeholder="" required>
+
+      <button type="submit" class="login-btn">登録</button>
+    </form>
+  </div>
+
+  <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+
 </body>
+
 </html>
