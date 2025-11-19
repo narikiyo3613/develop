@@ -24,7 +24,7 @@ $stmt->execute([$name, $email, $message]);
     <div class="container" style="margin-top: 100px; text-align:center;">
         <h1>送信が完了しました！</h1>
         <p>お問い合わせありがとうございました。</p>
-        <a href="login-top.php" class="back-btn">トップへ戻る</a>
+        <a href="login/login-top.php" class="return-top-btn">トップへ戻る</a>
     </div>
 </body>
 </html>
