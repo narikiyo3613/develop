@@ -70,8 +70,8 @@ unset($_SESSION['success'], $_SESSION['error']);
         <div class="side-menu">
             <ul>
                 <li><a href="#">個人の情報</a></li>
-                <li><a href="../favorite.php">お気に入り</a></li>
-                <li><a href="../history.php">購入履歴</a></li>
+                <li><a href="favorite.php">お気に入り</a></li>
+                <li><a href="history.php">購入履歴</a></li>
             </ul>
         </div>
 

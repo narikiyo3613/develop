@@ -113,20 +113,20 @@ if ($product_id && is_numeric($product_id)) {
                             <input type="number" id="quantity" value="1" min="1"
                                 max="<?= htmlspecialchars($product['stock']) ?>" style="width: 50px;">
                         </div>
-                        <button class="add-to-cart-btn" <?= $product['stock'] <= 0 ? 'disabled' : '' ?>>
+                        <button
+                            class="add-to-cart-btn"
+                            data-product-id="<?= $product['product_id'] ?>"
+                            data-user-id="<?= $current_user_id ?>"
+                            <?= $product['stock'] <= 0 ? 'disabled' : '' ?>>
                             カートに入れる
                         </button>
 
-                        
-
                         <button 
-                            class="star favorite-btn <?= $is_favorited ? 'favorited' : '' ?>"
-                            data-product-id="<?= htmlspecialchars($product['product_id']) ?>"
-                        >★
-                        </button>
+                            class="favorite-btn <?= $is_favorited ? 'favorited' : '' ?>"
+                            data-product-id="<?= $product['product_id'] ?>"
+                        >★</button>
 
 
-                        </form>
                     </div>
 
                     <div class="description">
