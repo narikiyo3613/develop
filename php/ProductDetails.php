@@ -139,7 +139,6 @@ if ($product_id && is_numeric($product_id)) {
         <?php endif; ?>
         <script src="../script/ProductDetail.js"></script>
         <script src="../script/searchresult.js"></script>
-        <script src="../script/favorite.js"></script>
     </div>
 </body>
 
