@@ -17,9 +17,9 @@ $stmt->execute([$user_id]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // エラー/成功メッセージの表示用
-$success_message = isset($_SESSION['success']) ? $_SESSION['success'] : '';
-$error_message = isset($_SESSION['error']) ? $_SESSION['error'] : '';
-unset($_SESSION['success'], $_SESSION['error']);
+//$success_message = isset($_SESSION['success']) ? $_SESSION['success'] : '';
+//$error_message = isset($_SESSION['error']) ? $_SESSION['error'] : '';
+//unset($_SESSION['success'], $_SESSION['error']);
 ?>
 
 <!DOCTYPE html>
