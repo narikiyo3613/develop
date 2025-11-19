@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../db-connect.php";
+require "db-connect.php";
 
 $name = $_POST['name'];
 $email = $_POST['email'];
