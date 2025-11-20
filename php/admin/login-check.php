@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../php/db-connect.php";
+require "../db-connect.php";
 
 $admin_id = $_POST['admin_id'] ?? "";
 $password = $_POST['password'] ?? "";
