@@ -16,7 +16,7 @@ $params = [$name, $price, $stock, $cat, $desc];
 if (!empty($_FILES['image']['name'])) {
 
     $file = $_FILES['image'];
-    $filename = time() . "_" . $file['name'];
+    $filename =$file['name'];
 
     // 保存先（php/admin → 2階層戻って image フォルダ）
     $save_path = "../../image/" . $filename;
