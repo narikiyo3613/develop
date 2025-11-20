@@ -10,7 +10,7 @@ $desc = $_POST['description'];
 
 $image = $_FILES['image'];
 
-$filename = "img_" . time() . "_" . $image['name'];
+$filename = $image['name'];
 $save_path = "../../image/" . $filename;
 
 move_uploaded_file($image['tmp_name'], $save_path);
