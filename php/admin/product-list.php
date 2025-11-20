@@ -15,7 +15,7 @@ $products = $stmt->fetchAll();
 <body>
 
 <h1>商品一覧</h1>
-<a href="dashboard.php">← 管理トップへ戻る</a>
+<a href="dashboard.php" class="back-btn">← 管理トップへ</a>
 
 <table class="admin-table">
 <tr>

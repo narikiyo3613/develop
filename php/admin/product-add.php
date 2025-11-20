@@ -9,7 +9,7 @@
 <body>
 
 <h1>商品追加</h1>
-<a href="dashboard.php">← 管理トップへ戻る</a>
+<a href="dashboard.php" class="back-btn">← 管理トップへ</a>
 
 <form action="product-add-check.php" method="post" enctype="multipart/form-data" class="admin-form">
 
