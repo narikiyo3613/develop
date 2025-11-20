@@ -4,8 +4,9 @@ require "../db-connect.php";
 
 $id = $_GET['id'] ?? null;
 
-if (!$id || !is_numeric($id)) {
-    die("商品IDが不正です");
+if (!$id) {
+    echo "IDが指定されていません";
+    exit;
 }
 
 $stmt = $pdo->prepare("SELECT * FROM products WHERE product_id = ?");
@@ -13,7 +14,8 @@ $stmt->execute([$id]);
 $product = $stmt->fetch();
 
 if (!$product) {
-    die("商品が存在しません");
+    echo "商品が見つかりません。";
+    exit;
 }
 ?>
 
@@ -22,35 +24,40 @@ if (!$product) {
 <head>
     <meta charset="UTF-8">
     <title>商品編集</title>
-    <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="stylesheet" href="../../css/admin-edit.css">
 </head>
 <body>
 
-<?php include "dashboard.php"; ?>
+<a href="product-list.php" class="back-btn">← 商品一覧へ戻る</a>
+<h1>商品編集</h1>
 
-<div class="admin-container">
-    <h1>商品編集</h1>
+<div class="edit-container">
 
-    <form action="product-edit-check.php" method="post" enctype="multipart/form-data">
+    <form action="product-edit-check.php" method="POST" enctype="multipart/form-data">
+
         <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
 
         <label>商品名</label>
-        <input type="text" name="name" value="<?= htmlspecialchars($product['name']) ?>" required>
+        <input type="text" name="name" required value="<?= htmlspecialchars($product['name']) ?>">
 
         <label>価格</label>
-        <input type="number" name="price" value="<?= $product['price'] ?>" required>
+        <input type="number" name="price" required value="<?= htmlspecialchars($product['price']) ?>">
+
+        <label>カテゴリ</label>
+        <input type="text" name="category" required value="<?= htmlspecialchars($product['category']) ?>">
 
         <label>在庫</label>
-        <input type="number" name="stock" value="<?= $product['stock'] ?>" min="0" required>
+        <input type="number" name="stock" required value="<?= htmlspecialchars($product['stock']) ?>">
+
+        <label>商品画像（変更する場合のみ選択）</label>
+        <img src="../<?= htmlspecialchars($product['image_url']) ?>" alt="" class="preview-img">
+        <input type="file" name="image">
 
         <label>説明文</label>
         <textarea name="description" required><?= htmlspecialchars($product['description']) ?></textarea>
 
-        <label>画像（変更しない場合は空のままでOK）</label><br>
-        <img src="../../<?= $product['image_url'] ?>" width="120"><br>
-        <input type="file" name="image">
+        <button type="submit" class="submit-btn">更新する</button>
 
-        <button type="submit" class="admin-btn">更新する</button>
     </form>
 
 </div>
