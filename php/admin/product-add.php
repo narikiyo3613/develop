@@ -29,7 +29,7 @@
     <textarea name="description" required></textarea>
 
     <label>画像</label>
-    <input type="file" name="image" accept="../../image/*" required>
+    <input type="file" name="image" accept="image/*" required>
 
     <button type="submit">登録する</button>
 </form>
