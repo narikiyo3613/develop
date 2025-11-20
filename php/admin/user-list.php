@@ -1,6 +1,6 @@
 <?php
 require "admin-check.php";
-require "../php/db-connect.php";
+require "../db-connect.php";
 
 $stmt = $pdo->query("SELECT user_id, name, email FROM users ORDER BY user_id DESC");
 $users = $stmt->fetchAll();
@@ -10,7 +10,7 @@ $users = $stmt->fetchAll();
 <head>
 <meta charset="UTF-8">
 <title>ユーザー一覧</title>
-<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../../css/admin.css">
 </head>
 <body>
 

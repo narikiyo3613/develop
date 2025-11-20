@@ -216,3 +216,28 @@ h1 {
         width: 100%;
     }
 }
+
+/* ユーザー詳細画面 */
+.user-box {
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+/* お気に入り一覧 */
+.favorite-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.fav-card {
+    width: 150px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
