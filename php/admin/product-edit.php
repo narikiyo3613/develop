@@ -47,7 +47,7 @@ if (!$product) {
         <textarea name="description" required><?= htmlspecialchars($product['description']) ?></textarea>
 
         <label>画像（変更しない場合は空のままでOK）</label><br>
-        <img src="../<?= $product['image_url'] ?>" width="120"><br>
+        <img src="../../<?= $product['image_url'] ?>" width="120"><br>
         <input type="file" name="image">
 
         <button type="submit" class="admin-btn">更新する</button>
