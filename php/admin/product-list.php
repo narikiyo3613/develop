@@ -2,46 +2,41 @@
 require "admin-check.php";
 require "../db-connect.php";
 
-$stmt = $pdo->query("SELECT user_id, name, email, created_at FROM users ORDER BY created_at DESC");
-$users = $stmt->fetchAll();
+$stmt = $pdo->query("SELECT * FROM products ORDER BY product_id DESC");
+$products = $stmt->fetchAll();
 ?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>ユーザー一覧</title>
-    <link rel="stylesheet" href="../../css/admin.css">
+<meta charset="UTF-8">
+<title>商品一覧</title>
+<link rel="stylesheet" href="../../css/admin.css">
 </head>
 <body>
 
-<?php include "dashboard.php"; ?>
+<h1>商品一覧</h1>
+<a href="dashboard.php">← 管理トップへ戻る</a>
 
-<div class="admin-container">
-    <h1>ユーザー一覧</h1>
+<table class="admin-table">
+<tr>
+    <th>ID</th><th>商品名</th><th>価格</th><th>在庫</th><th>操作</th>
+</tr>
 
-    <table class="admin-table">
-        <tr>
-            <th>ID</th>
-            <th>名前</th>
-            <th>メール</th>
-            <th>登録日</th>
-            <th>操作</th>
-        </tr>
+<?php foreach ($products as $p): ?>
+<tr>
+    <td><?= $p['product_id'] ?></td>
+    <td><?= htmlspecialchars($p['name']) ?></td>
+    <td><?= number_format($p['price']) ?>円</td>
+    <td><?= $p['stock'] ?></td>
+    <td>
+        <a href="product-edit.php?id=<?= $p['product_id'] ?>" class="admin-btn-sm">編集</a>
+        <a href="product-delete.php?id=<?= $p['product_id'] ?>"
+            onclick="return confirm('削除しますか？')">削除</a>
+    </td>
+</tr>
+<?php endforeach; ?>
 
-        <?php foreach ($users as $u): ?>
-        <tr>
-            <td><?= $u['user_id'] ?></td>
-            <td><?= htmlspecialchars($u['name']) ?></td>
-            <td><?= htmlspecialchars($u['email']) ?></td>
-            <td><?= $u['created_at'] ?></td>
-            <td>
-                <a href="user-detail.php?id=<?= $u['user_id'] ?>" class="admin-btn-sm">詳細</a>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-    </table>
-</div>
+</table>
 
 </body>
 </html>
