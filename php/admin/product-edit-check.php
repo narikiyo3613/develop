@@ -19,7 +19,7 @@ if (!empty($_FILES['image']['name'])) {
     $filename =$file['name'];
 
     // 保存先（php/admin → 2階層戻って image フォルダ）
-    $save_path = "../../image/" . $filename;
+    $save_path = "../image/" . $filename;
 
     move_uploaded_file($file['tmp_name'], $save_path);
 
