@@ -2,8 +2,7 @@
 require "admin-check.php";
 require "../db-connect.php";
 
-var_dump(realpath("../../image/"));
-exit;
+
 
 
 $name = $_POST['name'];
