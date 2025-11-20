@@ -1,18 +1,37 @@
 <?php
 session_start();
+require "../php/db-connect.php";
 
-// とりあえず簡易版の管理者ユーザー
-$admin_id = "mofu";
-$admin_pass = "mofumofu5";
+$admin_id = $_POST['admin_id'] ?? "";
+$password = $_POST['password'] ?? "";
 
-$input_id = $_POST['admin_id'] ?? "";
-$input_pass = $_POST['password'] ?? "";
+if (!$admin_id || !$password) {
+    echo "入力が不足しています";
+    exit;
+}
 
-if ($input_id === $admin_id && $input_pass === $admin_pass) {
+// 管理者をデータベースから取得
+$sql = "SELECT * FROM admins WHERE username = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$admin_id]);
+$admin = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($admin && password_verify($password, $admin['password'])) {
+
+    // ログイン成功
     $_SESSION['admin_login'] = true;
+    $_SESSION['admin_name'] = $admin['username'];
+    $_SESSION['admin_id'] = $admin['admin_id'];
+
     header("Location: dashboard.php");
     exit;
+
 } else {
-    echo "<p style='text-align:center;color:red;margin-top:40px;'>ログイン情報が間違っています。</p>";
-    echo "<p style='text-align:center;'><a href='login.php'>戻る</a></p>";
+    echo "
+        <div style='text-align:center; margin-top:40px; color:#ff7f7f;'>
+            <h3>管理者ID または パスワードが違います</h3>
+            <a href='login.php' style='color:#ff7f7f;'>ログイン画面へ戻る</a>
+        </div>
+    ";
+    exit;
 }
