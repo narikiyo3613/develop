@@ -11,7 +11,7 @@ $desc = $_POST['description'];
 $image = $_FILES['image'];
 
 $filename = $image['name'];
-$save_path = "../../image/" . $filename;
+$save_path = "../image/" . $filename;
 
 move_uploaded_file($image['tmp_name'], $save_path);
 $image_url = "../image/" . $filename;
