@@ -65,7 +65,7 @@ foreach ($items as $i) {
 
 <form action="payment.php" method="post">
     <input type="hidden" name="total_price" value="<?= $total ?>">
-    <button type="submit">注文を確定する</button>
+    <button type="submit">支払情報入力</button>
 </form>
 
 

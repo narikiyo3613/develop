@@ -54,7 +54,7 @@ $items = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="container">
 
-    <a href="order-history.php" class="back-btn">←</a>
+    <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
 
     <h1 class="title">注文詳細</h1>
 
