@@ -27,6 +27,8 @@ if (!isset($_SESSION['user_id'])) {
 
     <!-- 注文確認から POST される場合を想定（なにも無くても動作OK） -->
     <form action="payment_output.php" method="post" class="login-form">
+        <input type="hidden" name="total_price" value="<?= htmlspecialchars($_POST['total_price'] ?? '') ?>">
+
 
       <label for="kanaName">お名前（フリガナ）</label>
       <input 
@@ -104,7 +106,8 @@ if (!isset($_SESSION['user_id'])) {
         required
       >
 
-      <button type="submit" class="login-btn">登録</button>
+      <button type="submit" class="login-btn">購入</button>
+      
     </form>
   </div>
 
