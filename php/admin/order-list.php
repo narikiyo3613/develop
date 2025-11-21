@@ -24,7 +24,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
 <h1>注文一覧</h1>
-<a href="dashboard.php">← 管理トップへ</a>
+<a href="dashboard.php" class="back-btn">← 管理トップへ</a>
 
 <table class="admin-table">
     <tr>
