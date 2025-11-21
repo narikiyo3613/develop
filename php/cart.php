@@ -126,9 +126,10 @@ if (!empty($cart_items)) {
                 <p class="total-price-value">**<?= number_format($total_price) ?>円**</p>
             </div>
 
-            <form action="payment_form.php" method="post" class="purchase-form">
+            <form action="order-confirm.php" method="post" class="purchase-form">
                 <button type="submit" class="purchase-btn">購入手続きへ</button>
             </form>
+
         <?php endif; ?>
 
     </div>
