@@ -35,7 +35,8 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="container">
 
-    <a href="user-detail.php" class="back-btn">←</a>
+    <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
+
     <h1 class="title">注文履歴</h1>
 
     <?php if (empty($orders)): ?>

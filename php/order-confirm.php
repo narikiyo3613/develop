@@ -47,6 +47,8 @@ foreach ($items as $i) {
 <body>
 
 <h1>注文内容の確認</h1>
+<a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
+
 
 <div class="order-list">
 <?php foreach ($items as $i): ?>
@@ -61,9 +63,11 @@ foreach ($items as $i) {
 
 <h2>合計金額：<?= number_format($total) ?>円</h2>
 
-<form action="order-complete.php" method="post">
+<form action="payment.php" method="post">
+    <input type="hidden" name="total_price" value="<?= $total ?>">
     <button type="submit">注文を確定する</button>
 </form>
+
 
 </body>
 </html>
