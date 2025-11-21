@@ -42,6 +42,14 @@ if ($product_id && is_numeric($product_id)) {
 
         if (!$product) {
             $error_message = "指定された商品が見つかりませんでした。";
+        }else{
+            $is_favorited = false;
+            if ($current_user_id) {
+                $sql_fav = "SELECT 1 FROM favorites WHERE user_id = ? AND product_id = ?";
+                $stmt_fav = $pdo->prepare($sql_fav);
+                $stmt_fav->execute([$current_user_id, $product_id]);
+                $is_favorited = $stmt_fav->fetchColumn() ? true : false;
+            }
         }
 
     } catch (PDOException $e) {
@@ -105,16 +113,20 @@ if ($product_id && is_numeric($product_id)) {
                             <input type="number" id="quantity" value="1" min="1"
                                 max="<?= htmlspecialchars($product['stock']) ?>" style="width: 50px;">
                         </div>
-                        <button class="add-to-cart-btn" <?= $product['stock'] <= 0 ? 'disabled' : '' ?>>
+                        <button
+                            class="add-to-cart-btn"
+                            data-product-id="<?= $product['product_id'] ?>"
+                            data-user-id="<?= $current_user_id ?>"
+                            <?= $product['stock'] <= 0 ? 'disabled' : '' ?>>
                             カートに入れる
                         </button>
 
-                        <form method="post" class="star-form" action="favorite.php">
-                            <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['product_id']) ?>">
-                            <button type="submit" class="star"
-                                data-product-id="<?= htmlspecialchars($product['product_id']) ?>"
-                                data-user-id="<?= htmlspecialchars($current_user_id) ?>">★</button>
-                        </form>
+                        <button 
+                            class="favorite-btn <?= $is_favorited ? 'favorited' : '' ?>"
+                            data-product-id="<?= $product['product_id'] ?>"
+                        >★</button>
+
+
                     </div>
 
                     <div class="description">
@@ -126,7 +138,6 @@ if ($product_id && is_numeric($product_id)) {
             </div>
         <?php endif; ?>
         <script src="../script/ProductDetail.js"></script>
-        <script src="../script/searchresult.js"></script>
     </div>
 </body>
 

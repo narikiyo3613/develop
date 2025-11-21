@@ -95,6 +95,7 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <button type="submit" class="search-icon-btn">🔍</button>
             </form>
 
+            <p><a href="login/login-top.php">トップページ</a></p>            
             <p><a href="user-detail.php">マイページ</a></p>
             <p><a href="favorite.php">お気に入り</a></p>
             <p><a href="cart.php">カートを見る</a></p>
@@ -106,7 +107,7 @@ $favorites = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
 <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
-<h2>お気に入り一覧（<?= count($favorites) ?>件）</h2>
+<h2 id="favorite-title">お気に入り一覧（<?= count($favorites) ?>件）</h2>
 
 
 <div id="favorite-list">

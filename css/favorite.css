@@ -12,9 +12,9 @@ body {
 }
 
 .back-btn {
-    position: absolute;
-    top: 30px;
-    left: 40px;
+    position: fixed;
+    top: 60px;
+    left: 18px;
     text-decoration: none;
     background-color: #6ec6a3;
     color: white;
@@ -22,6 +22,7 @@ body {
     font-weight: bold;
     padding: 10px 20px;
     border-radius: 50%;
+    z-index: 1000;
 }
 
 .search-form {
@@ -78,12 +79,12 @@ body {
     padding: 20px;
     text-align: left;
     position: relative;
-    
+
 }
 
 .card:hover {
- transform: translateY(-5px);
- box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
@@ -159,12 +160,18 @@ body {
 /* コンテンツ（左からスライド） */
 .popup-content {
     background: linear-gradient(180deg, #ffb3e6 0%, #fa7edc 100%);
+    padding: 30px 20px;
+    height: 100%;
     width: 80%;
     max-width: 320px;
-    height: 100%;
-    padding: 30px 20px;
+    position: relative;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4);
+    border-radius: 0 15px 15px 0;
     transform: translateX(-100%);
-    transition: 0.4s;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .popup.is-active .popup-content {
@@ -224,4 +231,11 @@ body {
     border: none;
     background: #ff007f;
     color: white;
+}
+#favorite-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 90px;       /* 上部に大きめの余白 */
+    margin-bottom: 40px;    /* 下にも余白 */
 }

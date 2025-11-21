@@ -1,64 +1,30 @@
+<?php
+session_start();
+require "db-connect.php";
+
+$name = $_POST['name'];
+$email = $_POST['email'];
+$message = $_POST['message'];
+
+$sql = "INSERT INTO contacts (name, email, message, created_at)
+        VALUES (?, ?, ?, NOW())";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$name, $email, $message]);
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../image/もふもふアイコン.png">
-    <title>送信完了</title>
-    <style>
-        body {
-            font-family: "Meiryo", sans-serif;
-            background-color: #f9f9f9;
-            text-align: center;
-            padding-top: 100px;
-        }
-
-        h1 {
-            color: #0078d7;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 18px;
-            color: #333;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 30px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #0078d7;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        a:hover {
-            background-color: #005fa3;
-        }
-
-        .back-btn {
-            position: absolute;
-            top: 30px;
-            left: 40px;
-            text-decoration: none;
-            background-color: #6ec6a3;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 50%;
-        }
-    </style>
+    <title>お問い合わせ送信完了</title>
+    <link rel="stylesheet" href="../css/inquiry.css">
 </head>
-
 <body>
-    <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
-    <h1>送信完了しました</h1>
-    <p>お問い合わせありがとうございます。<br>内容を確認させていただきます。</p>
-    <a href="top.php">戻る</a>
+    <div class="container" style="margin-top: 100px; text-align:center;">
+        <h1>送信が完了しました！</h1>
+        <p>お問い合わせありがとうございました。</p>
+        <a href="login/login-top.php" class="return-top-btn">トップへ戻る</a>
+    </div>
 </body>
-
 </html>
