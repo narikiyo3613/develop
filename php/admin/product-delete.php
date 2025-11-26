@@ -8,7 +8,7 @@ require "../db-connect.php";
 $id = $_GET['id'] ?? null;
 
 if ($id) {
-    $stmt = $pdo->prepare("DELETE FROM products WHERE product_id = ?");
+    $stmt = $pdo->prepare("UPDATE productsSET delete_flag = 1 WHERE product_id = ?;");
     $stmt->execute([$id]);
 }
 
