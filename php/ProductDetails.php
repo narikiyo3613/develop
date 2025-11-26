@@ -29,8 +29,10 @@ if ($product_id && is_numeric($product_id)) {
     // ====== SQL生成とデータ取得 ======
     // DB画像のカラム名 (product_id, name, description, price, stock, category, image_url, created_at) を使用
     $sql = "SELECT product_id, name, description, price, stock, category, image_url, created_at 
-            FROM products 
-            WHERE product_id = :id";
+        FROM products 
+        WHERE product_id = :id
+        AND delete_flag = 1";
+
 
     try {
         $stmt = $pdo->prepare($sql);

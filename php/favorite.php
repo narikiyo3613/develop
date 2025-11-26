@@ -24,8 +24,9 @@ $sql = "
     INNER JOIN products AS p
         ON f.product_id = p.product_id
     WHERE f.user_id = ?
+    AND p.delete_flag = 1
     ORDER BY f.created_at DESC
-";
+    ";
  
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$user_id]);
