@@ -1,0 +1,90 @@
+body {
+    font-family: "Meiryo", sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    color: #333;
+    font-size: 2rem;
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    background-color: #6ec6a3;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 50%;
+}
+
+/* ===== 注文一覧（カード） ===== */
+.order-list {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.order-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+.order-item p {
+    flex: 1;
+    margin-left: 15px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* ===== 合計金額 ===== */
+h2 {
+    text-align: center;
+    color: #ff9ca0;
+    font-size: 1.8rem;
+    margin-top: 20px;
+}
+
+/* ===== ボタン ===== */
+form {
+    text-align: center;
+    margin-top: 30px;
+}
+
+button {
+    background-color: #6ec6a3;
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #5bb391;
+}
