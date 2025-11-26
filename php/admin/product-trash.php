@@ -6,7 +6,7 @@ require "admin-check.php";
 require "../db-connect.php";
 
 // 削除済み商品のみ取得
-$stmt = $pdo->query("SELECT * FROM products WHERE is_deleted = 1 ORDER BY product_id DESC");
+$stmt = $pdo->query("SELECT * FROM products WHERE delete_flag = 1 ORDER BY product_id DESC");
 $deleted_products = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
