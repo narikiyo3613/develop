@@ -2,7 +2,7 @@
 require "admin-check.php";
 require "../db-connect.php";
 
-$stmt = $pdo->query("SELECT * FROM products ORDER BY product_id DESC");
+$stmt = $pdo->query("SELECT * FROM products WHERE delete_flag = 1 ORDER BY product_id DESC");
 $products = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
