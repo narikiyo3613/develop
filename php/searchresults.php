@@ -14,7 +14,7 @@ $keyword = $_GET['keyword'] ?? '';
 $genre = $_GET['genre'] ?? '';
 
 // SQL生成
-$sql = "SELECT product_id, name, price, category, image_url FROM products WHERE 1";
+$sql = "SELECT product_id, name, price, category, image_url FROM products WHERE delete_flag = 1";
 $params = [];
 
 if ($keyword !== '') {
