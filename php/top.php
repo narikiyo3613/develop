@@ -1,11 +1,18 @@
 <?php require "db-connect.php" ?>
 <?php
 // ====== 新着商品取得のためのデータベース処理 ======
-// 最新の商品8件を created_at の降順で取得するSQL
 try {
-    $sql_new_arrivals = "SELECT product_id, name, price, image_url FROM products ORDER BY created_at DESC LIMIT 8";
+
+    $sql_new_arrivals = "SELECT product_id, name, price, image_url 
+                        FROM products 
+                        WHERE delete_flag = 1 
+                        ORDER BY created_at DESC 
+                        LIMIT 8";
+
     $stmt_new_arrivals = $pdo->query($sql_new_arrivals);
     $new_arrivals_products = $stmt_new_arrivals->fetchAll(PDO::FETCH_ASSOC);
+
+    // $new_arrivals_products 変数に、論理削除されていない最新の商品データが格納されました
 } catch (PDOException $e) {
     // データベースエラー時の処理 (実際はより詳細なエラーハンドリング推奨)
     error_log("DB Error: " . $e->getMessage());

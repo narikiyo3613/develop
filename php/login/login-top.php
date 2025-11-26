@@ -12,9 +12,18 @@ if (!isset($_SESSION['user_id'])) {
 // ====== 新着商品取得のためのデータベース処理 ======
 // 最新の商品8件を created_at の降順で取得するSQL
 try {
-    $sql_new_arrivals = "SELECT product_id, name, price, image_url FROM products ORDER BY created_at DESC LIMIT 8";
+
+    $sql_new_arrivals = "SELECT product_id, name, price, image_url 
+                     FROM products 
+                     WHERE delete_flag = 1  
+                     ORDER BY created_at DESC 
+                     LIMIT 8";
+
     $stmt_new_arrivals = $pdo->query($sql_new_arrivals);
     $new_arrivals_products = $stmt_new_arrivals->fetchAll(PDO::FETCH_ASSOC);
+
+    // $new_arrivals_products 変数に、論理削除されていない最新の商品データが格納されました
+
     $sql_fav = "SELECT product_id FROM favorites WHERE user_id = ?";
     $stmt_fav = $pdo->prepare($sql_fav);
     $stmt_fav->execute([$_SESSION['user_id']]);
@@ -126,11 +135,8 @@ try {
                             <h3><?= htmlspecialchars($item['name']) ?></h3>
                         </a>
                         <p class="price"><?= number_format($item['price']) ?>円</p>
-                        <button 
-                            class="star favorite-btn <?= in_array($item['product_id'], $favorites) ? 'favorited' : '' ?>"
-                            data-product-id="<?= $item['product_id'] ?>"
-                            data-user-id="<?= $_SESSION['user_id'] ?>"
-                        >★</button>
+                        <button class="star favorite-btn <?= in_array($item['product_id'], $favorites) ? 'favorited' : '' ?>"
+                            data-product-id="<?= $item['product_id'] ?>" data-user-id="<?= $_SESSION['user_id'] ?>">★</button>
 
 
 
