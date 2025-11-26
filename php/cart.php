@@ -26,7 +26,6 @@ $sql = "
     FROM carts AS c
     JOIN products AS p ON c.product_id = p.product_id
     WHERE c.user_id = ?
-    AND p.dalete_flag = 1
 ";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$user_id]);
