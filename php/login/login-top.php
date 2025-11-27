@@ -14,10 +14,10 @@ if (!isset($_SESSION['user_id'])) {
 try {
 
     $sql_new_arrivals = "SELECT product_id, name, price, image_url 
-                     FROM products 
-                     WHERE delete_flag = 1  
-                     ORDER BY created_at DESC 
-                     LIMIT 8";
+                    FROM products 
+                    WHERE delete_flag = 1  
+                    ORDER BY created_at DESC 
+                    LIMIT 8";
 
     $stmt_new_arrivals = $pdo->query($sql_new_arrivals);
     $new_arrivals_products = $stmt_new_arrivals->fetchAll(PDO::FETCH_ASSOC);
