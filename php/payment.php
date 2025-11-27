@@ -22,7 +22,7 @@ if (!isset($_SESSION['user_id'])) {
 <body>
   <div class="container">
 
-    <a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
+  <a href="order-confirm.php" class="back-btn">←</a>
     <h1 class="title">支払情報入力</h1>
 
     <!-- 注文確認から POST される場合を想定（なにも無くても動作OK） -->
