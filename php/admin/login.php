@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>管理者ログイン</title>
 <link rel="icon" type="image/png" href="../../image/もふもふアイコン.png">
+<link rel="icon" type="image/png" href="../../image/admin.png">
 <style>
 body {
     font-family: "Meiryo", sans-serif;
