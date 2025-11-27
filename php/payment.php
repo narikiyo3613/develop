@@ -39,14 +39,14 @@ if (!isset($_SESSION['user_id'])) {
         required
       >
 
-      <label for="zipCode">郵便番号</label>
+      <label for="zipCode">郵便番号（ハイフンなし）</label>
       <input 
         type="text" 
         id="zipCode" 
         name="zip_code" 
         placeholder="1234567" 
         required 
-        maxlength="8"
+        maxlength="7"
         onKeyUp="AjaxZip3.zip2addr(this,'','prefecture','addressMain');"
       >
 
@@ -62,7 +62,7 @@ if (!isset($_SESSION['user_id'])) {
       <input 
         type="text" 
         id="addressMain" 
-        name="addresMain" 
+        name="addressMain" 
         required
       >
 
