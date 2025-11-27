@@ -13,7 +13,8 @@ $sql = "
     SELECT 
         c.product_id,
         c.quantity,
-        p.price
+        p.price,
+        p.stock
     FROM carts c
     JOIN products p ON c.product_id = p.product_id
     WHERE c.user_id = ?
@@ -26,7 +27,14 @@ if (!$cart) {
     exit("カートが空です");
 }
 
-// 合計金額
+// ● 在庫チェック（足りない商品がある場合はエラー）
+foreach ($cart as $item) {
+    if ($item['stock'] < $item['quantity']) {
+        exit("在庫が不足している商品があります: 商品ID " . $item['product_id']);
+    }
+}
+
+// 合計金額計算
 $total = 0;
 foreach ($cart as $item) {
     $total += $item['price'] * $item['quantity'];
@@ -47,12 +55,26 @@ $stmt_item = $pdo->prepare("
     VALUES (?, ?, ?, ?)
 ");
 
+// 在庫を減らす処理
+$stmt_stock = $pdo->prepare("
+    UPDATE products
+    SET stock = stock - ?
+    WHERE product_id = ?
+");
+
 foreach ($cart as $item) {
+    // 注文詳細を追加
     $stmt_item->execute([
         $order_id,
         $item['product_id'],
         $item['quantity'],
         $item['price']
+    ]);
+
+    // 在庫の減算
+    $stmt_stock->execute([
+        $item['quantity'],
+        $item['product_id']
     ]);
 }
 
@@ -61,3 +83,4 @@ $pdo->prepare("DELETE FROM carts WHERE user_id = ?")->execute([$user_id]);
 
 header("Location: order-thanks.php");
 exit;
+
