@@ -66,7 +66,7 @@ if (!isset($_SESSION['user_id'])) {
         required
       >
 
-      <label for="addressSub">以降の住所</label>
+      <label for="addressSub">マンション名など</label>
       <input 
         type="text" 
         id="addressSub" 
