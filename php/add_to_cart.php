@@ -1,11 +1,10 @@
 <?php
-// エラー表示を有効にする (開発時向け)
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // ====== データベース接続とセッション ======
 // データベース接続ファイル (例: PDOオブジェクト $pdo を定義している) を読み込みます
-require_once 'db-connect.php'; 
+require_once 'db-connect.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -21,7 +20,7 @@ $user_id = $_SESSION['user_id'] ?? null;
 // POSTデータから商品IDと数量を取得し、整数として検証
 // quantityが未定義の場合、デフォルトで1とする
 $product_id = filter_input(INPUT_POST, 'product_id', FILTER_VALIDATE_INT);
-$quantity = (int)(filter_input(INPUT_POST, 'quantity', FILTER_VALIDATE_INT) ?? 1); 
+$quantity = (int) (filter_input(INPUT_POST, 'quantity', FILTER_VALIDATE_INT) ?? 1);
 
 // 1. ログインチェック
 if (!$user_id) {
@@ -70,10 +69,10 @@ try {
         $stmt_insert->bindParam(':quantity', $quantity, PDO::PARAM_INT);
         $stmt_insert->execute();
     }
-    
+
     // トランザクションをコミット
     $pdo->commit();
-    
+
     $response['success'] = true;
     $response['message'] = 'カートに商品を追加しました。';
 
