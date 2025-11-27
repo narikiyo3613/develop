@@ -102,7 +102,7 @@ if ($product_id && is_numeric($product_id)) {
                     </p>
 
                     <div class="meta-data">
-                        <p>ジャンル: **<?= htmlspecialchars($product['category']) ?>**</p>
+                        <p>ジャンル: <?= htmlspecialchars($product['category']) ?></p>
                         <p>在庫: <span class="<?= $product['stock'] > 0 ? 'stock-ok' : 'stock-zero' ?>">
                                 <?= $product['stock'] > 0 ? htmlspecialchars($product['stock']) . '点' : '在庫切れ' ?>
                             </span></p>
