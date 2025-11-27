@@ -98,7 +98,7 @@ if ($product_id && is_numeric($product_id)) {
                     <h1><?= htmlspecialchars($product['name']) ?></h1>
 
                     <p class="price">
-                        **<?= number_format($product['price']) ?>円** (税込)
+                        <?= number_format($product['price']) ?>円(税込)
                     </p>
 
                     <div class="meta-data">
