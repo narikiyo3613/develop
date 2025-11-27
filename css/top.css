@@ -393,6 +393,7 @@ h1 {
  padding: 0; 
  margin: 20px 0; 
  flex-wrap: wrap; 
+ background-color: #4a2717;
 }
 
 .footer ul li {
