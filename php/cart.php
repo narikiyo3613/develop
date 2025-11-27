@@ -123,7 +123,7 @@ if (!empty($cart_items)) {
         <?php if (!empty($cart_items)): ?>
             <div class="cart-summary">
                 <p class="total-price-label">合計金額</p>
-                <p class="total-price-value">**<?= number_format($total_price) ?>円**</p>
+                <p class="total-price-value"><?= number_format($total_price) ?>円</p>
             </div>
 
             <form action="order-confirm.php" method="post" class="purchase-form">

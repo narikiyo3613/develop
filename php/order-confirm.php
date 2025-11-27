@@ -48,7 +48,7 @@ foreach ($items as $i) {
 <body>
 
 <h1>注文内容の確認</h1>
-<a href="#" onclick="history.back(); return false;" class="back-btn">←</a>
+<a href="cart.php" class="back-btn">←</a>
 
 
 <div class="order-list">
