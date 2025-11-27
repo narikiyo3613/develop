@@ -71,7 +71,6 @@ if (!isset($_SESSION['user_id'])) {
         type="text" 
         id="addressSub" 
         name="address_sub" 
-        required
       >
 
       <label for="telNumber">電話番号</label>
