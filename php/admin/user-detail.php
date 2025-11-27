@@ -34,6 +34,7 @@ $favorites = $stmtFav->fetchAll();
     <meta charset="UTF-8">
     <title>ユーザー詳細</title>
     <link rel="stylesheet" href="../../css/admin.css">
+    <link rel="icon" type="image/png" href="../../image/admin.png">
 </head>
 <body>
 

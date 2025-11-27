@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>商品追加</title>
 <link rel="stylesheet" href="../../css/admin.css">
+<link rel="icon" type="image/png" href="../../image/admin.png">
 </head>
 <body>
 
