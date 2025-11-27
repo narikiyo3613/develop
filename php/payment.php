@@ -62,7 +62,7 @@ if (!isset($_SESSION['user_id'])) {
       <input 
         type="text" 
         id="addressMain" 
-        name="address_main" 
+        name="addresMain" 
         required
       >
 
