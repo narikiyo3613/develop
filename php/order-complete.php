@@ -72,6 +72,8 @@ foreach ($cart as $item) {
         $item['price']
     ]);
 
+}
+foreach ($cart as $item) {
     // 在庫の減算
     $stmt_stock->execute([
         $item['quantity'],
