@@ -18,6 +18,7 @@ $sql = "
     FROM carts c
     JOIN products p ON c.product_id = p.product_id
     WHERE c.user_id = ?
+    AND p.delete_flag = 1
 ";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$user_id]);
