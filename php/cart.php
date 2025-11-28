@@ -14,6 +14,7 @@ if (!$user_id) {
 }
 
 // データベースからカート内容を取得する
+// ★ 変更点: SQLから shops テーブルとの JOIN を削除
 $sql = "
     SELECT 
         c.cart_id,
@@ -26,11 +27,12 @@ $sql = "
     FROM carts AS c
     JOIN products AS p ON c.product_id = p.product_id
     WHERE c.user_id = ?
-    AND p.delete_flag = 1
+    AND p.delete_flag = 1 /* フラグ1を公開中として扱う */
 ";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$user_id]);
 $cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 // 合計金額の計算
 $total_price = 0;
@@ -52,7 +54,6 @@ if (!empty($cart_items)) {
 </head>
 <body>
 
-    <!-- ✅ ポップアップメニュー -->
     <button id="openPopupBtn">
         <span></span>
         <span></span>
@@ -66,7 +67,7 @@ if (!empty($cart_items)) {
                 <button type="submit" class="search-icon-btn">🔍</button>
             </form>
 
-            <p><a href="login/login-top.php">トップページ</a></p>            
+            <p><a href="login/login-top.php">トップページ</a></p> 			
             <p><a href="user-detail.php">マイページ</a></p>
             <p><a href="favorite.php">お気に入り</a></p>
             <p><a href="cart.php">カートを見る</a></p>
@@ -79,7 +80,6 @@ if (!empty($cart_items)) {
 
     <div class="cart-container">
 
-    <!-- ホーム画面に戻るボタン -->
     <a href="login/login-top.php" class="back-btn">←</a>
     <h1 class="title">カート</h1>
 
@@ -93,7 +93,6 @@ if (!empty($cart_items)) {
                             <img src="<?= htmlspecialchars($item['image_url'], ENT_QUOTES) ?>" alt="<?= htmlspecialchars($item['name'], ENT_QUOTES) ?>">
                             <div class="details">
                                 <h3><?= htmlspecialchars($item['name'], ENT_QUOTES) ?></h3>
-                                <p class="shop-name"><?= htmlspecialchars($item['shop'], ENT_QUOTES) ?></p>
                                 <p class="price-single"><?= number_format($item['price']) ?>円 (単価)</p>
                                 <p class="birthday"><?= date('Y年n月j日', strtotime($item['birthday'])) ?>生まれ</p>
                                 
