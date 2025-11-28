@@ -25,7 +25,7 @@ if (!$order_id) {
 <div class="thanks-container">
 
     
-    <img src="../image/もふもふアイコン.png" alt="MofuMofuロゴ" class="main-logo"><br>
+    <img src="../image/もふもふアイコン.png" alt="MofuMofuロゴ" class="main-logo" width="50%"><br>
 
     <h1 class="thanks-title">ご購入ありがとうございます！</h1>
 
