@@ -32,10 +32,6 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$user_id]);
 $cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo "<pre>";
-var_dump($cart);
-echo "</pre>";
-exit;
 
 // 合計金額の計算
 $total_price = 0;
