@@ -82,6 +82,6 @@ foreach ($cart as $item) {
 // カートをクリア
 $pdo->prepare("DELETE FROM carts WHERE user_id = ?")->execute([$user_id]);
 
-header("Location: order-thanks.php");
+header("Location: order-thanks.php?order_id=" . $order_id );
 exit;
 
