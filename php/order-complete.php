@@ -71,7 +71,7 @@ foreach ($cart as $item) {
         $item['quantity'],
         $item['price']
     ]);
-
+    echo "在庫減算を試行中: 商品ID " . $item['product_id'] . ", 数量: " . $item['quantity'] . "<br>";
     // 在庫の減算
     $stmt_stock->execute([
         $item['quantity'],
