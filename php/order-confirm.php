@@ -17,7 +17,8 @@ $sql = "
         p.product_id,
         p.name,
         p.price,
-        p.image_url
+        p.image_url,
+        p.stock
     FROM carts AS c
     JOIN products AS p ON c.product_id = p.product_id
     WHERE c.user_id = ?
