@@ -25,8 +25,7 @@ if (!isset($_SESSION['user_id'])) {
   <a href="order-confirm.php" class="back-btn">←</a>
     <h1 class="title">支払情報入力</h1>
 
-    <!-- 注文確認から POST される場合を想定（なにも無くても動作OK） -->
-    <form action="payment_output.php" method="post" class="login-form">
+    <form action="order-complete.php" method="post" class="login-form">
         <input type="hidden" name="total_price" value="<?= htmlspecialchars($_POST['total_price'] ?? '') ?>">
 
 

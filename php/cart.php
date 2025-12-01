@@ -14,7 +14,6 @@ if (!$user_id) {
 }
 
 // データベースからカート内容を取得する
-// ★ 変更点: SQLから shops テーブルとの JOIN を削除
 $sql = "
     SELECT 
         c.cart_id,
@@ -23,11 +22,12 @@ $sql = "
         p.name,
         p.price,
         p.image_url,
-        p.birthday
+        p.birthday,
+        p.stock
     FROM carts AS c
     JOIN products AS p ON c.product_id = p.product_id
     WHERE c.user_id = ?
-    AND p.delete_flag = 1 /* フラグ1を公開中として扱う */
+    AND p.delete_flag = 1
 ";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$user_id]);
@@ -53,6 +53,7 @@ if (!empty($cart_items)) {
 </head>
 <body>
 
+    <!-- ✅ ポップアップメニュー -->
     <button id="openPopupBtn">
         <span></span>
         <span></span>
@@ -66,7 +67,7 @@ if (!empty($cart_items)) {
                 <button type="submit" class="search-icon-btn">🔍</button>
             </form>
 
-            <p><a href="login/login-top.php">トップページ</a></p> 			
+            <p><a href="login/login-top.php">トップページ</a></p>            
             <p><a href="user-detail.php">マイページ</a></p>
             <p><a href="favorite.php">お気に入り</a></p>
             <p><a href="cart.php">カートを見る</a></p>
@@ -79,6 +80,7 @@ if (!empty($cart_items)) {
 
     <div class="cart-container">
 
+    <!-- ホーム画面に戻るボタン -->
     <a href="login/login-top.php" class="back-btn">←</a>
     <h1 class="title">カート</h1>
 
