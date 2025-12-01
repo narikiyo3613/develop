@@ -79,6 +79,7 @@ try {
             $item['price']
         ]);
 
+        //header("Location: top.php");
         // 在庫の減算
         $stmt_stock->execute([
             $item['quantity'],
@@ -92,7 +93,8 @@ try {
     // ★ 全ての処理が成功したらコミット（データベースに反映）
     $pdo->commit();
 
-    header("Location: order-thanks.php");
+    header("Location: top.php");
+    //header("Location: order-thanks.php");
     exit;
 
 } catch (Exception $e) {
