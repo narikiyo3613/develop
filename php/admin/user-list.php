@@ -38,11 +38,6 @@ $users = $stmt->fetchAll();
             <td><?= $u['created_at'] ?></td>
             <td>
                 <a href="user-detail.php?id=<?= $u['user_id'] ?>" class="admin-btn-sm">詳細</a>
-                <form action="user-delete.php" method="post" style="display:inline;" 
-                    onsubmit="return confirm('本当に削除しますか？');">
-                    <input type="hidden" name="user_id" value="<?= $u['user_id'] ?>">
-                    <button type="submit" class="admin-btn-sm" style="background:#ff7f7f;">削除</button>
-                </form>
             </td>
         </tr>
         <?php endforeach; ?>
